@@ -46,13 +46,13 @@ bootRepackage {
   mainClass = 'uu.app.Application'
 }
 
-mongo {
-  port 1234
-}
+//mongo {
+//  mongoVersion '3.3.3'
+//}
 
-test {
-  runWithMongoDb = true
-}
+//test {
+//  runWithMongoDb = true
+//}
 
 extraArchive {
   sources = true
