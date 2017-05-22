@@ -48,6 +48,7 @@ bootRepackage {
 
 mongo {
   mongoVersion '3.4.4'
+  downloadUrl 'http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.4.tgz'
 }
 
 test {
