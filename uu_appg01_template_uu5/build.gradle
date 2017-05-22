@@ -46,10 +46,6 @@ bootRepackage {
   mainClass = 'uu.app.Application'
 }
 
-mongo {
-  mongoVersion '3.3.3'
-}
-
 test {
   runWithMongoDb = true
 }
