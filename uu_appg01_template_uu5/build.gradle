@@ -65,3 +65,7 @@ nexus {
   repositoryUrl = 'http://192.168.4.209:8081/nexus/content/repositories/uaf/'
   snapshotRepositoryUrl = 'http://192.168.4.209:8081/nexus/content/repositories/uaf-dev/'
 }
+
+task uuRun(dependsOn: bootRun) {
+  group = 'uuTasks'
+}
