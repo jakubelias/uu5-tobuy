@@ -46,6 +46,10 @@ bootRepackage {
   mainClass = 'uu.app.Application'
 }
 
+mongo {
+  port 1234
+}
+
 test {
   runWithMongoDb = true
 }
