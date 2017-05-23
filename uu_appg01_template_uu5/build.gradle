@@ -46,13 +46,14 @@ bootRepackage {
   mainClass = 'uu.app.Application'
 }
 
-//mongo {
-//  mongoVersion '3.3.3'
-//}
+mongo {
+  mongoVersion '3.3.3'
+  logging 'console'
+}
 
-//test {
-//  runWithMongoDb = true
-//}
+test {
+  runWithMongoDb = true
+}
 
 extraArchive {
   sources = true
