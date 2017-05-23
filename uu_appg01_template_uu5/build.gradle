@@ -47,7 +47,7 @@ bootRepackage {
 }
 
 mongo {
-  downloadUrl 'https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.4.4.tgz'
+  mongoVersion '3.4.3'
   logging 'console'
   mongodVerbosity 'vvvvv'
 }
