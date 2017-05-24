@@ -47,9 +47,9 @@ bootRepackage {
 }
 
 mongo {
+  System.setProperty("os.arch", "x86_64") //workarround for https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo/issues/167
   mongoVersion '3.4.3'
   logging 'console'
-  mongodVerbosity 'vvvvv'
 }
 
 test {
