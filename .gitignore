@@ -16,3 +16,6 @@ gradle/
 
 # Ignore Gradle GUI config
 gradle-app.setting
+
+# OIDC token
+oidc_token.json

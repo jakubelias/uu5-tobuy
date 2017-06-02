@@ -1,0 +1,114 @@
+allprojects {
+  group 'uu.appg01.uu5-template'
+  version '0.1.0-SNAPSHOT'
+  description 'A template used for implementing uu5 uuApp.'
+
+  defaultTasks 'clean', 'build'
+}
+
+buildscript {
+  ext {
+    springBootVersion = '1.5.3.RELEASE'
+    uuNexusRepository = 'http://192.168.4.209:8081/nexus/content/groups/uaf-all/'
+    uuNexusReleaseRepository = 'http://192.168.4.209:8081/nexus/content/repositories/uaf/'
+    uuNexusSnapshotRepository = 'http://192.168.4.209:8081/nexus/content/repositories/uaf-dev/'
+  }
+
+  repositories {
+    maven { url uuNexusRepository }
+  }
+
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    classpath("com.bmuschko:gradle-nexus-plugin:2.3.1")
+    classpath("com.sourcemuse.gradle.plugin:gradle-mongo-plugin:1.0.0")
+    classpath("uu.appg01.gradle:uuPlugin:0.1.1-SNAPSHOT")
+  }
+}
+
+subprojects {
+  apply plugin: 'java'
+  apply plugin: 'org.springframework.boot'
+  apply plugin: "com.sourcemuse.mongo"
+  apply plugin: 'war'
+  apply plugin: 'com.bmuschko.nexus'
+  apply plugin: 'checkstyle'
+  apply plugin: "jacoco"
+  apply plugin: 'build-dashboard'
+  apply plugin: 'project-report'
+  apply plugin: 'uu.appg01.deploy.plugin'
+
+// repositories setup
+  repositories {
+    maven { url uuNexusRepository }
+  }
+
+  nexus {
+    sign = false
+    repositoryUrl = uuNexusReleaseRepository          //(RELEASED stable versions)
+    snapshotRepositoryUrl = uuNexusSnapshotRepository // (SNAPSHOT build versions)
+  }
+
+  extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+  }
+
+// java properties setup
+  sourceCompatibility = 1.8
+
+  dependencyManagement {
+    imports {
+      mavenBom 'io.spring.platform:platform-bom:Brussels-SR2'
+      mavenBom 'org.apache.logging.log4j:log4j-bom:2.8.2'
+    }
+  }
+
+  dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.boot:spring-boot-configuration-processor")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+  }
+
+  bootRepackage {
+    enabled = false
+  }
+
+  mongo {
+    System.setProperty("os.arch", "x86_64") //workarround for https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo/issues/167
+    mongoVersion '3.4.3'
+    logging 'console'
+  }
+
+  test {
+    runWithMongoDb = true
+  }
+
+  task uuRun(dependsOn: bootRun, group: 'uu')
+
+// reports setup
+  buildDashboard {
+    dependsOn(jacocoTestReport)
+  }
+
+  checkstyle {
+    configFile = rootProject.file('config/checkstyle.xml')
+    ignoreFailures = true
+  }
+
+  tasks.withType(Checkstyle) {
+    reports {
+      xml.enabled false
+    }
+  }
+
+  task uuReport {
+    group 'uu'
+    buildDashboard.mustRunAfter check, jacocoTestReport
+    dependsOn 'test', 'jacocoTestReport', 'check', 'buildDashboard'
+  }
+}
