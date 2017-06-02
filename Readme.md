@@ -114,6 +114,19 @@ _./subProjectName/build.gradle_ example:
       appBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX'
     }
     
+_Note that user running the deploy task has to have interface with uuAppBox MAR._
+    
+    
 To run deployment, in project root directory run command
 
     > gradle uuDeploy
+    
+Task assumes that valid oidc token is located in ./config/oidc_token.json with following structure
+
+    {
+      "id_token": "eyJ0....ZoY"
+    }
+    
+Deployment can be also run with OIDC token in different location. In this case, in project root directory run command
+
+    > gradle uuDeploy -PoidcTokenPath='absolutePathToTokenFile'

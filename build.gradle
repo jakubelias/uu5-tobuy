@@ -15,6 +15,7 @@ buildscript {
   }
 
   repositories {
+    maven { url uuNexusSnapshotRepository }
     maven { url uuNexusRepository }
   }
 
