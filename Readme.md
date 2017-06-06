@@ -99,28 +99,32 @@ Dashboard with all these reports is in folder _./projectName/build/reports/build
 
 # Deploying to C3    
 Project is using gradle uu deploy plugin, which adds task for creating uuAppBox, uploading attachments and deploying to C3.
-Configuration of the task is located in each sub-project's build.gradle file.
+## 1. Deploy task configuration
+Configuration of the deploy task is done in uuDeploySetting extension of build.gradle file.
 
 Parameters to configure:
-- uuDeploySetting.appBoxLocationUri (required) - UESURI of the folder where the appbox will be created. 
-- uuDeploySetting.warPath - Absolute path to war file. Default value is taken from output of gradle's war task.
-- uuDeploySetting.deployDescriptorPath - Absolute path to deploy_descriptor.json file. Default value is _./subProjectName/src/resources/deploy_descriptor.json_
+- uuDeploySetting.appBoxLocationUri (required) - UESURI of the folder where the AppBox will be created. 
+- uuDeploySetting.warPath (optional) - Absolute path to war file. Default value is taken from output of gradle's war task (_./subProjectName/build/libs/subProjectName-version.war_).
+- uuDeploySetting.deployDescriptorPath (optional) - Absolute path to deploy descriptor json. Default value is _./subProjectName/src/resources/deploy_descriptor.json_
 
 Name and code of the AppBox and codes of AppBox's attachments are derived from values in deploy descriptor file.
 
-_./subProjectName/build.gradle_ example:
+_./build.gradle_ example:
 
     uuDeploySetting {
       appBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX'
     }
+
+_Note that if locations of sub-project's AppBoxes differ (or you want to specify other parameters), extension uuDeploySetting can be also set in sub-project's build.gradle file (eg. ./subProjectName/build.gradle)_   
     
-_Note that user running the deploy task has to have interface with uuAppBox MAR._
-    
-    
+## 2. Running deployment    
 To run deployment, in project root directory run command
 
     > gradle uuDeploy
-    
+
+_Note that user running the deploy task has to have interface with uuAppBox MAR._
+
+## 3. Authorization    
 Task assumes that valid oidc token is located in ./config/oidc_token.json with following structure
 
     {
@@ -130,3 +134,6 @@ Task assumes that valid oidc token is located in ./config/oidc_token.json with f
 Deployment can be also run with OIDC token in different location. In this case, in project root directory run command
 
     > gradle uuDeploy -PoidcTokenPath='absolutePathToTokenFile'
+    
+Valid token can be acquired at
+https://oidc.plus4u.net/uu-oidcg01-main/0-0/showToken?client_id=gradle 
