@@ -3,8 +3,13 @@ package uu.app.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import uu.app.services.GreetingService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
 public class GreetingController {
@@ -16,6 +21,12 @@ public class GreetingController {
   @ResponseBody
   String greeting() {
     return service.greet();
+  }
+
+
+  @RequestMapping(path = "/public", method = RequestMethod.GET)
+  public void method(HttpServletRequest request, HttpServletResponse httpServletResponse) throws IOException {
+    httpServletResponse.sendRedirect(request.getRequestURL().toString() + "/");
   }
 
 }

@@ -18,6 +18,12 @@ const menuItems = [
     iconClass: "glyphicon-info-sign",
     profileCodes: null,
     route: "/sysAbout"
+  },
+  {
+    nameLSI: { "cs": "Ahoj světe", "en": "Hello World", "sk": "Ahoj Světe", "ua": "hello world" },
+    iconClass: "glyphicon-info-sign",
+    profileCodes: null,
+    route: "/hello"
   }
 ];
 
