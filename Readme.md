@@ -133,7 +133,7 @@ Task assumes that valid oidc token is located in ./config/oidc_token.json with f
     
 Deployment can be also run with OIDC token in different location. In this case, in project root directory run command
 
-    > gradle uuDeploy -PoidcTokenPath='absolutePathToTokenFile'
+    > gradle uuDeploy -PoidcTokenPath='$CONFIG/oidc_token.json'
     
 Valid token can be acquired at
 https://oidc.plus4u.net/uu-oidcg01-main/0-0/showToken?client_id=gradle 

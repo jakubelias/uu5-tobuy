@@ -17,6 +17,7 @@ buildscript {
   repositories {
     maven { url uuNexusSnapshotRepository }
     maven { url uuNexusRepository }
+    maven { url "https://plugins.gradle.org/m2/" }
   }
 
   dependencies {
@@ -24,6 +25,7 @@ buildscript {
     classpath("com.bmuschko:gradle-nexus-plugin:2.3.1")
     classpath("com.sourcemuse.gradle.plugin:gradle-mongo-plugin:1.0.0")
     classpath("uu.appg01.gradle:uu-gradle-plugin:0.1.0-SNAPSHOT")
+    classpath("com.moowork.gradle:gradle-node-plugin:1.1.1")
   }
 }
 
@@ -37,7 +39,8 @@ subprojects {
   apply plugin: "jacoco"
   apply plugin: 'build-dashboard'
   apply plugin: 'project-report'
-  apply plugin: 'uu.appg01.deploy.plugin'
+  apply plugin: 'uu.appg01.deploy.plugin' // TODO name convention
+  apply plugin: "com.moowork.node"
 
 // repositories setup
   repositories {
@@ -80,7 +83,8 @@ subprojects {
   }
 
   mongo {
-    System.setProperty("os.arch", "x86_64") //workarround for https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo/issues/167
+    System.setProperty("os.arch", "x86_64")
+    //workarround for https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo/issues/167
     mongoVersion '3.4.3'
     logging 'console'
   }
@@ -88,8 +92,6 @@ subprojects {
   test {
     runWithMongoDb = true
   }
-
-  task uuRun(dependsOn: bootRun, group: 'uu')
 
 // reports setup
   buildDashboard {
@@ -113,7 +115,27 @@ subprojects {
     dependsOn 'test', 'jacocoTestReport', 'check', 'buildDashboard'
   }
 
+// deployment
   uuDeploySetting {
     appBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX'
   }
+
+// building client
+  war {
+    from('src/main/uu5/public') {
+      into('public')
+    }
+
+    dependsOn 'buildClient'
+  }
+
+  node {
+    nodeModulesDir = file("src/main/uu5")
+  }
+
+  task buildClient(type: NpmTask) {
+    dependsOn 'npmInstall'
+    args = ['run', 'dist']
+  }
+
 }

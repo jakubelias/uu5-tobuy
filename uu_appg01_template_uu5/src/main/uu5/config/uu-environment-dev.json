@@ -1,0 +1,4 @@
+{
+  "gatewayUri": "http://localhost:6221",
+  "uuoidc.redirectUri": "callbacks/login-callback.html"
+}
