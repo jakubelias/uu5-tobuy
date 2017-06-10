@@ -27,7 +27,7 @@ const LoadHello = React.createClass({
       <UU5.Layout.Flc {...this.getMainPropsToPass()}>
         {this.getLoadFeedbackChildren((data) => {
             return (
-              <div> {data.data}</div>
+              <UU5.Bricks.Div> {data.data}</UU5.Bricks.Div>
             )
           }
         )}

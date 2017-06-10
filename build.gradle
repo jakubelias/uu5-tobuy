@@ -138,4 +138,11 @@ subprojects {
     args = ['run', 'dist']
   }
 
+//  task publishClient(type: Copy) {
+//    from 'src/main/uu5/public'
+//    into 'src/main/webapp'
+//    dependsOn 'buildClient'
+//  }
+
+
 }

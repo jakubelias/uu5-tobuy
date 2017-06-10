@@ -10,7 +10,7 @@ import uu.app.services.HelloService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/uu5-template/12123232323")
+@RequestMapping("/1111-2222")
 public class HelloController {
   @Autowired
   private HelloService service;

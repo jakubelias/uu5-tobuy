@@ -23,10 +23,4 @@ public class GreetingController {
     return service.greet();
   }
 
-
-  @RequestMapping(path = "/public", method = RequestMethod.GET)
-  public void method(HttpServletRequest request, HttpServletResponse httpServletResponse) throws IOException {
-    httpServletResponse.sendRedirect(request.getRequestURL().toString() + "/");
-  }
-
 }

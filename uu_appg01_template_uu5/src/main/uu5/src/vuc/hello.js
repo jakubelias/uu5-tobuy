@@ -18,7 +18,7 @@ let Hello = React.createClass({
 
   //@@viewOn:statics
   statics: {
-    tagName: 'UU.App.VucHome',
+    tagName: 'UU.App.VucHello',
     vucName: 'hello',
     classNames: {
       main: 'uu-app-vuchello'

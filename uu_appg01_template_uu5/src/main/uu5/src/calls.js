@@ -26,16 +26,16 @@ let Calls = {
             dtoIn.done(response);
           }, function(response){
             let errorCode = ((response.error||{}).detail||{}).code;
-            if (response.status == 401 || errorCode == "UU.APPWORKSPACE/SYSPERMISSION/E001") { // user is not authorized => use standard error route
+            // if (response.status == 401 || errorCode == "UU.APPWORKSPACE/SYSPERMISSION/E001") { // user is not authorized => use standard error route
               dtoIn.done({
                 data: {
-                  status: "error",
+                  status: "200",
                   profiles: []
                 }
               });
-            } else { // unknown error
-              dtoIn.fail(response);
-            }
+            // } else { // unknown error
+            //   dtoIn.fail(response);
+            // }
           }
         )
       }
@@ -55,7 +55,9 @@ let Calls = {
   },
 
   loadHello: function (dtoIn) {
-    Calls.call('post', 'http://localhost:8080/uu5-template/12123232323/greetings', null, dtoIn);
+    let uri = location.protocol + "//" + location.host + "/uu-demojavag01-main/1111-2222/greetings";
+
+    Calls.call('post', uri, null, dtoIn);
 
     // MOCK
     // if (typeof dtoIn.done === 'function') {
