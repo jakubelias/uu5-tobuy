@@ -55,14 +55,9 @@ let Calls = {
   },
 
   loadHello: function (dtoIn) {
-    let uri = location.protocol + "//" + location.host + "/uu-demojavag01-main/1111-2222/greetings";
+    let commandUri = Calls.getCommandUri("greetings");
 
-    Calls.call('post', uri, null, dtoIn);
-
-    // MOCK
-    // if (typeof dtoIn.done === 'function') {
-    //   setTimeout(() => dtoIn.done({ data: "Hello uu5" }), 1000)
-    // }
+    Calls.call('post', commandUri, null, dtoIn);
   }
 
 };

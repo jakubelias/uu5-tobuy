@@ -39,8 +39,11 @@ const Uve = React.createClass({
 
   //@@viewOn:componentSpecificHelpers
   _getAppBasePath() {
-    return (document.querySelector("base") && document.querySelector("base").getAttribute("data-uu-app-base")) ||
-      location.pathname.replace(/^(.*\/).*/, "$1");
+    // return (
+    //   document.querySelector("base") && document.querySelector("base").getAttribute("data-uu-app-base")) ||
+    //   location.pathname.replace(/^(.*\/).*/, "$1");
+    console.log(document.querySelector("base"))
+    return location.pathname.replace(/^(.*\/).*/, "$1");
   },
 
   _getRoutes() {

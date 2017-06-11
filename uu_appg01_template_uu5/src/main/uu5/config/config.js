@@ -28,7 +28,8 @@ module.exports.getConfig = function () {
     entryPoints: buildHelpers.getHtmlFilesFromMappingsJson()
                     .map(html => html.replace(/\.html?$/i, ".js"))
                     .filter(jsFile => fs.existsSync(path.join(srcDir, jsFile))), // files to build (relative to "src/", resp. sourcePath)
-    minify: isProductionBuild,
+    // minify: isProductionBuild,
+    minify: false,
     useSourceMaps: true,
 
     // routing settings
@@ -36,7 +37,7 @@ module.exports.getConfig = function () {
     // this must be configured only in case that client-side router is used and nested routes (routes in subfolders)
     // are required to work
     appBaseUrlPath: (isWithoutServer ? "/" : "<preserve-2-path-segments>"),
-    appAssetsRelativeUrlPath: (isWithoutServer ? "" : ""), // URL path (relative to appBaseUrlPath) where built client-side files are deployed
+    appAssetsRelativeUrlPath: (isWithoutServer ? "" : "public/"), // URL path (relative to appBaseUrlPath) where built client-side files are deployed
 
     // dependencies settings (react, ...)
     // - each dependency can be loaded from external URL or be bundled in the main JS file
