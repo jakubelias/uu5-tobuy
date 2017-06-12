@@ -20,24 +20,30 @@ let Calls = {
   authorizeVuc:function(dtoIn){
     Session.initPromise.then(
       function(){
-        let uri = location.protocol + "//" + location.host + location.pathname;
-        Client.get(uri).then(
-          function(response){
-            dtoIn.done(response);
-          }, function(response){
-            let errorCode = ((response.error||{}).detail||{}).code;
-            // if (response.status == 401 || errorCode == "UU.APPWORKSPACE/SYSPERMISSION/E001") { // user is not authorized => use standard error route
-              dtoIn.done({
-                data: {
-                  status: "200",
-                  profiles: []
-                }
-              });
-            // } else { // unknown error
-            //   dtoIn.fail(response);
-            // }
+        dtoIn.done({
+          data: {
+            status: "200",
+            profiles: []
           }
-        )
+        });
+        // let uri = location.protocol + "//" + location.host + location.pathname;
+        // Client.get(uri).then(
+        //   function(response){
+        //     dtoIn.done(response);
+        //   }, function(response){
+        //     let errorCode = ((response.error||{}).detail||{}).code;
+        //     // if (response.status == 401 || errorCode == "UU.APPWORKSPACE/SYSPERMISSION/E001") { // user is not authorized => use standard error route
+        //       dtoIn.done({
+        //         data: {
+        //           status: "200",
+        //           profiles: []
+        //         }
+        //       });
+        //     // } else { // unknown error
+        //     //   dtoIn.fail(response);
+        //     // }
+        //   }
+        // )
       }
     )
   },

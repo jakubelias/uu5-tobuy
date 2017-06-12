@@ -1,5 +1,6 @@
 import React from "react";
-import * as UU5 from 'uu5g04';
+import * as UU5 from "uu5g04";
+import "./load-hello.less"
 
 import "./uve.less";
 
@@ -23,13 +24,25 @@ const LoadHello = React.createClass({
       onLoad: 'loadHello',
     }
   },
+
+  getDefaultProps() {
+    return {
+      helloTextLsi: {en: "Java server said hello in time:", cs: "Java server řekl ahoj v čase:"},
+    };
+  },
+
   //@@viewOn:render
   render() {
     return (
       <UU5.Layout.Container {...this.getMainPropsToPass()}>
         {this.getLoadFeedbackChildren((data) => {
             return (
-              <UU5.Bricks.Div> {data.data}</UU5.Bricks.Div>
+              <UU5.Bricks.Div className={this.getClassName().main}>
+                <UU5.Bricks.Lsi lsi={this.props.helloTextLsi} />
+                <UU5.Bricks.P>
+                  {data.data}
+                </UU5.Bricks.P>
+              </UU5.Bricks.Div>
             )
           }
         )}

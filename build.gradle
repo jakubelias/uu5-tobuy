@@ -3,9 +3,9 @@ description 'A template project used for implementing uu5 uuApp.'
 allprojects {
   group 'uu.appg01.uu5-template'
   version '0.1.0-SNAPSHOT'
-
-//defaultTasks 'clean', 'build'
 }
+
+defaultTasks 'bootRun'
 
 buildscript {
   ext {
@@ -30,13 +30,8 @@ buildscript {
   }
 }
 
-//task buildApp {
-//  group 'uu'
-//  dependsOn ':uu_appg01_template-client:build'
-//  dependsOn ':uu_appg01_template-server:build'
-//
-//  doLast {
-//    println "test"
-//
-//  }
-//}
+ext {
+  tid = '84723967990075193'
+  awid = '920ebf3f9f3f4a5dabcce0d67f899598'
+  appBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX'
+}

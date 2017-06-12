@@ -23,8 +23,8 @@ public class HomeController {
     httpServletResponse.sendRedirect(request.getRequestURI().toString() + "/public");
   }
 
-  @RequestMapping(path = "/public", method = RequestMethod.GET)
-  public String method(@PathVariable String tid, @PathVariable String awid) {
+  @RequestMapping(path = "/*", method = RequestMethod.GET)
+  public String about(@PathVariable String tid, @PathVariable String awid) {
     return "forward:/"+tid+"-"+awid+"/public/index.html";
   }
 

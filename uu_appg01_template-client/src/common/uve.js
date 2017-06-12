@@ -49,6 +49,7 @@ const Uve = React.createClass({
   _getRoutes() {
     return {
       "/": { component: <Home /> },
+      "/public": { component: <Hello /> },
       "/home": { component: <Home /> },
       "/sysAbout": { component: <SysAbout authorized={false} /> },
       "/hello": { component: <Hello /> }
