@@ -122,6 +122,7 @@ subprojects {
 
 // building client
   war {
+    archiveName = project.name + '.war'
     from('src/main/uu5/public') {
       into('84723967990075193-920ebf3f9f3f4a5dabcce0d67f899598/public')
     }
