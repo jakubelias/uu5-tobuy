@@ -36,8 +36,8 @@ module.exports.getConfig = function () {
     // absolute URL path of the application root where app will be deployed on web server (typically "/" for app on a custom domain);
     // this must be configured only in case that client-side router is used and nested routes (routes in subfolders)
     // are required to work
-    appBaseUrlPath: (isWithoutServer ? "/" : "<preserve-2-path-segments>"),
-    appAssetsRelativeUrlPath: (isWithoutServer ? "" : "public/"), // URL path (relative to appBaseUrlPath) where built client-side files are deployed
+    appBaseUrlPath: (isWithoutServer ? "/" : "/"),
+    appAssetsRelativeUrlPath: (isWithoutServer ? "" : ""), // URL path (relative to appBaseUrlPath) where built client-side files are deployed
 
     // dependencies settings (react, ...)
     // - each dependency can be loaded from external URL or be bundled in the main JS file

@@ -1,3 +1,5 @@
 rootProject.name = 'uu_appg01_template-uu5-java-dev'
-include 'uu_appg01_template_uu5'
+include 'uu_appg01_template-server'
+include 'uu_appg01_template-client'
+include 'uu_appg01_template-design'
 

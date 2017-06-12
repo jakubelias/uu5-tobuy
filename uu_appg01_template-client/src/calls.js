@@ -57,7 +57,7 @@ let Calls = {
   loadHello: function (dtoIn) {
     let commandUri = Calls.getCommandUri("greetings");
 
-    Calls.call('post', commandUri, null, dtoIn);
+    Calls.call('get', commandUri, null, dtoIn);
   }
 
 };

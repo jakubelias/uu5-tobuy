@@ -1,9 +1,10 @@
+description 'A template project used for implementing uu5 uuApp.'
+
 allprojects {
   group 'uu.appg01.uu5-template'
   version '0.1.0-SNAPSHOT'
-  description 'A template used for implementing uu5 uuApp.'
 
-  defaultTasks 'clean', 'build'
+//defaultTasks 'clean', 'build'
 }
 
 buildscript {
@@ -29,121 +30,13 @@ buildscript {
   }
 }
 
-subprojects {
-  apply plugin: 'java'
-  apply plugin: 'org.springframework.boot'
-  apply plugin: "com.sourcemuse.mongo"
-  apply plugin: 'war'
-  apply plugin: 'com.bmuschko.nexus'
-  apply plugin: 'checkstyle'
-  apply plugin: "jacoco"
-  apply plugin: 'build-dashboard'
-  apply plugin: 'project-report'
-  apply plugin: 'uu.appg01.deploy.plugin' // TODO name convention
-  apply plugin: "com.moowork.node"
+task buildApp {
+  group 'uu'
+  dependsOn ':uu_appg01_template-client:build'
+  dependsOn ':uu_appg01_template-server:build'
 
-// repositories setup
-  repositories {
-    maven { url uuNexusRepository }
+  doLast {
+    println "test"
+
   }
-
-  nexus {
-    sign = false
-    repositoryUrl = uuNexusReleaseRepository          //(RELEASED stable versions)
-    snapshotRepositoryUrl = uuNexusSnapshotRepository // (SNAPSHOT build versions)
-  }
-
-  extraArchive {
-    sources = true
-    tests = true
-    javadoc = true
-  }
-
-// java properties setup
-  sourceCompatibility = 1.8
-
-  dependencyManagement {
-    imports {
-      mavenBom 'io.spring.platform:platform-bom:Brussels-SR2'
-      mavenBom 'org.apache.logging.log4j:log4j-bom:2.8.2'
-    }
-  }
-
-  dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-devtools")
-    compile("org.springframework.boot:spring-boot-configuration-processor")
-    compile("com.fasterxml.jackson.core:jackson-databind")
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-  }
-
-  bootRepackage {
-    enabled = false
-  }
-
-  mongo {
-    System.setProperty("os.arch", "x86_64")
-    //workarround for https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo/issues/167
-    mongoVersion '3.4.3'
-    logging 'console'
-  }
-
-  test {
-    runWithMongoDb = true
-  }
-
-// reports setup
-  buildDashboard {
-    dependsOn(jacocoTestReport)
-  }
-
-  checkstyle {
-    configFile = rootProject.file('config/checkstyle.xml')
-    ignoreFailures = true
-  }
-
-  tasks.withType(Checkstyle) {
-    reports {
-      xml.enabled false
-    }
-  }
-
-  task uuReport {
-    group 'uu'
-    buildDashboard.mustRunAfter check, jacocoTestReport
-    dependsOn 'test', 'jacocoTestReport', 'check', 'buildDashboard'
-  }
-
-// deployment
-  uuDeploySetting {
-    appBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX'
-  }
-
-// building client
-  war {
-    archiveName = project.name + '.war'
-    from('src/main/uu5/public') {
-      into('84723967990075193-920ebf3f9f3f4a5dabcce0d67f899598/public')
-    }
-
-    dependsOn 'buildClient'
-  }
-
-  node {
-    nodeModulesDir = file("src/main/uu5")
-  }
-
-  task buildClient(type: NpmTask) {
-    dependsOn 'npmInstall'
-    args = ['run', 'dist']
-  }
-
-//  task publishClient(type: Copy) {
-//    from 'src/main/uu5/public'
-//    into 'src/main/webapp'
-//    dependsOn 'buildClient'
-//  }
-
-
 }

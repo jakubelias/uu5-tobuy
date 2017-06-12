@@ -20,14 +20,14 @@ public class DemoApplicationTests {
 
   @Test
   public void testDemoPage() {
-    assertThat(restTemplate.getForObject("/demo", String.class)).contains("Test page here.");
+    assertThat(restTemplate.getForObject("/demo", String.class)).contains("Test page");
   }
 
   @Test
   public void testGreetingPage() {
     ResponseEntity<String> response = restTemplate.getForEntity(
-      "/greeting", String.class);
+      "/demo", String.class);
     Assert.assertEquals(200, response.getStatusCodeValue());
-    Assert.assertEquals("Hello World", response.getBody());
+    Assert.assertEquals("Test page here.", response.getBody());
   }
 }
