@@ -1,8 +1,8 @@
 //@@viewOn:import
 import React from "react";
 import * as UU5 from "uu5g04";
-import LoadHello from "../common/load-hello.js"
-import Calls from "../calls"
+import LoadHello from "../common/load-hello.js";
+import Calls from "../calls";
 
 import "./home.less";
 //@@viewOff:import
@@ -50,8 +50,13 @@ let Hello = React.createClass({
     return (
 
       <UU5.Layout.Root>
-        <LoadHello calls={Calls}/>
+        {
+          this.getVucChildren(() => {
+            return <LoadHello calls={Calls}/>
+          })
+        }
       </UU5.Layout.Root>
+
     )
   }
   //@@viewOff:render

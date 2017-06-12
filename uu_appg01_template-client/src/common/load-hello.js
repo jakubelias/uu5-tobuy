@@ -7,7 +7,9 @@ const LoadHello = React.createClass({
   //@@viewOn:mixins
   mixins: [
     UU5.Common.BaseMixin,
-    UU5.Common.LoadMixin
+    UU5.Common.ElementaryMixin,
+    UU5.Common.LoadMixin,
+    UU5.Layout.ContainerMixin
   ],
   //@@viewOff:mixins
 
@@ -24,14 +26,14 @@ const LoadHello = React.createClass({
   //@@viewOn:render
   render() {
     return (
-      <UU5.Layout.Flc {...this.getMainPropsToPass()}>
+      <UU5.Layout.Container {...this.getMainPropsToPass()}>
         {this.getLoadFeedbackChildren((data) => {
             return (
               <UU5.Bricks.Div> {data.data}</UU5.Bricks.Div>
             )
           }
         )}
-      </UU5.Layout.Flc>
+      </UU5.Layout.Container>
     );
   }
   //@@viewOff:render

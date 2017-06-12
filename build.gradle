@@ -30,13 +30,13 @@ buildscript {
   }
 }
 
-task buildApp {
-  group 'uu'
-  dependsOn ':uu_appg01_template-client:build'
-  dependsOn ':uu_appg01_template-server:build'
-
-  doLast {
-    println "test"
-
-  }
-}
+//task buildApp {
+//  group 'uu'
+//  dependsOn ':uu_appg01_template-client:build'
+//  dependsOn ':uu_appg01_template-server:build'
+//
+//  doLast {
+//    println "test"
+//
+//  }
+//}
