@@ -4,8 +4,8 @@ const SysAboutData = {
     "cs":'O aplikaci'
   },
   textLsi:{
-    "en-gb": "Application ...",
-    "cs": "Aplikace ..."
+    "en-gb": "UAF - uuAppg01Server Java  Demo",
+    "cs": "UAF - uuAppg01Server Java  Demo"
   },
   LicenseLsi:{
     "en-gb":'License owner',
@@ -44,23 +44,48 @@ const SysAboutData = {
   creators:{
     leading:[
       {
-        imgSrc:"./common/img/anonymous.png",
-        name:"Barbora Borborová",
-        role:"Chief Idea Believer"
+        imgSrc:"./common/img/19_Vladimir-Kovar.png",
+        name:"Vladimír Kovář",
+        role:"Chief Technology Officer"
       },
       {
         imgSrc:"./common/img/anonymous.png",
-        name:"Vladimír Kovář",
-        role:"Chief Technology Officer"
+        name:"Filip Velemínský",
+        role:"Chief Developer"
+      },
+      {
+        imgSrc:"./common/img/07_Petr-Ciochon.png",
+        name:"Petr Ciochoň",
+        role:"Chief Architect & Product manager"
       }
     ]
-    //, others:[
-    //   {
-    //     imgSrc:"./data/img/face.jpg",
-    //     name:"Luděk Odvárka",
-    //     role:"Už ne tak hlavní pozice"
-    //   }
-    // ]
+    , others:[
+      {
+        imgSrc:"./common/img/anonymous.png",
+        name:"Jiří Dudek",
+        role:"Architect"
+      },
+      {
+        imgSrc:"./common/img/anonymous.png",
+        name:"Michal Cerhák",
+        role:"Architect"
+      },
+      {
+        imgSrc:"./common/img/anonymous.png",
+        name:"Jaromír Juren",
+        role:"Developer"
+      },
+      {
+        imgSrc:"./common/img/anonymous.png",
+        name:"Jonáš Obdržálek",
+        role:"Developer"
+      },
+      {
+        imgSrc:"./common/img/15_Milan-Satka.png",
+        name:"Milan Šatka",
+        role:"Developer & Evangelist"
+      }
+    ]
   }
 };
 
