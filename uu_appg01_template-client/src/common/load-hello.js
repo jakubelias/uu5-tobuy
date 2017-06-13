@@ -27,7 +27,7 @@ const LoadHello = React.createClass({
 
   getDefaultProps() {
     return {
-      helloTextLsi: {en: "Java server said hello in time:", cs: "Java server řekl ahoj v čase:"},
+      helloTextLsi: {en: "Java server said hello at:", cs: "Java server řekl ahoj v čase:"},
     };
   },
 
