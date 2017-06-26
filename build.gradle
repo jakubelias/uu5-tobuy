@@ -25,13 +25,12 @@ buildscript {
     classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     classpath("com.bmuschko:gradle-nexus-plugin:2.3.1")
     classpath("com.sourcemuse.gradle.plugin:gradle-mongo-plugin:1.0.0")
-    classpath("uu.appg01.gradle:uu-gradle-plugin:0.1.0-SNAPSHOT")
+    classpath("uu.appg01.gradle:uu-gradle-plugin:0.1.4-SNAPSHOT")
     classpath("com.moowork.gradle:gradle-node-plugin:1.1.1")
   }
 }
 
 ext {
-  tid = '84723967990075193'
-  awid = '920ebf3f9f3f4a5dabcce0d67f899598'
   appBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX'
+  resourcePoolUri = 'ues:DEV0116-BT:DEV'
 }

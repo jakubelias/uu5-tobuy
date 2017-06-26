@@ -35,3 +35,4 @@ oidc_token.json
 **/cloud_config.json
 **/*log.*
 **/webapp
+package-lock.json

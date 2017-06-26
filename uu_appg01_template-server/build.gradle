@@ -9,7 +9,7 @@ apply plugin: 'checkstyle'
 apply plugin: "jacoco"
 apply plugin: 'build-dashboard'
 apply plugin: 'project-report'
-apply plugin: 'uu.appg01.deploy.plugin' // TODO name convention
+apply plugin: 'uu.appg01'
 
 // repositories setup
 repositories {
@@ -92,8 +92,9 @@ war {
   archiveName = project.name + '.war'
 }
 
-uuDeploySetting {
+uuDeploySettings {
   appBoxLocationUri = project.appBoxLocationUri
+  resourcePoolUri = project.resourcePoolUri
 }
 
 
