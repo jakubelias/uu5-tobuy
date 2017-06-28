@@ -1,6 +1,7 @@
 # Outline
 - Prerequisites for project build and run
 - Preparing project
+- IntelliJ code style settings
 - Compiling project
 - Running tests
 - Run application
@@ -40,6 +41,16 @@
 5. optional: add another sub-project (module)
     - Default project structure is prepared as multi-project. You can easily add another sub-project, which will inherit all settings from build.gradle file in project root.
     - You can create new sub-project in IntelliJ by right clicking on root project - new - module - Gradle/Java or by copying the template project. After that check file _settings.gradle_ if it includes all required sub-projects.
+
+# IntelliJ code style settings
+Configuration XML file for UU Code Style is located in _./config/intellij-java-uuAppg01-style-xx.xml_. It contains IDE settings for unified code style, which is inspired by Google Code Style. Every developer in team should import this settings to prevent inconsistency.
+
+To apply settings:
+1. open IntelliJ IDEA
+2. go to File - settings (ctrl+alt+s)
+3. go to tab Editor - Code Style
+4. click on the settings icon next to the Scheme and select Import Scheme - IntelliJ IDEA Code Style XML
+5. select xml file from ./config folder and confirm
   
 # Compiling project
 

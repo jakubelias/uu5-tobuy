@@ -1,7 +1,9 @@
 # Editor configuration, see http://editorconfig.org
+# Java code style is managed by configuration of IntelliJ IDEA
+
 root = true
 
-[*]
+[{*.js,*.gradle,*.md}]
 indent_style = space
 indent_size = 2
 charset = utf-8

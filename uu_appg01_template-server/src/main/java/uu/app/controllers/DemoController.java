@@ -10,7 +10,7 @@ public class DemoController {
 
   @RequestMapping(path = "/demo", method = RequestMethod.GET)
   @ResponseBody
-  public String home(){
+  public String home() {
     return "Test page here.";
   }
 }
