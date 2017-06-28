@@ -12,7 +12,7 @@
 
 # Prerequisites
 - JDK 8
-- Gradle 3.5
+- Gradle 4.0
 - connection to UVS-VPN network (for access to UVS-Nexus repository)
 
       UNI-BT:UVS/VPN
