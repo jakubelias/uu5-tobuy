@@ -14,7 +14,15 @@ jar {
   includeEmptyDirs = false
 }
 
-task npmBuild(dependsOn: npmInstall, type: NpmTask) {
+node {
+  download = true
+}
+
+task npmBuild(dependsOn: npmInstall, type: NpmTask, group: 'node') {
   args = ['run', 'dist']
 }
+
+npmInstall.args = ['--loglevel', 'info']
+
+jar.dependsOn clean
 jar.dependsOn npmBuild

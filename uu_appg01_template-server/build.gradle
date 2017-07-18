@@ -61,9 +61,9 @@ mongo {
   logging 'console'
 }
 
-//test {
-//  runWithMongoDb = true
-//}
+test {
+  runWithMongoDb = true
+}
 
 // reports setup
 buildDashboard {
