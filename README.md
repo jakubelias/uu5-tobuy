@@ -13,15 +13,19 @@
 # Prerequisites
 - JDK 8
 - Gradle 4.0
-- connection to UVS-VPN network (for access to UVS-Nexus repository)
 
       UNI-BT:UVS/VPN
 
 # Preparing project
-1. Rename project uu_appg01_template-uu5-java to new project name.
+0. Clone this Codebase(Git) template repository
+    >git clone --branch sprint --depth=1 ssh://git@codebase.plus4u.net:9422/uu_appg01_template-uu5-java.git
+
+1. Rename root project folder uu_appg01_main-uu5-java to your new project name
+
 2. Disconnect from git repository
 
         > git remote rm origin
+
 3. If you have new repository for new project, you can connect it with
 
         > git remote add origin ssh://git@codebase.plus4u.net:9422/<new_repozitory>.git
@@ -33,10 +37,11 @@
       
         VPH-BT:44191587611027055
 
+
 4. Change project properties
     - file _./build.gradle_:  group, version, description
-    - file _./settings.gradle_: rootProject.name
-    - file _./subProjectName/build.gradle_: uuDeploySetting.appBoxLocationUri (uesuri of AppBox for deploying to C3)
+    - file _./build.gradle_: appBoxLocationUri, resourcePoolUri (uesuri of AppBox for deploying to C3)
+    - file _./settings.gradle_: rootProject.name and included subprojects names.
     
 5. optional: add another sub-project (module)
     - Default project structure is prepared as multi-project. You can easily add another sub-project, which will inherit all settings from build.gradle file in project root.
@@ -51,6 +56,14 @@ To apply settings:
 3. go to tab Editor - Code Style
 4. click on the settings icon next to the Scheme and select Import Scheme - IntelliJ IDEA Code Style XML
 5. select xml file from ./config folder and confirm
+
+# Run application
+
+In project root directory run command
+
+    > gradle uuRun
+
+Application starts locally on embedded tomcat on default port 8080 and can be accessed e.g. with browser (http://localhost:8080).
   
 # Compiling project
 
@@ -67,15 +80,6 @@ In project root directory run command
     > gradle test
 
 Result of tests can be found in folder /build/reports/tests. It is created in interactive html format.
-
-
-# Run application
-
-In project root directory run command
-
-    > gradle uuRun
-
-Application starts locally on embedded tomcat on default port 8080 and can be accessed e.g. with browser (http://localhost:8080).
 
 
 # Distribution Package Creation

@@ -1,1 +1,2 @@
-"This library is under Unicorn Application Framework Licence (UAFL 1.0), https://unicorn.com"
+Copyright (c) 2017 Unicorn a.s.
+All rights reserved.
