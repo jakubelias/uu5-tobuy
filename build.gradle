@@ -1,7 +1,7 @@
 description 'Demo template project.'
 
 allprojects {
-  group 'uu.demoappg01'       //TODO change to your project group name - {ventor}.{application}
+  group 'uu.demoappg01'       //TODO change to your project group name - {vendor}.{application}
   version '0.1.0-SNAPSHOT'    //TODO change to your project version
 }
 

@@ -17,13 +17,13 @@ public final class EchoController {
   @Inject
   private EchoModel echoModel;
 
-  @Command(path = "/echo", method = GET)
+  @Command(path = "echo", method = GET)
   public EchoDtoOut echo(CommandContext<EchoDtoIn> ctx) {
     EchoDtoOut out = echoModel.echo(ctx.getUri().getAwid(), ctx.getDtoIn());
     return out;
   }
 
-  @Command(path = "/hello", method = GET)
+  @Command(path = "hello", method = GET)
   public EchoDtoOut hello(CommandContext<EchoDtoIn> ctx) {
 
     String uuId=ctx.getAuthenticationSession().getIdentity().getUUIdentity();
@@ -37,7 +37,7 @@ public final class EchoController {
     return out;
   }
 
-  @Command(path = "/create", method = POST)
+  @Command(path = "create", method = POST)
   public EchoDtoOut create(CommandContext<EchoDtoIn> ctx) {
     EchoDtoOut out = echoModel.create(ctx.getUri().getAwid(), ctx.getDtoIn());
     return out;
