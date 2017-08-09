@@ -145,13 +145,8 @@ uuDeploySettings {
 // mapping and persistence json generation
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
-<<<<<<< HEAD
-  classpath = sourceSets.main.runtimeClasspath
-  args = ["-bp", subAppPackageName, "-vuc", "config/mapping.json", "-out", "${projectDir}/config/mapping.json"]
-=======
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp",project.subAppPackageName,"-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
->>>>>>> 046e65d3d6f0d63ac3ca13bd7b66e6eb560e4cb7
+  args = ["-bp", subAppPackageName, "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
 }
 
 task copyMappingJsonToResources(type: Copy) {
@@ -162,13 +157,8 @@ task copyMappingJsonToResources(type: Copy) {
 
 task generatePersistenceJson(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
-<<<<<<< HEAD
-  classpath = sourceSets.main.runtimeClasspath
-  args = ["-bp", subAppPackageName, "uu.app", "-out", "config/persitence.json"]
-=======
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp","${project.subAppPackageName},uu.app", "-out", "config/persistence.json"]
->>>>>>> 046e65d3d6f0d63ac3ca13bd7b66e6eb560e4cb7
+  args = ["-bp","${subAppPackageName},uu.app", "-out", "config/persistence.json"]
 }
 
 processResources.doLast {
