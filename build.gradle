@@ -1,3 +1,5 @@
+import com.sun.xml.internal.bind.v2.TODO
+
 description 'Demo template project.'
 
 allprojects {
@@ -32,6 +34,10 @@ buildscript {
 }
 
 ext {
+  //
+  subAppPackageName = "uu.demoapp.main"  //TODO change to your subapp package name
+
+  //uuCloud Staging environment configuration
   appBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX' //TODO change to your folder UES-URI
   resourcePoolUri = 'ues:DEV0116-BT:DEV'  //TODO change to your uuCloud Deployment Pool
 }

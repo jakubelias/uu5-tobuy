@@ -1,5 +1,6 @@
 package uu.demoapp.main.dao.mongodb;
 
+import org.springframework.data.mongodb.core.query.Query;
 import uu.app.objectstore.annotations.ObjectStoreDao;
 import uu.app.objectstore.mongodb.dao.UuObjectMongoDbDao;
 import uu.demoapp.main.dao.EchoDao;

@@ -6,5 +6,4 @@ import uu.demoapp.main.domain.Echo;
 public interface EchoDao extends UuObjectDao<Echo>{
 
 
-
 }

@@ -145,18 +145,18 @@ war {
 uuDeploySettings {
   appBoxLocationUri = project.appBoxLocationUri
   resourcePoolUri = project.resourcePoolUri
-}
 
+}
 
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp","uu.demoapp.main","-vuc", "config/mapping.json", "-out", "${projectDir}/config/mapping.json"]
+  args = ["-bp",project.subAppPackageName,"-vuc", "config/mapping.json", "-out", "${projectDir}/config/mapping.json"]
 }
 task generatePersistence(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp","uu.demoapp.main,uu.app", "-out", "config/persitence.json"]
+  args = ["-bp",project.subAppPackageName,"uu.app", "-out", "config/persitence.json"]
 }
 
 processResources.doLast {
