@@ -1,4 +1,4 @@
-description 'Demo template project.'
+description 'Demo template project.' // TODO change to your project description
 
 allprojects {
   group 'uu.demoappg01'       //TODO change to your project group name - {vendor}.{application}
@@ -43,6 +43,6 @@ ext {
   ]
 
   // Configuration of Nexus repositories for publishing output JARs
-  sprintRepository = 'https://repo.plus4u.net/sprint'
-  releaseRepository = 'https://repo.plus4u.net/release/'
+  nexusSprintRepository = 'https://repo.plus4u.net/sprint' // TODO change to you nexus repository URL
+  nexusReleaseRepository = 'https://repo.plus4u.net/release/'
 }

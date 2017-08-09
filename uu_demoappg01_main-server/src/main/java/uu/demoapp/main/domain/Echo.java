@@ -1,10 +1,8 @@
 package uu.demoapp.main.domain;
 
-import uu.app.objectstore.domain.UuObject;
 import uu.app.objectstore.mongodb.domain.AbstractUuObject;
 
-
-public class Echo extends AbstractUuObject{
+public class Echo extends AbstractUuObject {
 
   private String text;
 
@@ -18,9 +16,9 @@ public class Echo extends AbstractUuObject{
 
   @Override
   public String toString() {
-    return "Echo{" +
-        "text='" + text + '\'' +
-        ", id='" + getId() + '\'' +
-        "} " + super.toString();
+    return "Echo{"
+        + "text='" + text + '\''
+        + ", id='" + getId() + '\''
+        + "} " + super.toString();
   }
 }

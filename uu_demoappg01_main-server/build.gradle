@@ -20,8 +20,8 @@ repositories {
 
 uploadArchives {
   repositories.mavenDeployer {
-    snapshotRepository(url: sprintRepository)
-    repository(url: releaseRepository)
+    snapshotRepository(url: nexusSprintRepository)
+    repository(url: nexusReleaseRepository)
   }
 }
 

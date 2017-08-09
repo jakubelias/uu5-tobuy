@@ -11,6 +11,9 @@ import uu.demoapp.main.dto.EchoDtoIn;
 import uu.demoapp.main.dto.EchoDtoOut;
 import uu.demoapp.main.model.EchoModel;
 
+/**
+ * Echo controller for handling requests.
+ */
 @CommandController
 public final class EchoController {
 
@@ -23,17 +26,16 @@ public final class EchoController {
     return out;
   }
 
+  /**
+   * Provides information about logged user.
+   */
   @Command(path = "hello", method = GET)
   public EchoDtoOut hello(CommandContext<EchoDtoIn> ctx) {
-
-    String uuId=ctx.getAuthenticationSession().getIdentity().getUUIdentity();
-
-    String name=ctx.getAuthenticationSession().getIdentity().getName();
-
-    //EchoDtoOut out = echoModel.echo(ctx.getUri().getAwid(), ctx.getDtoIn());
+    String uuId = ctx.getAuthenticationSession().getIdentity().getUUIdentity();
+    String name = ctx.getAuthenticationSession().getIdentity().getName();
 
     EchoDtoOut out = new EchoDtoOut();
-    out.setEchoText(ctx.getDtoIn()+", hello "+name+"("+uuId+")");
+    out.setEchoText(ctx.getDtoIn() + ", hello " + name + "(" + uuId + ")");
     return out;
   }
 
@@ -43,5 +45,10 @@ public final class EchoController {
     return out;
   }
 
+  @Command(path = "find", method = POST)
+  public EchoDtoOut find(CommandContext<EchoDtoIn> ctx) {
+    EchoDtoOut out = echoModel.find(ctx.getUri().getAwid(), ctx.getDtoIn());
+    return out;
+  }
 
 }

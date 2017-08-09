@@ -10,7 +10,7 @@ public final class EchoDtoOut extends AbstractDtoOut {
 
   private String echoText;
   private LocalDateTime serverTime;
-  
+
   public String getEchoText() {
     return echoText;
   }
@@ -29,9 +29,9 @@ public final class EchoDtoOut extends AbstractDtoOut {
 
   @Override
   public String toString() {
-    return "EchoDtoOut{" +
-        "echoText='" + echoText + '\'' +
-        ", serverTime=" + serverTime +
-        '}';
+    return "EchoDtoOut{"
+        + "echoText='" + echoText + '\''
+        + ", serverTime=" + serverTime
+        + '}';
   }
 }
