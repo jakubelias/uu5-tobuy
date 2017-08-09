@@ -160,14 +160,14 @@ task copyMappingJsonToResources(type: Copy) {
 }
 
 
-task generatePersistence(type: JavaExec) {
+task generatePersistenceJson(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp",project.subAppPackageName,"uu.app", "-out", "config/persitence.json"]
+  args = ["-bp","${project.subAppPackageName},uu.app", "-out", "config/persistence.json"]
 }
 
 processResources.doLast {
   tasks.generateMappingJson.execute()
   tasks.copyMappingJsonToResources.execute()
-  tasks.generatePersistence.execute()
+  tasks.generatePersistenceJson.execute()
 }
