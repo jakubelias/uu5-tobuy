@@ -94,7 +94,7 @@ dependencies {
     compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid:${uuAppg01OidcVersion}")
     compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid-handler:${uuAppg01OidcVersion}")
 
-  compile project(':uu_demoappg01_main-client')
+//  compile project(':uu_demoappg01_main-client')
 
   testCompile("uu.appg01.core-server-java:uu_appg01_core-test_support:${uuAppg01ServerVersion}")
   compile("org.springframework.boot:spring-boot-starter-web")
@@ -145,18 +145,18 @@ war {
 uuDeploySettings {
   appBoxLocationUri = project.appBoxLocationUri
   resourcePoolUri = project.resourcePoolUri
-}
 
+}
 
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp","uu.demoapp.main","-vuc", "config/mapping.json", "-out", "${projectDir}/config/mapping.json"]
+  args = ["-bp",project.subAppPackageName,"-vuc", "config/mapping.json", "-out", "${projectDir}/config/mapping.json"]
 }
 task generatePersistence(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp","uu.demoapp.main,uu.app", "-out", "config/persitence.json"]
+  args = ["-bp",project.subAppPackageName,"uu.app", "-out", "config/persitence.json"]
 }
 
 processResources.doLast {
