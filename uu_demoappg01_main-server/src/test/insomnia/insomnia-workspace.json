@@ -1,0 +1,121 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2017-08-09T14:36:41.545Z",
+	"__export_source": "insomnia.desktop.app:v5.7.4",
+	"resources": [
+		{
+			"_id": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
+			"parentId": null,
+			"modified": 1496929758882,
+			"created": 1496929758882,
+			"name": "Insomnia",
+			"description": "",
+			"certificates": [],
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_64859132f8b647a3a85091ae8c602b85",
+			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
+			"modified": 1497416541043,
+			"created": 1497416541043,
+			"name": "Base Environment",
+			"data": {},
+			"color": null,
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_9348929014c14c9d8318396cdbc00231",
+			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
+			"modified": 1497416572506,
+			"created": 1497416572506,
+			"name": "Default Jar",
+			"cookies": [],
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_baa9c55496874835a320664a237b5a30",
+			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
+			"modified": 1502268994369,
+			"created": 1502261286781,
+			"url": "http://localhost:8080/uu-demoappg01-main/0-0/echo",
+			"name": "uu-demoappg01-main/{awid}/echo",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "text",
+					"value": "Java is here !",
+					"id": "pair_42ed5338eff0482c9a4a4b8a4f4f0579",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1497416540846,
+			"settingStoreCookies": false,
+			"settingSendCookies": false,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_7917a529fd7c4c399a0607f02dc46423",
+			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
+			"modified": 1502269012848,
+			"created": 1502268795340,
+			"url": "http://localhost:8080/uu-demoappg01-main/0-0/create",
+			"name": "uu-demoappg01-main/{awid}/create",
+			"description": "",
+			"method": "POST",
+			"body": {},
+			"parameters": [
+				{
+					"name": "text",
+					"value": "Java is here !",
+					"id": "pair_42ed5338eff0482c9a4a4b8a4f4f0579",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1497416540833.5,
+			"settingStoreCookies": false,
+			"settingSendCookies": false,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_5f4ae367a95f4e4cb70eb3c00059c628",
+			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
+			"modified": 1502289366105,
+			"created": 1502269840002,
+			"url": "http://localhost:8080/uu-demoappg01-main/0-0/hello",
+			"name": "uu-demoappg01-main/{awid}/hello",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "text",
+					"value": "Java is here !",
+					"id": "pair_42ed5338eff0482c9a4a4b8a4f4f0579",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InE5c3MycWRGaWs2eVdjMENTVGlNLXcifQ.eyJqdGkiOiI1OThhZDIzNThlYTFhYTAwMDcxMWYzZjEiLCJpc3MiOiJodHRwczovL29pZGMucGx1czR1Lm5ldC91dS1vaWRjZzAxLW1haW4vMC0wIiwiZXhwIjoxNTAyMjc3MjA1LCJpYXQiOjE1MDIyNzAwMDUsIm5iZiI6MTUwMjI3MDAwNiwic3ViIjoiNThjN2YxM2IxNjVhODgwMDA3NGQ0YWI4IiwidXVfaWRlbnRpdHkiOiIxLTctMSIsInV1X2lkIjoiMS03LTEiLCJuYW1lIjoiUGV0ciBDaW9jaG_FiCIsImVtYWlsIjoiMS03LTFAcGx1czR1Lm5ldCIsImxvY2FsZSI6ImVuX3VzIiwibG9hIjowLCJhY3IiOjEsImFtciI6WyJwd2QiLCJ1dS1kbGciXSwiYXV0aF90aW1lIjoxNTAyMjcwMDA1LCJjbGllbnRfYXBwX2lkIjoiNThjN2YxM2ExNjVhODgwMDA3NGQ0YTdjIiwiY2xpZW50X2FwcF9jb2RlIjoiVVUuVU5SRUdJU1RFUkVELUFQUCIsImNsaWVudF9hcHBfbmFtZSI6Imh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJhenAiOiIvdXUtdW5yZWdpc3RlcmVkLWFwcC8wIiwiYXVkIjpbImh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJ1dS1vaWRjJTNBdW5yZWdpc3RlcmVkLWNsaWVudCUzQWh0dHBzJTNBJTJGJTJGb2lkYy5wbHVzNHUubmV0JTJGdXUtb2lkY2cwMS1tYWluJTJGMC0wIiwiL3V1LXVucmVnaXN0ZXJlZC1hcHAvMCJdfQ.iciBk0au55s9_DqgXNPOvodEeqdkFU7au6ITnN1aWWSyiZSYoax8Esu0yFXpvZlG0BP0iLBihPm5UNkibV8Mrm4bU1VJ3aFeUkwIoKS7ydmOzBloIeQsV9s"
+			},
+			"metaSortKey": -1497416540839.75,
+			"settingStoreCookies": false,
+			"settingSendCookies": false,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		}
+	]
+}
