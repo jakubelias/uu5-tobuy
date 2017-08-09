@@ -63,7 +63,7 @@ public final class EchoModel {
 
   /**
    * Finds echo in ObjectStore.
-   * 
+   *
    * @return DTO out containing data of stored object.
    */
   public EchoDtoOut find(String awid, EchoDtoIn dtoIn) {
