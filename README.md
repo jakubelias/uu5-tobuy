@@ -63,7 +63,7 @@ In project root directory run command
 
     > gradle uuRun
 
-Application starts locally on embedded tomcat on default port 8080 and can be accessed e.g. with browser (http://localhost:8080).
+Application starts locally on embedded tomcat on default port 8080 and can be accessed e.g. with browser (http://localhost:8080/uu-demoappg01-main/0-0/).
   
 # Compiling project
 

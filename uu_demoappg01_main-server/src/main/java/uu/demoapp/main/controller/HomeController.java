@@ -1,4 +1,4 @@
-package uu.app.controllers;
+package uu.demoapp.main.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 

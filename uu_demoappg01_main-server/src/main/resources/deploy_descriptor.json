@@ -1,18 +1,18 @@
 {
 	"schemaUri": "ues:SYSTEM:UU.OS/UUAPP-DEPLOY-SCHEMA-V2.1",
 	"data": {
-		"code": "UU.APPG01.MAIN",
-		"name": "UU App Server (generation 01)",
-		"version": "0.1.0-b1493032750",
+		"code": "UU.DEMOAPPG01.MAIN",
+		"name": "Demo application for uuAppServer (generation 01)",
+		"version": "1.0.0",
 		"multitenant": true,
 		"packs": [{
-			"code": "UU.APPG01.MAIN/SERVER-PACK",
-			"targetNodeSets": ["UU.APPG01.MAIN/CMD-CONTAINER"]
+			"code": "UU.DEMOAPPG01.MAIN/SERVER-PACK",
+			"targetNodeSets": ["UU.DEMOAPPG01.MAIN/CMD-CONTAINER"]
 		}],
 		"nodeSets": [{
-			"code": "UU.APPG01.MAIN/CMD-CONTAINER",
+			"code": "UU.DEMOAPPG01.MAIN/CMD-CONTAINER",
 			"nodeSize": "G1_S",
-			"runtimeStack": "UU.OIDC/UC_RUBY_STACK-V1.0"
+			"runtimeStack": "UU.APPG01/UUOS9_JAVA_STACK-V0.1"
 		}]
 	}
 }

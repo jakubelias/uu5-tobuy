@@ -51,46 +51,52 @@ buildscript {
   }
 }
 
+configurations {
+    all*.exclude module : 'spring-boot-starter-logging'
+}
+
 dependencies {
 
-  compile("uu.appg01.core-server-java:uu_appg01_core-authentication:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-authorization:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-configuration:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-core:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-dto:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-exception:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-logging:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-simple-cache:${uuAppg01ServerVersion}")
+  compile("org.springframework.boot:spring-boot-starter-log4j2")
+
+//  compile("uu.appg01.binarystore:uu_appg01_binarystore-dao:${uuAppg01BinaryStoreVersion}")
+//  compile("uu.appg01.binarystore:uu_appg01_binarystore-mongodbdao:${uuAppg01BinaryStoreVersion}")
+//  compile("uu.appg01.binarystore:uu_appg01_binarystore-server:${uuAppg01BinaryStoreVersion}")
+
+//  compile("uu.appg01.core-server-java:uu_appg01_core-authentication:${uuAppg01ServerVersion}")
+//  compile("uu.appg01.core-server-java:uu_appg01_core-authorization:${uuAppg01ServerVersion}")
+//  compile("uu.appg01.core-server-java:uu_appg01_core-configuration:${uuAppg01ServerVersion}")
+//  compile("uu.appg01.core-server-java:uu_appg01_core-core:${uuAppg01ServerVersion}")
+//  compile("uu.appg01.core-server-java:uu_appg01_core-dto:${uuAppg01ServerVersion}")
+//  compile("uu.appg01.core-server-java:uu_appg01_core-exception:${uuAppg01ServerVersion}")
+//  compile("uu.appg01.core-server-java:uu_appg01_core-logging:${uuAppg01ServerVersion}")
+//  compile("uu.appg01.core-server-java:uu_appg01_core-simple-cache:${uuAppg01ServerVersion}")
   compile("uu.appg01.core-server-java:uu_appg01_core-ucserver:${uuAppg01ServerVersion}")
   compile("uu.appg01.core-server-java:uu_appg01_core-uri:${uuAppg01ServerVersion}")
   compile("uu.appg01.core-server-java:uu_appg01_core-validation:${uuAppg01ServerVersion}")
 
-  compile("uu.appg01.core-client-java:uu_appg01_core-client:${uuAppg01ServerVersion}")
+//  compile("uu.appg01.core-client-java:uu_appg01_core-client:${uuAppg01ServerVersion}")
 
-  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
-  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
-  compile("uu.appg01.datastore:uu_appg01_datastore-schema:${uuAppg01ObjectStoreVersion}")
+//  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
+//  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
+//  compile("uu.appg01.datastore:uu_appg01_datastore-schema:${uuAppg01ObjectStoreVersion}")
 
-  compile("uu.appg01.objectstore:uu_appg01_objectstore-datastore:${uuAppg01ObjectStoreVersion}")
-  compile("uu.appg01.objectstore:uu_appg01_objectstore-mongodb:${uuAppg01ObjectStoreVersion}")
-  compile("uu.appg01.objectstore:uu_appg01_objectstore-schema:${uuAppg01ObjectStoreVersion}")
+//  compile("uu.appg01.objectstore:uu_appg01_objectstore-datastore:${uuAppg01ObjectStoreVersion}")
+//  compile("uu.appg01.objectstore:uu_appg01_objectstore-mongodb:${uuAppg01ObjectStoreVersion}")
+//  compile("uu.appg01.objectstore:uu_appg01_objectstore-schema:${uuAppg01ObjectStoreVersion}")
 
-  compile("uu.appg01.binarystore:uu_appg01_binarystore-dao:${uuAppg01BinaryStoreVersion}")
-  compile("uu.appg01.binarystore:uu_appg01_binarystore-mongodbdao:${uuAppg01BinaryStoreVersion}")
-  compile("uu.appg01.binarystore:uu_appg01_binarystore-server:${uuAppg01BinaryStoreVersion}")
+//  compile("uu.appg01.workspace:uu_appg01_workspace-profiles:${uuAppg01WorkspaceVersion}")
+//  compile("uu.appg01.workspace:uu_appg01_workspace-server:${uuAppg01WorkspaceVersion}")
+//  compile("uu.appg01.workspace:uu_appg01_workspace-store:${uuAppg01WorkspaceVersion}")
+//  compile("uu.appg01.workspace:uu_appg01_workspace_authorization:${uuAppg01WorkspaceVersion}")
 
-  compile("uu.appg01.workspace:uu_appg01_workspace-profiles:${uuAppg01WorkspaceVersion}")
-  compile("uu.appg01.workspace:uu_appg01_workspace-server:${uuAppg01WorkspaceVersion}")
-  compile("uu.appg01.workspace:uu_appg01_workspace-store:${uuAppg01WorkspaceVersion}")
-  compile("uu.appg01.workspace:uu_appg01_workspace_authorization:${uuAppg01WorkspaceVersion}")
-
-  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-openid-client:${uuAppg01OidcVersion}")
-  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid:${uuAppg01OidcVersion}")
-  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid-handler:${uuAppg01OidcVersion}")
+//  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-openid-client:${uuAppg01OidcVersion}")
+//  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid:${uuAppg01OidcVersion}")
+//  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid-handler:${uuAppg01OidcVersion}")
 
 //  compile project(':uu_mongoideg01_subapp')
   testCompile("uu.appg01.core-server-java:uu_appg01_core-test_support:${uuAppg01ServerVersion}")
-  testCompile("org.springframework.boot:spring-boot-starter-web")
+  compile("org.springframework.boot:spring-boot-starter-web")
 }
 
 bootRepackage {

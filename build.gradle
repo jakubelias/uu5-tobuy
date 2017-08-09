@@ -13,13 +13,16 @@ buildscript {
     uuProdRepository = 'https://repo.plus4u.net/repository/jars/'
     uuBetaRepository = 'https://repo.plus4u.net/repository/jars-beta/'
     uuSprintRepository = 'https://repo.plus4u.net/repository/jars-sprint/'
+    
+    uuStageSprintRepository = 'http://192.168.4.209:8081/nexus/content/groups/uaf-all/' //TODO KEK - drop after uuAppg01-gradle plugin release, to avoid use of internal UVS repository
   }
 
   repositories {
     maven { url uuProdRepository }
     maven { url uuBetaRepository }
     maven { url uuSprintRepository }
-    maven { url "https://plugins.gradle.org/m2/" }
+    maven { url uuStageSprintRepository } //TODO KEK - drop after uuAppg01-gradle plugin release
+    maven { url "https://plugins.gradle.org/m2/" }   
   }
 
   dependencies {

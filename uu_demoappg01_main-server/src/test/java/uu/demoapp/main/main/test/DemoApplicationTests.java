@@ -1,4 +1,4 @@
-package uu.app.main.test;
+package uu.demoapp.main.main.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
