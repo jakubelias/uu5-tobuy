@@ -18,9 +18,10 @@
 
 # Preparing project
 0. Clone this Codebase(Git) template repository
-    >git clone --branch master --depth=1 ssh://git@codebase.plus4u.net:9422/uu_appg01_template-uu5-java.git
+      
+       > git clone --branch master --depth=1 ssh://git@codebase.plus4u.net:9422/uu_appg01_template-uu5-java.git
 
-1. Rename root project folder uu_appg01_main-uu5-java to your new project name
+1. Rename root project folder uu_appg01_template-uu5-java to your new project name
 
 2. Disconnect from git repository
 
@@ -28,7 +29,7 @@
 
 3. If you have new repository for new project, you can connect it with
 
-        > git remote add origin ssh://git@codebase.plus4u.net:9422/<new_repozitory>.git
+        > git remote add origin ssh://git@codebase.plus4u.net:9422/<new_repository>.git
    Verify with
    
         > git remote -v  
@@ -39,8 +40,7 @@
 
 
 4. Change project properties
-    - file _./build.gradle_:  group, version, description
-    - file _./build.gradle_: appBoxLocationUri, resourcePoolUri (uesuri of AppBox for deploying to C3)
+    - file _./build.gradle_:  group, version, description and other additional properties marked with TODO
     - file _./settings.gradle_: rootProject.name and included subprojects names.
     
 5. optional: add another sub-project (module)
@@ -115,4 +115,4 @@ Dashboard with all these reports is in folder _./projectName/build/reports/build
 # Deploying to C3    
 Project is using gradle uu deploy plugin, which adds tasks for creating uuAppBox, uploading attachments, deploying to C3, sharing uuApp etc.
 
-Plugin documentation can be found at: TODO
+Plugin documentation can be found in file uu_appg01_gradle-plugin_readme.md, located in root of this project.

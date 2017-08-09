@@ -2,12 +2,10 @@ package uu.demoapp.main;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import uu.app.authentication.oidc.OpenIdConnectContextConfiguration;
-import uu.app.authentication.oidc.handler.OpenIdConnectWebMvcConfigurer;
 import uu.app.datastore.annotations.DataStoreConfiguration;
 import uu.app.datastore.mongodb.AbstractMongoDbContextConfiguration;
 import uu.app.datastore.mongodb.DatastoreMongoDbContextConfiguration;
@@ -16,16 +14,22 @@ import uu.app.server.UseCaseServerContextConfiguration;
 import uu.app.validation.ValidationContextConfiguration;
 import uu.app.validation.ValidationTypeDefinitionSource;
 
+/**
+ * Spring configuration of the application.
+ */
 @DataStoreConfiguration
-@Import({ValidationContextConfiguration.class,UseCaseServerContextConfiguration.class, DatastoreMongoDbContextConfiguration.class,OpenIdConnectContextConfiguration.class,
-    //   OpenIdConnectWebMvcConfigurer.class
-})
-public class SubAppConfiguration extends AbstractMongoDbContextConfiguration{
+@Import({ValidationContextConfiguration.class, UseCaseServerContextConfiguration.class, DatastoreMongoDbContextConfiguration.class, OpenIdConnectContextConfiguration.class})
+//   OpenIdConnectWebMvcConfigurer.class
+public class SubAppConfiguration extends AbstractMongoDbContextConfiguration {
 
   @Value("${objectStoreUri}")
   private String objectStoreUri;
 
-
+  /**
+   * Configuration of validation types.
+   *
+   * @return Definitions of validation types.
+   */
   @Bean
   public ValidationTypeDefinitionSource demoSchemas() {
     return new ValidationTypeDefinitionSource("classpath*:uu/demoapp/main/schema/*.js");
@@ -33,7 +37,7 @@ public class SubAppConfiguration extends AbstractMongoDbContextConfiguration{
 
   @Bean
   public MongoDbFactory primaryMongoFactory() {
-    return getMongoDbFactory(objectStoreUri);   //"mongodb://127.0.0.1:27017/test"
+    return getMongoDbFactory(objectStoreUri);
   }
 
   //first name is for persistence.json

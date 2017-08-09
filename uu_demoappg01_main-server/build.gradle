@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: "com.sourcemuse.mongo"
 apply plugin: 'war'
-apply plugin: 'com.bmuschko.nexus'
+apply plugin: 'maven'
 apply plugin: 'checkstyle'
 apply plugin: "jacoco"
 apply plugin: 'build-dashboard'
@@ -18,16 +18,11 @@ repositories {
   maven { url uuSprintRepository }
 }
 
-nexus {
-  sign = false
-  repositoryUrl = uuProdRepository          //(RELEASED stable versions)
-  snapshotRepositoryUrl = uuSprintRepository // (SNAPSHOT build versions)
-}
-
-extraArchive {
-  sources = true
-  tests = true
-  javadoc = true
+uploadArchives {
+  repositories.mavenDeployer {
+    snapshotRepository(url: nexusSprintRepository)
+    repository(url: nexusReleaseRepository)
+  }
 }
 
 // java properties setup
@@ -41,21 +36,20 @@ dependencyManagement {
   }
 }
 
-buildscript {
-  ext {
-    uuAppg01BinaryStoreVersion = "1.0.0-rc.2"
-    uuAppg01ObjectStoreVersion = "1.0.0-rc.2"
-    uuAppg01ServerVersion = "1.0.0-rc.2"
-    uuAppg01WorkspaceVersion = "1.0.0-rc.2"
-    uuAppg01OidcVersion = "1.0.0-rc.2"
-  }
+ext {
+  uuAppg01BinaryStoreVersion = "1.0.0-rc.2"
+  uuAppg01ObjectStoreVersion = "1.0.0-rc.2"
+  uuAppg01ServerVersion = "1.0.0-rc.2"
+  uuAppg01WorkspaceVersion = "1.0.0-rc.2"
+  uuAppg01OidcVersion = "1.0.0-rc.2"
 }
 
 configurations {
-    all*.exclude module : 'spring-boot-starter-logging'
+  all*.exclude module: 'spring-boot-starter-logging'
 }
 
 dependencies {
+  compile project(':uu_demoappg01_main-client')
 
   compile("org.springframework.boot:spring-boot-starter-log4j2")
 
@@ -81,9 +75,9 @@ dependencies {
 //  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
   compile("uu.appg01.datastore:uu_appg01_datastore-schema:${uuAppg01ObjectStoreVersion}")
 
-   compile("uu.appg01.objectstore:uu_appg01_objectstore-datastore:${uuAppg01ObjectStoreVersion}")
-   compile("uu.appg01.objectstore:uu_appg01_objectstore-mongodb:${uuAppg01ObjectStoreVersion}")
-   compile("uu.appg01.objectstore:uu_appg01_objectstore-schema:${uuAppg01ObjectStoreVersion}")
+  compile("uu.appg01.objectstore:uu_appg01_objectstore-datastore:${uuAppg01ObjectStoreVersion}")
+  compile("uu.appg01.objectstore:uu_appg01_objectstore-mongodb:${uuAppg01ObjectStoreVersion}")
+  compile("uu.appg01.objectstore:uu_appg01_objectstore-schema:${uuAppg01ObjectStoreVersion}")
 
 //  compile("uu.appg01.workspace:uu_appg01_workspace-profiles:${uuAppg01WorkspaceVersion}")
 //  compile("uu.appg01.workspace:uu_appg01_workspace-server:${uuAppg01WorkspaceVersion}")
@@ -91,10 +85,8 @@ dependencies {
 //  compile("uu.appg01.workspace:uu_appg01_workspace_authorization:${uuAppg01WorkspaceVersion}")
 
 //  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-openid-client:${uuAppg01OidcVersion}")
-    compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid:${uuAppg01OidcVersion}")
-    compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid-handler:${uuAppg01OidcVersion}")
-
-//  compile project(':uu_demoappg01_main-client')
+  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid:${uuAppg01OidcVersion}")
+  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid-handler:${uuAppg01OidcVersion}")
 
   testCompile("uu.appg01.core-server-java:uu_appg01_core-test_support:${uuAppg01ServerVersion}")
   compile("org.springframework.boot:spring-boot-starter-web")
@@ -104,11 +96,13 @@ bootRepackage {
   enabled = false
 }
 
+task uuRun(group: "uu", dependsOn: bootRun)
+
+// testing with embedded MongoDb
 mongo {
   System.setProperty("os.arch", "x86_64")
   //workarround for https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo/issues/167
   mongoVersion '3.4.3'
-  logging 'console'
 }
 
 test {
@@ -137,21 +131,22 @@ task uuReport {
   dependsOn 'test', 'jacocoTestReport', 'check', 'buildDashboard'
 }
 
-// deployment
+// deployment to C3
 war {
   archiveName = project.name + '.war'
 }
 
 uuDeploySettings {
-  appBoxLocationUri = project.appBoxLocationUri
-  resourcePoolUri = project.resourcePoolUri
-
+  appBoxLocationUri = appBoxLocationUri
+  resourcePoolUri = resourcePoolUri
+  shares = shares
 }
 
+// mapping and persistence json generation
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp",project.subAppPackageName,"-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
+  args = ["-bp", subAppPackageName, "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
 }
 
 task copyMappingJsonToResources(type: Copy) {
@@ -163,7 +158,7 @@ task copyMappingJsonToResources(type: Copy) {
 task generatePersistenceJson(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp","${project.subAppPackageName},uu.app", "-out", "config/persistence.json"]
+  args = ["-bp","${subAppPackageName},uu.app", "-out", "config/persistence.json"]
 }
 
 processResources.doLast {

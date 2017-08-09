@@ -5,7 +5,6 @@ import uu.app.validation.ValidationType;
 /**
  * Simple Dto for demonstration of CommandContext.
  */
-
 @ValidationType("echoType")
 public final class EchoDtoIn {
 
@@ -21,8 +20,8 @@ public final class EchoDtoIn {
 
   @Override
   public String toString() {
-    return "EchoDtoIn{" +
-        "text='" + text + '\'' +
-        '}';
+    return "EchoDtoIn{"
+        + "text='" + text + '\''
+        + '}';
   }
 }

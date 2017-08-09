@@ -22,7 +22,6 @@ public final class EchoModel {
   @Inject
   private EchoDao echoDao;
 
-
   /**
    * Provides basic Java Server info.
    *
@@ -42,9 +41,14 @@ public final class EchoModel {
     return echoDtoOut;
   }
 
+  /**
+   * Stores echo into ObjectStore.
+   *
+   * @return DTO out containing data of stored object.
+   */
   public EchoDtoOut create(String awid, EchoDtoIn dtoIn) {
-
     //TODO validate
+
     Echo echo = new Echo();
     echo.setAwid(awid);
     echo.setText(dtoIn.getText());
@@ -52,8 +56,24 @@ public final class EchoModel {
     echoDao.create(echo);
 
     EchoDtoOut echoDtoOut = new EchoDtoOut();
-
     echoDtoOut.setEchoText(echo.toString());
+
+    return echoDtoOut;
+  }
+
+  /**
+   * Finds echo in ObjectStore.
+   *
+   * @return DTO out containing data of stored object.
+   */
+  public EchoDtoOut find(String awid, EchoDtoIn dtoIn) {
+    Echo echo = echoDao.findByText(awid, dtoIn.getText());
+
+    EchoDtoOut echoDtoOut = new EchoDtoOut();
+
+    if (echo != null) {
+      echoDtoOut.setEchoText(echo.toString());
+    }
 
     return echoDtoOut;
   }
