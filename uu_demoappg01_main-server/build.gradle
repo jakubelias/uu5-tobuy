@@ -79,7 +79,7 @@ dependencies {
 
 //  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
 //  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
-//  compile("uu.appg01.datastore:uu_appg01_datastore-schema:${uuAppg01ObjectStoreVersion}")
+  compile("uu.appg01.datastore:uu_appg01_datastore-schema:${uuAppg01ObjectStoreVersion}")
 
    compile("uu.appg01.objectstore:uu_appg01_objectstore-datastore:${uuAppg01ObjectStoreVersion}")
    compile("uu.appg01.objectstore:uu_appg01_objectstore-mongodb:${uuAppg01ObjectStoreVersion}")
@@ -153,6 +153,13 @@ task generateMappingJson(type: JavaExec) {
   classpath =  sourceSets.main.runtimeClasspath
   args = ["-bp","uu.demoapp.main","-vuc", "config/mapping.json", "-out", "${projectDir}/config/mapping.json"]
 }
+task generatePersistence(type: JavaExec) {
+  main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
+  classpath =  sourceSets.main.runtimeClasspath
+  args = ["-bp","uu.demoapp.main,uu.app", "-out", "config/persitence.json"]
+}
+
 processResources.doLast {
   tasks.generateMappingJson.execute()
+  tasks.generatePersistence.execute()
 }
