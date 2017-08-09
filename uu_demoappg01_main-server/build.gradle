@@ -151,8 +151,15 @@ uuDeploySettings {
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp",project.subAppPackageName,"-vuc", "config/mapping.json", "-out", "${projectDir}/config/mapping.json"]
+  args = ["-bp",project.subAppPackageName,"-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
 }
+
+task copyMappingJsonToResources(type: Copy) {
+  from "${projectDir}/config/mapping.json"
+  into "${buildDir}/resources/main/config/"
+}
+
+
 task generatePersistence(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
   classpath =  sourceSets.main.runtimeClasspath
@@ -161,5 +168,6 @@ task generatePersistence(type: JavaExec) {
 
 processResources.doLast {
   tasks.generateMappingJson.execute()
+  tasks.copyMappingJsonToResources.execute()
   tasks.generatePersistence.execute()
 }
