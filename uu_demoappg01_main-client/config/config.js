@@ -9,7 +9,7 @@ module.exports.getConfig = function () {
   let serverDirName = buildHelpers.getServerDirName();
   let isWithoutServer = !fs.existsSync("../" + serverDirName);
   let infix = (isProductionBuild ? ".min" : "");
-  
+
   let srcDir = "src";
   let useMockData = true;
   let config = {
@@ -25,7 +25,7 @@ module.exports.getConfig = function () {
 
     // build settings
     sourcePath: srcDir,
-    outputPath: (isWithoutServer ? "public" : `../${serverDirName}/public`), // file system folder to build files to
+    outputPath: ("public"), // file system folder to build files to
     entryPoints: buildHelpers.getHtmlFilesFromMappingsJson()
                     .map(html => html.replace(/\.html?$/i, ".js"))
                     .filter(jsFile => fs.existsSync(path.join(srcDir, jsFile))), // files to build (relative to "src/", resp. sourcePath)

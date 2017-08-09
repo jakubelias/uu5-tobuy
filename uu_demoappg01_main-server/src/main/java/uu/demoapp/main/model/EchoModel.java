@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import uu.app.validation.ValidationResult;
 import uu.app.validation.Validator;
 import uu.app.validation.utils.ValidationResultUtils;
+import uu.demoapp.main.dao.EchoDao;
+import uu.demoapp.main.domain.Echo;
 import uu.demoapp.main.dto.EchoDtoIn;
 import uu.demoapp.main.dto.EchoDtoOut;
 import uu.demoapp.main.model.EchoRuntimeException.Error;
@@ -15,6 +17,10 @@ public final class EchoModel {
 
   @Inject
   private Validator validator;
+
+
+  @Inject
+  private EchoDao echoDao;
 
 
   /**
@@ -27,11 +33,27 @@ public final class EchoModel {
     ValidationResult validationResult = validator.validate(dtoIn);
     EchoDtoOut echoDtoOut = new EchoDtoOut();
     if (!validationResult.isValid()) {
-      throw new EchoRuntimeException(Error.INVALID_DTO_IN, "dtoIn is not valid.", ValidationResultUtils.validationResultToAppErrorMap(validationResult), null);
+      throw new EchoRuntimeException(Error.INVALID_DTO_IN, "dtoIn is not valid.", ValidationResultUtils.validationResultToAppErrorMap(validationResult));
     }
 
     echoDtoOut.setEchoText(dtoIn.getText());
     echoDtoOut.setServerTime(LocalDateTime.now());
+
+    return echoDtoOut;
+  }
+
+  public EchoDtoOut create(String awid, EchoDtoIn dtoIn) {
+
+    //TODO validate
+    Echo echo = new Echo();
+    echo.setAwid(awid);
+    echo.setText(dtoIn.getText());
+
+    echoDao.create(echo);
+
+    EchoDtoOut echoDtoOut = new EchoDtoOut();
+
+    echoDtoOut.setEchoText(echo.toString());
 
     return echoDtoOut;
   }

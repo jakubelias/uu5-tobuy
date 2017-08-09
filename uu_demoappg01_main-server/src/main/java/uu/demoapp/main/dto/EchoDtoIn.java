@@ -1,8 +1,12 @@
 package uu.demoapp.main.dto;
 
+import uu.app.validation.ValidationType;
+
 /**
  * Simple Dto for demonstration of CommandContext.
  */
+
+@ValidationType("echoType")
 public final class EchoDtoIn {
 
   private String text;

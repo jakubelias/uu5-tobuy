@@ -1,0 +1,16 @@
+{
+  "uu-demoappg01-main": {
+    "useCaseMap": {
+      "testVUC" : {
+        "realization" : "index.html",
+        "httpMethod" : "GET",
+        "type" : "VUC"
+      },
+      "defaultVuc": {
+        "realization": "index.html",
+        "httpMethod": "GET",
+        "type": "VUC"
+      }
+    }
+  }
+}

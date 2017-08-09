@@ -1,6 +1,7 @@
 package uu.demoapp.main.controller;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import javax.inject.Inject;
 import uu.app.server.CommandContext;
@@ -17,8 +18,30 @@ public final class EchoController {
   private EchoModel echoModel;
 
   @Command(path = "/echo", method = GET)
-  public EchoDtoOut home(CommandContext<EchoDtoIn> ctx) {
+  public EchoDtoOut echo(CommandContext<EchoDtoIn> ctx) {
     EchoDtoOut out = echoModel.echo(ctx.getUri().getAwid(), ctx.getDtoIn());
     return out;
   }
+
+  @Command(path = "/hello", method = GET)
+  public EchoDtoOut hello(CommandContext<EchoDtoIn> ctx) {
+
+    String uuId=ctx.getAuthenticationSession().getIdentity().getUUIdentity();
+
+    String name=ctx.getAuthenticationSession().getIdentity().getName();
+
+    //EchoDtoOut out = echoModel.echo(ctx.getUri().getAwid(), ctx.getDtoIn());
+
+    EchoDtoOut out = new EchoDtoOut();
+    out.setEchoText(ctx.getDtoIn()+", hello "+name+"("+uuId+")");
+    return out;
+  }
+
+  @Command(path = "/create", method = POST)
+  public EchoDtoOut create(CommandContext<EchoDtoIn> ctx) {
+    EchoDtoOut out = echoModel.create(ctx.getUri().getAwid(), ctx.getDtoIn());
+    return out;
+  }
+
+
 }
