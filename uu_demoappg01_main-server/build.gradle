@@ -94,7 +94,7 @@ dependencies {
     compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid:${uuAppg01OidcVersion}")
     compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid-handler:${uuAppg01OidcVersion}")
 
-  compile project(':uu_demoappg01_main-client')
+//  compile project(':uu_demoappg01_main-client')
 
   testCompile("uu.appg01.core-server-java:uu_appg01_core-test_support:${uuAppg01ServerVersion}")
   compile("org.springframework.boot:spring-boot-starter-web")

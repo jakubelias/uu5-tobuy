@@ -37,3 +37,4 @@ oidc_token.json
 **/webapp
 package-lock.json
 uu_demoappg01_main-server/config/mapping.json
+uu_demoappg01_main-server/config/persitence.json

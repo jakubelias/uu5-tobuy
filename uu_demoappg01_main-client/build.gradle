@@ -6,7 +6,7 @@ apply plugin: "com.moowork.node"
 jar {
   from file("/public")
   eachFile { details ->
-    details.path = details.path.startsWith('META-INF') ?: "static/" + details.path
+    details.path = details.path.startsWith('META-INF') ?: "public/" + details.path
   }
   // Jar contains duplicate empty folders, see Gradle issue:
   // http://issues.gradle.org/browse/GRADLE-1830

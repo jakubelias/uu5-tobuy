@@ -18,7 +18,7 @@
 
 # Preparing project
 0. Clone this Codebase(Git) template repository
-    >git clone --branch sprint --depth=1 ssh://git@codebase.plus4u.net:9422/uu_appg01_template-uu5-java.git
+    >git clone --branch master --depth=1 ssh://git@codebase.plus4u.net:9422/uu_appg01_template-uu5-java.git
 
 1. Rename root project folder uu_appg01_main-uu5-java to your new project name
 
