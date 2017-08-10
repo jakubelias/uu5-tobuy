@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import uu.app.authentication.oidc.OpenIdConnectContextConfiguration;
+import uu.app.authentication.oidc.handler.OpenIdConnectHandlerConfiguration;
 import uu.app.datastore.annotations.DataStoreConfiguration;
 import uu.app.datastore.mongodb.AbstractMongoDbContextConfiguration;
 import uu.app.datastore.mongodb.DatastoreMongoDbContextConfiguration;
@@ -20,9 +21,7 @@ import uu.app.validation.ValidationTypeDefinitionSource;
  * Spring configuration of the application.
  */
 @DataStoreConfiguration
-@Import({ValidationContextConfiguration.class, UseCaseServerContextConfiguration.class, DatastoreMongoDbContextConfiguration.class, OpenIdConnectContextConfiguration.class})
-//   OpenIdConnectWebMvcConfigurer.class
-@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
+@Import({ValidationContextConfiguration.class, UseCaseServerContextConfiguration.class, DatastoreMongoDbContextConfiguration.class, OpenIdConnectHandlerConfiguration.class})
 public class SubAppConfiguration extends AbstractMongoDbContextConfiguration {
 
   @Value("${objectStoreUri}")
