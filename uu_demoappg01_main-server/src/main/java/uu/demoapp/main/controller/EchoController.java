@@ -33,8 +33,6 @@ public final class EchoController {
     return out;
   }
 
-
-
   /**
    * Provides information about logged user.
    */
