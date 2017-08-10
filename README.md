@@ -13,18 +13,23 @@
 # Prerequisites
 - JDK 8
 - Gradle 4.0
-- connection to UVS-VPN network (for access to UVS-Nexus repository)
 
       UNI-BT:UVS/VPN
 
 # Preparing project
-1. Rename project uu_appg01_template-uu5-java to new project name.
+0. Clone this Codebase(Git) template repository
+      
+       > git clone --branch master --depth=1 ssh://git@codebase.plus4u.net:9422/uu_appg01_template-uu5-java.git
+
+1. Rename root project folder uu_appg01_template-uu5-java to your new project name
+
 2. Disconnect from git repository
 
         > git remote rm origin
+
 3. If you have new repository for new project, you can connect it with
 
-        > git remote add origin ssh://git@codebase.plus4u.net:9422/<new_repozitory>.git
+        > git remote add origin ssh://git@codebase.plus4u.net:9422/<new_repository>.git
    Verify with
    
         > git remote -v  
@@ -33,10 +38,10 @@
       
         VPH-BT:44191587611027055
 
+
 4. Change project properties
-    - file _./build.gradle_:  group, version, description
-    - file _./settings.gradle_: rootProject.name
-    - file _./subProjectName/build.gradle_: uuDeploySetting.appBoxLocationUri (uesuri of AppBox for deploying to C3)
+    - file _./build.gradle_:  group, version, description and other additional properties marked with TODO
+    - file _./settings.gradle_: rootProject.name and included subprojects names.
     
 5. optional: add another sub-project (module)
     - Default project structure is prepared as multi-project. You can easily add another sub-project, which will inherit all settings from build.gradle file in project root.
@@ -51,6 +56,14 @@ To apply settings:
 3. go to tab Editor - Code Style
 4. click on the settings icon next to the Scheme and select Import Scheme - IntelliJ IDEA Code Style XML
 5. select xml file from ./config folder and confirm
+
+# Run application
+
+In project root directory run command
+
+    > gradle uuRun
+
+Application starts locally on embedded tomcat on default port 8080 and can be accessed e.g. with browser (http://localhost:8080/uu-demoappg01-main/0-0/).
   
 # Compiling project
 
@@ -67,15 +80,6 @@ In project root directory run command
     > gradle test
 
 Result of tests can be found in folder /build/reports/tests. It is created in interactive html format.
-
-
-# Run application
-
-In project root directory run command
-
-    > gradle uuRun
-
-Application starts locally on embedded tomcat on default port 8080 and can be accessed e.g. with browser (http://localhost:8080).
 
 
 # Distribution Package Creation
@@ -111,4 +115,4 @@ Dashboard with all these reports is in folder _./projectName/build/reports/build
 # Deploying to C3    
 Project is using gradle uu deploy plugin, which adds tasks for creating uuAppBox, uploading attachments, deploying to C3, sharing uuApp etc.
 
-Plugin documentation can be found at: TODO
+Plugin documentation can be found in file uu_appg01_gradle-plugin_readme.md, located in root of this project.
