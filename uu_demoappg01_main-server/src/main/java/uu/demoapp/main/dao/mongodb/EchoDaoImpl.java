@@ -13,6 +13,7 @@ public class EchoDaoImpl extends UuObjectMongoDbDao<Echo> implements EchoDao {
   public Echo findByText(String awid, String text) {
     Query q = new Query().addCriteria(Criteria.where(ATTR_AWID).is(awid).and("text").is(text));
     Echo data = findOne(q);
+
     return data;
   }
 }

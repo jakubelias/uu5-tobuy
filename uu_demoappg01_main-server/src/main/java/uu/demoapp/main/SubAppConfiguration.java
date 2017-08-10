@@ -24,7 +24,7 @@ import uu.app.validation.ValidationTypeDefinitionSource;
  * Spring configuration of the application.
  */
 @DataStoreConfiguration
-@Import({ValidationContextConfiguration.class, UseCaseServerContextConfiguration.class, DatastoreMongoDbContextConfiguration.class, OpenIdConnectHandlerConfiguration.class,WebSecurityConfig.class})
+@Import({ValidationContextConfiguration.class, UseCaseServerContextConfiguration.class, DatastoreMongoDbContextConfiguration.class, OpenIdConnectHandlerConfiguration.class})
 public class SubAppConfiguration extends AbstractMongoDbContextConfiguration {
 
   @Value("${objectStoreUri}")
