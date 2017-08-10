@@ -25,7 +25,8 @@ module.exports.getConfig = function () {
 
     // build settings
     sourcePath: srcDir,
-    outputPath: ("public"), // file system folder to build files to
+   //TODO outputPath: (isWithoutServer ? "public" : `../${serverDirName}/public`), // file system folder to build files to
+    outputPath: "public", // file system folder to build files to
     entryPoints: buildHelpers.getHtmlFilesFromMappingsJson()
                     .map(html => html.replace(/\.html?$/i, ".js"))
                     .filter(jsFile => fs.existsSync(path.join(srcDir, jsFile))), // files to build (relative to "src/", resp. sourcePath)
