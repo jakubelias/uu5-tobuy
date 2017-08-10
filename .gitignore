@@ -3,7 +3,7 @@
 *.iws
 *.iml
 *.ipr
-out/
+**/out/
 
 ### Gradle
 .gradle
@@ -36,5 +36,5 @@ oidc_token.json
 **/*log.*
 **/webapp
 package-lock.json
-uu_demoappg01_main-server/config/mapping.json
-uu_demoappg01_main-server/config/persistence.json
+**/config/mapping.json
+**/config/persistence.json
