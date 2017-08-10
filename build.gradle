@@ -32,17 +32,20 @@ buildscript {
 
 ext {
   // base package configuration for scanning
-  subAppPackageName = "uu.demoapp.main"  //TODO change to your subapp package name
+  uuSubAppPackageName = "uu.demoapp.main"  //TODO change to your subapp package name
 
-  // uuCloud Staging environment configuration
-  appBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX' //TODO change to your folder UES-URI
-  resourcePoolUri = 'ues:DEV0116-BT:DEV'  //TODO change to your uuCloud Deployment Pool
-  shares = [
-    ["tid", "asid"], // TODO change to your values
-    ["tid", "awid"]
+  // uuCloud Development environment configuration
+  uuCloudAppBoxLocationUri = 'ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX' //TODO change to your folder UES-URI
+  uuCloudResourcePoolUri = 'ues:DEV0116-BT:DEV'  //TODO change to your uuCloud Deployment Pool
+  uuCloudShares = [
+//    ["tid", "asid"], // TODO change to your values
+//    ["tid", "awid"]
+    ["84723967990075193", "b493d99bc97847b1929abe3b41b73333"],
+    ["84723967990075193", "920ebf3f9f3f4a5dabcce0d67f899598"]
   ]
 
   // Configuration of Nexus repositories for publishing output JARs
-  nexusSprintRepository = 'https://repo.plus4u.net/sprint' // TODO change to you nexus repository URL
-  nexusReleaseRepository = 'https://repo.plus4u.net/release/'
+  // TODO change to you nexus repository URL
+  stageReleaseRepository = 'https://repo.plus4u.net/repository/jars'
+  stageSprintRepository = 'https://repo.plus4u.net/repository/jars-sprint'
 }

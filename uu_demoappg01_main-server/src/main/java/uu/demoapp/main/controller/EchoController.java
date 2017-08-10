@@ -26,6 +26,15 @@ public final class EchoController {
     return out;
   }
 
+  @Command(path = "loadDemoContent", method = GET)
+  public EchoDtoOut loadDemoContent(CommandContext<Void> ctx) {
+    EchoDtoOut out = new EchoDtoOut();
+    out.setEchoText("Content from Command.");
+    return out;
+  }
+
+
+
   /**
    * Provides information about logged user.
    */

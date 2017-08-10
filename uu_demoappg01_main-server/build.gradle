@@ -20,8 +20,8 @@ repositories {
 
 uploadArchives {
   repositories.mavenDeployer {
-    snapshotRepository(url: nexusSprintRepository)
-    repository(url: nexusReleaseRepository)
+    snapshotRepository(url: stageSprintRepository)
+    repository(url: stageReleaseRepository)
   }
 }
 
@@ -137,16 +137,16 @@ war {
 }
 
 uuDeploySettings {
-  appBoxLocationUri = appBoxLocationUri
-  resourcePoolUri = resourcePoolUri
-  shares = shares
+  appBoxLocationUri = project.uuCloudAppBoxLocationUri
+  resourcePoolUri = project.uuCloudResourcePoolUri
+  shares = project.uuCloudShares
 }
 
 // mapping and persistence json generation
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp", subAppPackageName, "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
+  args = ["-bp", "${uuSubAppPackageName}", "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
 }
 
 task copyMappingJsonToResources(type: Copy) {
@@ -158,7 +158,7 @@ task copyMappingJsonToResources(type: Copy) {
 task generatePersistenceJson(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
   classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp","${subAppPackageName},uu.app", "-out", "config/persistence.json"]
+  args = ["-bp","${uuSubAppPackageName},uu.app", "-out", "config/persistence.json"]
 }
 
 processResources.doLast {

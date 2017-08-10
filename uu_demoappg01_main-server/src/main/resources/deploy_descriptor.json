@@ -3,7 +3,7 @@
   "data" : {
     "code" : "UU.DEMOAPPG01.MAIN",
     "name" : "Demo application for uuAppServer (generation 01)",
-    "version" : "0.1.0-SNAPSHOT-1502281098624",
+    "version" : "0.1.0-SNAPSHOT-1502343234710",
     "multitenant" : true,
     "packs" : [ {
       "code" : "UU.DEMOAPPG01.MAIN/SERVER-PACK",
