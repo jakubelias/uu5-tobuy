@@ -18,10 +18,46 @@ repositories {
   maven { url uuSprintRepository }
 }
 
+// publishing to maven repositories
+task packageJavadoc(type: Jar, dependsOn: 'javadoc') {
+  from javadoc.destinationDir
+  classifier = 'javadoc'
+}
+task packageSources(type: Jar, dependsOn: 'classes') {
+  from sourceSets.main.allSource
+  classifier = 'sources'
+}
+task packageTests(type: Jar, dependsOn: 'testClasses') {
+  from sourceSets.test.output
+  classifier = 'tests'
+}
+task packageTestSources(type: Jar, dependsOn: 'testClasses') {
+  from sourceSets.test.allSource
+  classifier = 'testSources'
+}
+task packageReports(type: Zip, dependsOn: 'uuReport') {
+  classifier = "reports"
+  from new File(buildDir.path, "reports")
+}
+
+artifacts {
+  archives packageJavadoc
+  archives packageSources
+  archives packageTests
+  archives packageTestSources
+  archives packageReports
+}
+
 uploadArchives {
   repositories.mavenDeployer {
     snapshotRepository(url: stageSprintRepository)
     repository(url: stageReleaseRepository)
+
+    def notPublishList = []
+    artifactsToPublish.each { k, v -> if (!v) notPublishList << k }
+    addFilter('filter') { artifact, file ->
+      !(artifact.attributes.classifier in notPublishList)
+    }
   }
 }
 
