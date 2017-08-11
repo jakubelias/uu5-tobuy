@@ -49,7 +49,7 @@ ext {
   // TODO change to you nexus repository URL
   uuDevReleaseRepository = 'https://repo.plus4u.net/repository/jars'
   uuDevSprintRepository = 'https://repo.plus4u.net/repository/jars-sprint'
-  artifactsToPublish = [
+  archivesToPublish = [
     javadoc    : true,
     sources    : true,
     tests      : false,

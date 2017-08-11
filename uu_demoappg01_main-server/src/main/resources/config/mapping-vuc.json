@@ -6,6 +6,16 @@
         "httpMethod" : "GET",
         "type" : "VUC"
       },
+      "home": {
+        "realization": "index.html",
+        "httpMethod": "GET",
+        "type": "VUC"
+      },
+      "withParams/{route}": {
+        "realization": "index.html",
+        "httpMethod": "GET",
+        "type": "VUC"
+      },
       "defaultVuc": {
         "realization": "index.html",
         "httpMethod": "GET",

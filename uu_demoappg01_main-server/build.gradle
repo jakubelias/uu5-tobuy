@@ -53,7 +53,7 @@ uploadArchives {
     snapshotRepository(url: uuDevSprintRepository)
 
     def notPublishList = []
-    artifactsToPublish.each { k, v -> if (!v) notPublishList << k }
+    archivesToPublish.each { k, v -> if (!v) notPublishList << k }
     addFilter('filter') { artifact, file ->
       !(artifact.attributes.classifier in notPublishList)
     }
