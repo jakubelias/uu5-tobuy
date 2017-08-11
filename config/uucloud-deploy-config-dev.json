@@ -1,0 +1,6 @@
+{
+  "uuCloudResourcePoolUri": "ues:DEV0116-BT:DEV",
+  "config": {
+    "objectStoreUri": "mongodb://<user>:<password>mongo.plus4u.net:27017/<dbname>"
+  }
+}

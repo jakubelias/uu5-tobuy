@@ -15,7 +15,6 @@ apply plugin: 'uu.appg01'
 repositories {
   maven { url uuProdRepository }
   maven { url uuBetaRepository }
-  maven { url uuSprintRepository }
 }
 
 // publishing to maven repositories
@@ -50,8 +49,8 @@ artifacts {
 
 uploadArchives {
   repositories.mavenDeployer {
-    snapshotRepository(url: stageSprintRepository)
-    repository(url: stageReleaseRepository)
+    repository(url: uuDevReleaseRepository)
+    snapshotRepository(url: uuDevSprintRepository)
 
     def notPublishList = []
     artifactsToPublish.each { k, v -> if (!v) notPublishList << k }

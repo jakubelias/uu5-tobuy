@@ -12,13 +12,11 @@ buildscript {
     springBootVersion = '1.5.3.RELEASE'
     uuProdRepository = 'https://repo.plus4u.net/repository/jars/'
     uuBetaRepository = 'https://repo.plus4u.net/repository/jars-beta/'
-    uuSprintRepository = 'https://repo.plus4u.net/repository/jars-sprint/'
   }
 
   repositories {
     maven { url uuProdRepository }
     maven { url uuBetaRepository }
-    maven { url uuSprintRepository }
     maven { url "https://plugins.gradle.org/m2/" }
   }
 
@@ -45,11 +43,12 @@ ext {
   uuCloudDeployParams = [
     objectStoreUri: "mongodb://<user>:<password>mongo.plus4u.net:27017/<dbname>"
   ]
+  uuCloudConfiguration = "/config/uu"
 
   // Configuration of Nexus repositories for publishing output JARs
   // TODO change to you nexus repository URL
-  stageReleaseRepository = 'https://repo.plus4u.net/repository/jars'
-  stageSprintRepository = 'https://repo.plus4u.net/repository/jars-sprint'
+  uuDevReleaseRepository = 'https://repo.plus4u.net/repository/jars'
+  uuDevSprintRepository = 'https://repo.plus4u.net/repository/jars-sprint'
   artifactsToPublish = [
     javadoc    : true,
     sources    : true,
