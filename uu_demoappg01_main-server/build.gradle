@@ -140,12 +140,15 @@ uuDeploySettings {
   appBoxLocationUri = project.uuCloudAppBoxLocationUri
   resourcePoolUri = project.uuCloudResourcePoolUri
   shares = project.uuCloudShares
+  if (project.hasProperty('uuCloudDeployParams') && project.uuCloudDeployParams) {
+    deployConfig = project.uuCloudDeployParams
+  }
 }
 
 // mapping and persistence json generation
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
-  classpath =  sourceSets.main.runtimeClasspath
+  classpath = sourceSets.main.runtimeClasspath
   args = ["-bp", "${uuSubAppPackageName}", "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
 }
 
@@ -157,8 +160,8 @@ task copyMappingJsonToResources(type: Copy) {
 
 task generatePersistenceJson(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
-  classpath =  sourceSets.main.runtimeClasspath
-  args = ["-bp","${uuSubAppPackageName},uu.app", "-out", "config/persistence.json"]
+  classpath = sourceSets.main.runtimeClasspath
+  args = ["-bp", "${uuSubAppPackageName},uu.app", "-out", "config/persistence.json"]
 }
 
 processResources.doLast {

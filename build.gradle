@@ -25,7 +25,7 @@ buildscript {
   dependencies {
     classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     classpath("com.sourcemuse.gradle.plugin:gradle-mongo-plugin:1.0.0")
-    classpath("uu.appg01:uu_appg01_gradle-plugin:0.2.0")
+    classpath("uu.appg01:uu_appg01_gradle-plugin:0.3.0")
     classpath("com.moowork.gradle:gradle-node-plugin:1.1.1")
   }
 }
@@ -42,6 +42,9 @@ ext {
 //    ["tid", "awid"]
     ["84723967990075193", "b493d99bc97847b1929abe3b41b73333"],
     ["84723967990075193", "920ebf3f9f3f4a5dabcce0d67f899598"]
+  ]
+  uuCloudDeployParams = [ // TODO change to your deployment configuration (e.g., MongoDb connection uri)
+    objectStoreUri: "mongodb://<user>:<password>mongo.plus4u.net:27017/<dbname>"
   ]
 
   // Configuration of Nexus repositories for publishing output JARs
