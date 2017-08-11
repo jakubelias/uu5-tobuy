@@ -1,0 +1,62 @@
+defaultTasks 'projectSetup'
+
+
+ext {
+  // New project configuration - change the values
+  appDesc = 'APP_DESCRIPTION'
+  appVendor = 'VENDOR'
+  app = 'APPLICATION_NAME'
+  appGeneration = 'APPLICATION_GENERATION'
+  appVersion = 'APPLICATION_VERSION'
+  subApp = 'SUB_APPLICATION_NAME'
+}
+
+task projectSetup {
+  // works only for the first time - if not correct -> rollback and try again
+  description 'Configures the project template'
+
+
+  doLast {
+    println "Configuring project template"
+
+    // Helper variables
+    def oldModuleBase = "uu_demoappg01_main"
+    def moduleBase = appVendor + "_" + app + appGeneration + "_" + subApp
+    def modules = [:]
+    new File(".").eachDir() { dir ->
+      if (dir.getName().startsWith(oldModuleBase)){
+        modules.put(dir.getName(), dir.getName().replace(oldModuleBase, moduleBase))
+      }
+    }
+
+    // Rename the project modules
+    println "Renaming project modules"
+    modules.each{
+      k, v ->
+        println "Renaming module ${k} to ${v}."
+        // rename dependencies on project modules
+        ant.replace(dir: ".", token: k, value: v) {
+          include(name: "**/build.gradle")
+        }
+        // rename the module folder
+        ant.move(file: k, toFile: v)
+        // rename the module in gradle config
+        ant.replace(file: "settings.gradle", token: k, value: v)
+    }
+
+    // Update application.properties
+    println "Updating application.properties configuration file"
+    ant.replace(dir: ".", token: oldModuleBase, value: moduleBase) {
+      include(name: "**/application*.properties")
+    }
+    ant.replace(dir: ".", token: oldModuleBase.replace("_","-"), value: moduleBase.replace("_","-")) {
+      include(name: "**/application*.properties")
+    }
+
+    // Update this file
+    println "Updating the root build.gradle file"
+    ant.replaceregexp(file: "build.gradle", match: "version '.*'", replace: "version '" + appVersion + "'")
+    ant.replaceregexp(file: "build.gradle", match: "description '.*'", replace: "description '" + appDesc + "'")
+    ant.replaceregexp(file: "build.gradle", match: "group '.*'", replace: "group '" + appVendor + "." + app + appGeneration + "'")
+  }
+}
