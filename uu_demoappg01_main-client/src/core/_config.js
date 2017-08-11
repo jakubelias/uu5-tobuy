@@ -111,7 +111,7 @@ Cfg.CONTENT_DEMO_CONTENT_ERROR = `<uu5string/>
   <UU5.Bricks.Lsi.Item language="cs">
     <UU5.Bricks.Section header="Chyba">
       <UU5.Bricks.P>
-        Při načítají dat o knize došlo k chybě.
+        Při načítají dat došlo k chybě.
       </UU5.Bricks.P>
       <UU5.Bricks.P>
         V případě potřeby kontaktujte <UU5.Bricks.LinkPlus4U/>.

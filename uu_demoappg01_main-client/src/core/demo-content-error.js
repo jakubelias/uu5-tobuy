@@ -56,18 +56,18 @@ export const DemoContentError = React.createClass({
   //@@viewOff:componentSpecificHelpers
 
   //@@viewOn:render
-  render(){
+  render() {
     return (
       this.getNestingLevel()
         ? (
         <Plus4U5.App.Page
           {...this.getMainPropsToPass()}
-          top = {<Plus4U5.App.Top content={Cfg.LSILABEL_APP_NAME}/>}
+          top={<Plus4U5.App.Top content={Cfg.LSILABEL_APP_NAME}/>}
           flex
           type={1}
           content={[
             Cfg.CONTENT_DEMO_CONTENT_ERROR,
-            <UU5.Bricks.Error><UU5.Bricks.Pre>{JSON.stringify(this.props.errorData,null,2)}</UU5.Bricks.Pre></UU5.Bricks.Error>
+            <UU5.Bricks.Error><UU5.Bricks.Pre>{JSON.stringify(this.props.errorData, null, 2)}</UU5.Bricks.Pre></UU5.Bricks.Error>
           ]}
           left={<UU5.Bricks.Span/>}
           right={<UU5.Bricks.Span/>}

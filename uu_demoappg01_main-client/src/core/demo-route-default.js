@@ -50,7 +50,7 @@ const DemoRouteDefault = React.createClass({
   //@@viewOff:overridingMethods
 
   //@@viewOn:componentSpecificHelpers
-  _navigateWithParams(){
+  _navigateWithParams() {
     let params = {param1: "first", param2: "second"};
     this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER) && this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER).setRoute(
       <DemoRouteParams {...params}/>,
@@ -63,7 +63,7 @@ const DemoRouteDefault = React.createClass({
   //@@viewOff:componentSpecificHelpers
 
   //@@viewOn:render
-  render(){
+  render() {
     return (
       this.getNestingLevel()
         ? (

@@ -11,12 +11,17 @@
         "httpMethod": "GET",
         "type": "VUC"
       },
-      "withParams/{route}": {
+      "withParams": {
         "realization": "index.html",
         "httpMethod": "GET",
         "type": "VUC"
       },
       "defaultVuc": {
+        "realization": "index.html",
+        "httpMethod": "GET",
+        "type": "VUC"
+      },
+      "other": {
         "realization": "index.html",
         "httpMethod": "GET",
         "type": "VUC"

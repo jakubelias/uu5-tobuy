@@ -48,13 +48,13 @@ const DemoRouteOther = React.createClass({
   //@@viewOff:overridingMethods
 
   //@@viewOn:componentSpecificHelpers
-  _navigateHome(){
-    this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER) && this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER).setRoute("/");
+  _navigateHome() {
+    this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER) && this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER).setRoute("/home");
   },
   //@@viewOff:componentSpecificHelpers
 
   //@@viewOn:render
-  render(){
+  render() {
     return (
       this.getNestingLevel()
         ? (

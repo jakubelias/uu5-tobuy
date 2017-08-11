@@ -47,7 +47,7 @@ const DemoSpaNotAuthenticated = React.createClass({
   //@@viewOff:overridingMethods
 
   //@@viewOn:componentSpecificHelpers
-  _getLanguageSelector(){
+  _getLanguageSelector() {
     return <UU5.Bricks.LanguageSelector
       headerMode="code"
       bodyMode="label-code"

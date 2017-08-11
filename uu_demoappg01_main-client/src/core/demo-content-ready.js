@@ -67,7 +67,7 @@ export const DemoContentReady = React.createClass({
     this.props.data.title && (document.title = this.getLSIItem(this.props.data.title));
   },
 
-  _getLanguageSelector(){
+  _getLanguageSelector() {
     return <UU5.Bricks.LanguageSelector
       headerMode="code"
       bodyMode="label-code"
@@ -87,7 +87,7 @@ export const DemoContentReady = React.createClass({
   //@@viewOff:componentSpecificHelpers
 
   //@@viewOn:render
-  render(){
+  render() {
     let routerBasePath = location.pathname.replace(/(\/.*?\/.*?)\/.*/, "$1");
     console.log(routerBasePath);
     return (
@@ -108,10 +108,10 @@ export const DemoContentReady = React.createClass({
         >
           <UU5.Common.Router
             urlBuilder={Plus4U5.Common.Url}
-            route="/"
+            route="/home"
             routes={{
-              "/": {component: <DemoRouteDefault name={this.props.data.name} description={this.props.data.description}/>},
-              "/uve/withParams": {component: this._getRouteWithParams()},
+              "/home": {component: <DemoRouteDefault name={this.props.data.name} description={this.props.data.description}/>},
+              "/withParams": {component: this._getRouteWithParams()},
               "/other": {component: <DemoRouteOther/>}
             }}
             notFoundRoute={<DemoRouteDefault name={this.props.data.name} description={this.props.data.description}/>}
