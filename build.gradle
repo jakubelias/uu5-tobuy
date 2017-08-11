@@ -43,7 +43,7 @@ ext {
   ]
   // TODO change to your deployment configuration (e.g., MongoDb connection uri)
   uuCloudDeployParams = [
-    objectStoreUri: "mongodb://gg8rjsmofhwva476eu85f9kf2gwzmc14__f1vfj9trces4tqwwcccyo6w8hl165h0ep6ozkgr:VS5lO8iCGjebWEW2vH0A7@h-zk893n61.rg-o5ojnm69.mongo-o-s.eu-n-1.cloud.plus4u.net:27017,h-h0dv6qe3.rg-o5ojnm69.mongo-o-s.eu-n-1.cloud.plus4u.net:27017/gg8rjsmofhwva476eu85f9kf2gwzmc14"
+    objectStoreUri: "mongodb://<user>:<password>mongo.plus4u.net:27017/<dbname>"
   ]
 
   // Configuration of Nexus repositories for publishing output JARs
