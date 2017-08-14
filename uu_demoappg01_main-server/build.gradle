@@ -13,6 +13,7 @@ apply plugin: 'uu.appg01'
 
 // repositories setup
 repositories {
+//  maven { url mavenLocal().url }
   maven { url uuProdRepository }
   maven { url uuBetaRepository }
   //TODO Only for development remove during release
@@ -87,7 +88,7 @@ configurations {
 }
 
 dependencies {
-  compile project(':uu_demoappg01_main-client')
+//  compile project(':uu_demoappg01_main-client')
 
   compile("org.springframework.boot:spring-boot-starter-log4j2")
 
@@ -133,6 +134,11 @@ bootRepackage {
   enabled = false
 }
 
+bootRun {
+  systemProperties = [
+    'staticResource.location': 'file:./public/'
+  ]
+}
 task uuRun(group: "uu", dependsOn: bootRun)
 
 // testing with embedded MongoDb
@@ -171,6 +177,9 @@ task uuReport {
 // deployment to C3
 war {
   archiveName = project.name + '.war'
+  from('public') {
+    into('WEB-INF/classes/public')
+  }
 }
 
 uuDeploySettings {
