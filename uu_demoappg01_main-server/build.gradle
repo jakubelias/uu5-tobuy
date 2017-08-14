@@ -59,6 +59,7 @@ uploadArchives {
     addFilter('filter') { artifact, file ->
       !(artifact.attributes.classifier in notPublishList)
     }
+    pom('filter').withXml(dependencyManagement.pomConfigurer)
   }
 }
 
