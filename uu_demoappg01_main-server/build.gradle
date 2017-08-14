@@ -73,10 +73,10 @@ dependencyManagement {
 
 ext {
   uuAppg01BinaryStoreVersion = "1.0.0-rc.2"
-  uuAppg01ObjectStoreVersion = "1.0.0"
-  uuAppg01ServerVersion = "1.0.0"
-  uuAppg01WorkspaceVersion = "1.0.0"
-  uuAppg01OidcVersion = "1.0.0"
+  uuAppg01ObjectStoreVersion = "1.1.0-SNAPSHOT"
+  uuAppg01ServerVersion = "1.1.0-SNAPSHOT"
+  uuAppg01WorkspaceVersion = "1.1.0-SNAPSHOT"
+  uuAppg01OidcVersion = "1.1.0-SNAPSHOT"
 }
 
 configurations {
