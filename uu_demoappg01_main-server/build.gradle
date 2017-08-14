@@ -15,6 +15,8 @@ apply plugin: 'uu.appg01'
 repositories {
   maven { url uuProdRepository }
   maven { url uuBetaRepository }
+  //TODO Only for development remove during release
+  maven { url "http://192.168.4.209:8081/nexus/content/repositories/uaf-dev/" }
 }
 
 // publishing to maven repositories
