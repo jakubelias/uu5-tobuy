@@ -34,8 +34,8 @@
       "echo" : ["echo","public"],
       "loadDemoContent" : ["echo"],
       "hello" : ["echo"],
-      "create" : ["echo"],
-      "find" : ["echo"]
+      "createAddress" : ["echo"],
+      "findAddress" : ["echo"]
     }
   }
 }
