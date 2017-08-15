@@ -1,0 +1,41 @@
+{
+  "{tid}-{asid}": {
+    "profileList": [
+      "UuAppSysOwner"
+    ],
+    "permissionMap": {
+      "{uuSubAppSysOwner}": [
+        "UuAppSysOwner"
+      ]
+    },
+    "useCaseMap": {
+      "sys/initAppWorkspace": [
+        "UuAppSysOwner"
+      ]
+    }
+  },
+  "*": {
+    "profileList": ["echo","public"],
+    "useCaseMap": {
+      "sys/getAppWorkspace": ["SysOwner"],
+      "sys/getLicenseOwner": ["SysOwner"],
+      "sys/setAppWorkspaceConfig": ["SysOwner"],
+      "sys/getAppWorkspaceConfig": ["SysOwner"],
+      "sys/clearAppWorkspaceConfig": ["SysOwner"],
+      "sys/setProfile": ["SysOwner"],
+      "sys/getProfile": ["SysOwner"],
+      "sys/listProfiles": ["SysOwner"],
+      "sys/createPermission": ["SysOwner"],
+      "sys/listPermissions": ["SysOwner"],
+      "sys/deletePermission": ["SysOwner"],
+
+      "uu-binarystore/createBinary" : ["echo"],
+
+      "echo" : ["echo","public"],
+      "loadDemoContent" : ["echo"],
+      "hello" : ["echo"],
+      "create" : ["echo"],
+      "find" : ["echo"]
+    }
+  }
+}

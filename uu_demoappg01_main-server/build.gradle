@@ -75,11 +75,7 @@ dependencyManagement {
 }
 
 ext {
-  uuAppg01BinaryStoreVersion = "1.0.0-rc.2"
-  uuAppg01ObjectStoreVersion = "1.1.0-SNAPSHOT"
   uuAppg01ServerVersion = "1.1.0-SNAPSHOT"
-  uuAppg01WorkspaceVersion = "1.1.0-SNAPSHOT"
-  uuAppg01OidcVersion = "1.1.0-SNAPSHOT"
 }
 
 configurations {
@@ -87,46 +83,12 @@ configurations {
 }
 
 dependencies {
-  compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.0'
-
 //  compile project(':uu_demoappg01_main-client')
 
   compile("org.springframework.boot:spring-boot-starter-log4j2")
-
-//  compile("uu.appg01.binarystore:uu_appg01_binarystore-dao:${uuAppg01BinaryStoreVersion}")
-//  compile("uu.appg01.binarystore:uu_appg01_binarystore-mongodbdao:${uuAppg01BinaryStoreVersion}")
-//  compile("uu.appg01.binarystore:uu_appg01_binarystore-server:${uuAppg01BinaryStoreVersion}")
-
-//  compile("uu.appg01.core-server-java:uu_appg01_core-authentication:${uuAppg01ServerVersion}")
-//  compile("uu.appg01.core-server-java:uu_appg01_core-authorization:${uuAppg01ServerVersion}")
-//  compile("uu.appg01.core-server-java:uu_appg01_core-configuration:${uuAppg01ServerVersion}")
-//  compile("uu.appg01.core-server-java:uu_appg01_core-core:${uuAppg01ServerVersion}")
-//  compile("uu.appg01.core-server-java:uu_appg01_core-dto:${uuAppg01ServerVersion}")
-//  compile("uu.appg01.core-server-java:uu_appg01_core-exception:${uuAppg01ServerVersion}")
-//  compile("uu.appg01.core-server-java:uu_appg01_core-logging:${uuAppg01ServerVersion}")
-//  compile("uu.appg01.core-server-java:uu_appg01_core-simple-cache:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-ucserver:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-uri:${uuAppg01ServerVersion}")
-  compile("uu.appg01.core-server-java:uu_appg01_core-validation:${uuAppg01ServerVersion}")
-
-//  compile("uu.appg01.core-client-java:uu_appg01_core-client:${uuAppg01ServerVersion}")
-
-//  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
-//  compile("uu.appg01.datastore:uu_appg01_datastore-datastore:${uuAppg01ObjectStoreVersion}")
-  compile("uu.appg01.datastore:uu_appg01_datastore-schema:${uuAppg01ObjectStoreVersion}")
-
-  compile("uu.appg01.objectstore:uu_appg01_objectstore-datastore:${uuAppg01ObjectStoreVersion}")
-  compile("uu.appg01.objectstore:uu_appg01_objectstore-mongodb:${uuAppg01ObjectStoreVersion}")
-  compile("uu.appg01.objectstore:uu_appg01_objectstore-schema:${uuAppg01ObjectStoreVersion}")
-
-//  compile("uu.appg01.workspace:uu_appg01_workspace-profiles:${uuAppg01WorkspaceVersion}")
-//  compile("uu.appg01.workspace:uu_appg01_workspace-server:${uuAppg01WorkspaceVersion}")
-//  compile("uu.appg01.workspace:uu_appg01_workspace-store:${uuAppg01WorkspaceVersion}")
-//  compile("uu.appg01.workspace:uu_appg01_workspace_authorization:${uuAppg01WorkspaceVersion}")
-
-//  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-openid-client:${uuAppg01OidcVersion}")
-  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid:${uuAppg01OidcVersion}")
-  compile("uu.oidcg01.client:uu_oidcg01-client-authentication-uuoid-handler:${uuAppg01OidcVersion}")
+  compile("uu.appg01.server-server:uu_appg01_server-server:${uuAppg01ServerVersion}")
+  compile "net.minidev:json-smart:2.2.1"
+  compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.0'
 
   testCompile("uu.appg01.core-server-java:uu_appg01_core-test_support:${uuAppg01ServerVersion}")
 }
@@ -196,7 +158,7 @@ uuDeploySettings {
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
   classpath = sourceSets.main.runtimeClasspath
-  args = ["-bp", "${uuSubAppPackageName}", "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
+  args = ["-bp", "${uuSubAppPackageName},uu.app.workspace", "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
 }
 
 task copyMappingJsonToResources(type: Copy) {
@@ -208,7 +170,7 @@ task copyMappingJsonToResources(type: Copy) {
 task generatePersistenceJson(type: JavaExec) {
   main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
   classpath = sourceSets.main.runtimeClasspath
-  args = ["-bp", "${uuSubAppPackageName},uu.app", "-out", "config/persistence.json"]
+  args = ["-bp", "${uuSubAppPackageName},uu.app.datastore,uu.app.objectstore,uu.app.workspace", "-out", "config/persistence.json"]
 }
 
 processResources.doLast {
