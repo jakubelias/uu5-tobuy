@@ -1,5 +1,6 @@
 package uu.demoapp.main;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration;
@@ -51,5 +52,9 @@ public class SubAppConfiguration extends AbstractMongoDbContextConfiguration {
     return getMongoTemplate(mongoDbFactory);
   }
 
+  @Bean
+  public ModelMapper modelMapper() {
+    return new ModelMapper();
+  }
 }
 

@@ -20,12 +20,24 @@ public final class EchoController {
   @Inject
   private EchoModel echoModel;
 
+  /**
+   * Simple echo command.
+   *
+   * @param ctx Command context containing DTO in.
+   * @return Dto out.
+   */
   @Command(path = "echo", method = GET)
   public EchoDtoOut echo(CommandContext<EchoDtoIn> ctx) {
     EchoDtoOut out = echoModel.echo(ctx.getUri().getAwid(), ctx.getDtoIn());
     return out;
   }
 
+  /**
+   * Load demo command.
+   *
+   * @param ctx Command context containing DTO in.
+   * @return Dto out.
+   */
   @Command(path = "loadDemoContent", method = GET)
   public EchoDtoOut loadDemoContent(CommandContext<Void> ctx) {
     EchoDtoOut out = new EchoDtoOut();
@@ -35,6 +47,8 @@ public final class EchoController {
 
   /**
    * Provides information about logged user.
+   * @param ctx Command context.
+   * @return Dto Out
    */
   @Command(path = "hello", method = GET)
   public EchoDtoOut hello(CommandContext<EchoDtoIn> ctx) {
@@ -45,17 +59,4 @@ public final class EchoController {
     out.setEchoText(ctx.getDtoIn() + ", hello " + name + "(" + uuId + ")");
     return out;
   }
-
-  @Command(path = "create", method = POST)
-  public EchoDtoOut create(CommandContext<EchoDtoIn> ctx) {
-    EchoDtoOut out = echoModel.create(ctx.getUri().getAwid(), ctx.getDtoIn());
-    return out;
-  }
-
-  @Command(path = "find", method = POST)
-  public EchoDtoOut find(CommandContext<EchoDtoIn> ctx) {
-    EchoDtoOut out = echoModel.find(ctx.getUri().getAwid(), ctx.getDtoIn());
-    return out;
-  }
-
 }

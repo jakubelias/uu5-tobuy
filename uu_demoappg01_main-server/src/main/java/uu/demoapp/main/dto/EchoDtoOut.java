@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import uu.app.dto.AbstractDtoOut;
 
 /**
- * Simple Dto for demonstration of validations usage.
+ * Simple DTO out used as CMD response.
  */
 public final class EchoDtoOut extends AbstractDtoOut {
 

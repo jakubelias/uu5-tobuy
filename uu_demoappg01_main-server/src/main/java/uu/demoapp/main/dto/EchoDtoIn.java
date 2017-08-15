@@ -3,7 +3,7 @@ package uu.demoapp.main.dto;
 import uu.app.validation.ValidationType;
 
 /**
- * Simple Dto for demonstration of CommandContext.
+ * Simple Dto for demonstration of CommandContext and validation usage.
  */
 @ValidationType("echoType")
 public final class EchoDtoIn {

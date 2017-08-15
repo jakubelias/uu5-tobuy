@@ -13,7 +13,6 @@ apply plugin: 'uu.appg01'
 
 // repositories setup
 repositories {
-//  maven { url mavenLocal().url }
   maven { url uuProdRepository }
   maven { url uuBetaRepository }
   //TODO Only for development remove during release
@@ -88,6 +87,8 @@ configurations {
 }
 
 dependencies {
+  compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.0'
+
 //  compile project(':uu_demoappg01_main-client')
 
   compile("org.springframework.boot:spring-boot-starter-log4j2")
