@@ -1,118 +1,535 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2017-08-09T14:36:41.545Z",
-	"__export_source": "insomnia.desktop.app:v5.7.4",
+	"__export_date": "2017-08-17T11:18:00.896Z",
+	"__export_source": "insomnia.desktop.app:v5.7.11",
 	"resources": [
 		{
-			"_id": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
+			"_id": "wrk_c72a949358364ff783458a403178dbe7",
 			"parentId": null,
-			"modified": 1496929758882,
-			"created": 1496929758882,
-			"name": "Insomnia",
+			"modified": 1502887793621,
+			"created": 1497369235546,
+			"name": "uu5 template java",
 			"description": "",
 			"certificates": [],
 			"_type": "workspace"
 		},
 		{
-			"_id": "env_64859132f8b647a3a85091ae8c602b85",
-			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
-			"modified": 1497416541043,
-			"created": 1497416541043,
+			"_id": "env_946c512be3b44ec8bf6bddd7a2a72ee0",
+			"parentId": "wrk_c72a949358364ff783458a403178dbe7",
+			"modified": 1497369308682,
+			"created": 1497369308682,
 			"name": "Base Environment",
 			"data": {},
 			"color": null,
+			"isPrivate": false,
 			"_type": "environment"
 		},
 		{
-			"_id": "jar_9348929014c14c9d8318396cdbc00231",
-			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
-			"modified": 1497416572506,
-			"created": 1497416572506,
+			"_id": "jar_8fc6b8bd9d184a26aacd54df12f02711",
+			"parentId": "wrk_c72a949358364ff783458a403178dbe7",
+			"modified": 1502887767853,
+			"created": 1497369312273,
 			"name": "Default Jar",
 			"cookies": [],
 			"_type": "cookie_jar"
 		},
 		{
-			"_id": "req_baa9c55496874835a320664a237b5a30",
-			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
-			"modified": 1502268994369,
-			"created": 1502261286781,
-			"url": "http://localhost:8080/uu-demoappg01-main/0-0/echo",
-			"name": "uu-demoappg01-main/{awid}/echo",
+			"_id": "fld_fe7805a857cb4316b84c86c76710aa03",
+			"parentId": "wrk_c72a949358364ff783458a403178dbe7",
+			"modified": 1502889160259,
+			"created": 1502807316475,
+			"name": "sys",
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1502807316475,
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_21f29f6ecea0479dba160ec74ef30bc8",
+			"parentId": "wrk_c72a949358364ff783458a403178dbe7",
+			"modified": 1502889174805,
+			"created": 1502889166211,
+			"name": "uuBinaryStore",
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1501284308566,
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_4a7d1de798bd424cb02593f7754ec1da",
+			"parentId": "wrk_c72a949358364ff783458a403178dbe7",
+			"modified": 1502889199057,
+			"created": 1502889192684,
+			"name": "uuObjectStore",
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1500522804611.5,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_201c964da2184f51a78e2c59bb2f55a1",
+			"parentId": "wrk_c72a949358364ff783458a403178dbe7",
+			"modified": 1502968607053,
+			"created": 1502968577913,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/echo",
+			"name": "echo",
 			"description": "",
 			"method": "GET",
-			"body": {},
-			"parameters": [
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"text\": \"Java is here!\"\n}"
+			},
+			"parameters": [],
+			"headers": [
 				{
-					"name": "text",
-					"value": "Java is here !",
-					"id": "pair_42ed5338eff0482c9a4a4b8a4f4f0579",
-					"disabled": false
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_7ac2ca738dd04e93a74c5c838e58df59"
 				}
 			],
-			"headers": [],
 			"authentication": {},
-			"metaSortKey": -1497416540846,
-			"settingStoreCookies": false,
-			"settingSendCookies": false,
+			"metaSortKey": -1502968577913,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
 			"settingDisableRenderRequestBody": false,
 			"settingEncodeUrl": true,
 			"_type": "request"
 		},
 		{
-			"_id": "req_7917a529fd7c4c399a0607f02dc46423",
-			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
-			"modified": 1502269012848,
-			"created": 1502268795340,
-			"url": "http://localhost:8080/uu-demoappg01-main/0-0/create",
-			"name": "uu-demoappg01-main/{awid}/create",
-			"description": "",
-			"method": "POST",
-			"body": {},
-			"parameters": [
-				{
-					"name": "text",
-					"value": "Java is here !",
-					"id": "pair_42ed5338eff0482c9a4a4b8a4f4f0579",
-					"disabled": false
-				}
-			],
-			"headers": [],
-			"authentication": {},
-			"metaSortKey": -1497416540833.5,
-			"settingStoreCookies": false,
-			"settingSendCookies": false,
-			"settingDisableRenderRequestBody": false,
-			"settingEncodeUrl": true,
-			"_type": "request"
-		},
-		{
-			"_id": "req_5f4ae367a95f4e4cb70eb3c00059c628",
-			"parentId": "wrk_d43baca8a7484cd486720b4c0e5bdb5e",
-			"modified": 1502289366105,
-			"created": 1502269840002,
-			"url": "http://localhost:8080/uu-demoappg01-main/0-0/hello",
-			"name": "uu-demoappg01-main/{awid}/hello",
+			"_id": "req_bd04bbf5c9bf45d9bfef4580e22c5f05",
+			"parentId": "wrk_c72a949358364ff783458a403178dbe7",
+			"modified": 1502968661667,
+			"created": 1502968614328,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/hello",
+			"name": "hello",
 			"description": "",
 			"method": "GET",
-			"body": {},
-			"parameters": [
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"text\": \"Java is here!\"\n}"
+			},
+			"parameters": [],
+			"headers": [
 				{
-					"name": "text",
-					"value": "Java is here !",
-					"id": "pair_42ed5338eff0482c9a4a4b8a4f4f0579",
-					"disabled": false
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_7ac2ca738dd04e93a74c5c838e58df59"
 				}
 			],
-			"headers": [],
 			"authentication": {
 				"type": "bearer",
-				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InE5c3MycWRGaWs2eVdjMENTVGlNLXcifQ.eyJqdGkiOiI1OThhZDIzNThlYTFhYTAwMDcxMWYzZjEiLCJpc3MiOiJodHRwczovL29pZGMucGx1czR1Lm5ldC91dS1vaWRjZzAxLW1haW4vMC0wIiwiZXhwIjoxNTAyMjc3MjA1LCJpYXQiOjE1MDIyNzAwMDUsIm5iZiI6MTUwMjI3MDAwNiwic3ViIjoiNThjN2YxM2IxNjVhODgwMDA3NGQ0YWI4IiwidXVfaWRlbnRpdHkiOiIxLTctMSIsInV1X2lkIjoiMS03LTEiLCJuYW1lIjoiUGV0ciBDaW9jaG_FiCIsImVtYWlsIjoiMS03LTFAcGx1czR1Lm5ldCIsImxvY2FsZSI6ImVuX3VzIiwibG9hIjowLCJhY3IiOjEsImFtciI6WyJwd2QiLCJ1dS1kbGciXSwiYXV0aF90aW1lIjoxNTAyMjcwMDA1LCJjbGllbnRfYXBwX2lkIjoiNThjN2YxM2ExNjVhODgwMDA3NGQ0YTdjIiwiY2xpZW50X2FwcF9jb2RlIjoiVVUuVU5SRUdJU1RFUkVELUFQUCIsImNsaWVudF9hcHBfbmFtZSI6Imh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJhenAiOiIvdXUtdW5yZWdpc3RlcmVkLWFwcC8wIiwiYXVkIjpbImh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJ1dS1vaWRjJTNBdW5yZWdpc3RlcmVkLWNsaWVudCUzQWh0dHBzJTNBJTJGJTJGb2lkYy5wbHVzNHUubmV0JTJGdXUtb2lkY2cwMS1tYWluJTJGMC0wIiwiL3V1LXVucmVnaXN0ZXJlZC1hcHAvMCJdfQ.iciBk0au55s9_DqgXNPOvodEeqdkFU7au6ITnN1aWWSyiZSYoax8Esu0yFXpvZlG0BP0iLBihPm5UNkibV8Mrm4bU1VJ3aFeUkwIoKS7ydmOzBloIeQsV9s"
+				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InFfdHBYemF1ckhpNG9MZlNzU09RMUEifQ.eyJqdGkiOiI1OTk1NzYwYWY0ZDRlNzAwMDcwNDA1NTEiLCJpc3MiOiJodHRwczovL29pZGMucGx1czR1Lm5ldC91dS1vaWRjZzAxLW1haW4vMC0wIiwiZXhwIjoxNTAyOTc0NTA2LCJpYXQiOjE1MDI5NjczMDYsIm5iZiI6MTUwMjk2NzMwNiwic3ViIjoiNTkyNDBmZGZhMDE2MzcwMDA3MTExN2MyIiwidXVfaWRlbnRpdHkiOiIxMi00NzAtMSIsInV1X2lkIjoiMTItNDcwLTEiLCJuYW1lIjoiRmlsaXAgVmVsZW3DrW5za8O9IiwiZW1haWwiOiIxMi00NzAtMUB1bmljb3JuLmNvbSIsImxvY2FsZSI6ImVuX3VzIiwibG9hIjowLCJhY3IiOjEsImFtciI6WyJwd2QiLCJ1dS1kbGciXSwiYXV0aF90aW1lIjoxNTAyOTY3MzA2LCJjbGllbnRfYXBwX2lkIjoiNThjN2YxM2ExNjVhODgwMDA3NGQ0YTdjIiwiY2xpZW50X2FwcF9jb2RlIjoiVVUuVU5SRUdJU1RFUkVELUFQUCIsImNsaWVudF9hcHBfbmFtZSI6Imh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJhenAiOiIvdXUtdW5yZWdpc3RlcmVkLWFwcC8wIiwiYXVkIjpbImh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJ1dS1vaWRjJTNBdW5yZWdpc3RlcmVkLWNsaWVudCUzQWh0dHBzJTNBJTJGJTJGb2lkYy5wbHVzNHUubmV0JTJGdXUtb2lkY2cwMS1tYWluJTJGMC0wIiwiL3V1LXVucmVnaXN0ZXJlZC1hcHAvMCJdfQ.GLid7-FDHxGnq8Z0Lt2Hns738-KDYvYYSUBjl8aCnvKzYtdsvSd7xknzGC7i1vlAIz1QPzczP_lXini8rlsOy0uZdEHOx-NiZs5NR-lLZE-PMr7O-Nfxe1RaOXOfLARU3W8SS8P9_syiHTedJRUQoTClMNyiJF2s5zMVez4OXYh"
 			},
-			"metaSortKey": -1497416540839.75,
-			"settingStoreCookies": false,
-			"settingSendCookies": false,
+			"metaSortKey": -1502929100578.5,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "env_214b228869c84345a620904395adbb42",
+			"parentId": "env_946c512be3b44ec8bf6bddd7a2a72ee0",
+			"modified": 1502887742571,
+			"created": 1502887730006,
+			"name": "New Environment",
+			"data": {},
+			"color": "#7d69cb",
+			"isPrivate": false,
+			"_type": "environment"
+		},
+		{
+			"_id": "req_4ca08466172d4815aa2f3785f725a3d0",
+			"parentId": "fld_fe7805a857cb4316b84c86c76710aa03",
+			"modified": 1502887960683,
+			"created": 1502803801804,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111112/sys/listProfiles",
+			"name": "sys/ListProfiles",
+			"description": "",
+			"method": "GET",
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_11564f7ee5ad49bd8d1c6305e8ae005b"
+				}
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InFfdHBYemF1ckhpNG9MZlNzU09RMUEifQ.eyJqdGkiOiI1OTk0MmY5M2Y0ZDRlNzAwMDcwMzgwNzMiLCJpc3MiOiJodHRwczovL29pZGMucGx1czR1Lm5ldC91dS1vaWRjZzAxLW1haW4vMC0wIiwiZXhwIjoxNTAyODkwOTMxLCJpYXQiOjE1MDI4ODM3MzEsIm5iZiI6MTUwMjg4MzczMiwic3ViIjoiNTkyNDBmZGZhMDE2MzcwMDA3MTExN2MyIiwidXVfaWRlbnRpdHkiOiIxMi00NzAtMSIsInV1X2lkIjoiMTItNDcwLTEiLCJuYW1lIjoiRmlsaXAgVmVsZW3DrW5za8O9IiwiZW1haWwiOiIxMi00NzAtMUB1bmljb3JuLmNvbSIsImxvY2FsZSI6ImVuX3VzIiwibG9hIjowLCJhY3IiOjEsImFtciI6WyJwd2QiLCJ1dS1kbGciXSwiYXV0aF90aW1lIjoxNTAyODgzNzMxLCJjbGllbnRfYXBwX2lkIjoiNThjN2YxM2ExNjVhODgwMDA3NGQ0YTdjIiwiY2xpZW50X2FwcF9jb2RlIjoiVVUuVU5SRUdJU1RFUkVELUFQUCIsImNsaWVudF9hcHBfbmFtZSI6Imh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJhenAiOiIvdXUtdW5yZWdpc3RlcmVkLWFwcC8wIiwiYXVkIjpbImh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJ1dS1vaWRjJTNBdW5yZWdpc3RlcmVkLWNsaWVudCUzQWh0dHBzJTNBJTJGJTJGb2lkYy5wbHVzNHUubmV0JTJGdXUtb2lkY2cwMS1tYWluJTJGMC0wIiwiL3V1LXVucmVnaXN0ZXJlZC1hcHAvMCJdfQ.diHdbuRnlE9UdEQhGCqi7oB8jUq-g7s2vM0400su1qUF9qDVVe_CD6aVRcD3xPR1IWLB5jJNEUM5-A1k6DaoWYoXVR9MD5ju6-2SWxrfhS-mP3x3hP3JOyrFSdK5FJ5e38qZe0LkWk9DJQRbNJDpCjCK1Z1-aadza7QlQv91Icc"
+			},
+			"metaSortKey": -1502807316200,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_b0015954c25a4536b66a8ab8d0f45992",
+			"parentId": "fld_fe7805a857cb4316b84c86c76710aa03",
+			"modified": 1502887946337,
+			"created": 1502804502832,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/sys/setProfile",
+			"name": "sys/setProfile",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"code\": \"echo\",\n\t\"roleUri\": \"urn:uu:GGALL\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_11564f7ee5ad49bd8d1c6305e8ae005b"
+				}
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InFfdHBYemF1ckhpNG9MZlNzU09RMUEifQ.eyJqdGkiOiI1OTk0MmY5M2Y0ZDRlNzAwMDcwMzgwNzMiLCJpc3MiOiJodHRwczovL29pZGMucGx1czR1Lm5ldC91dS1vaWRjZzAxLW1haW4vMC0wIiwiZXhwIjoxNTAyODkwOTMxLCJpYXQiOjE1MDI4ODM3MzEsIm5iZiI6MTUwMjg4MzczMiwic3ViIjoiNTkyNDBmZGZhMDE2MzcwMDA3MTExN2MyIiwidXVfaWRlbnRpdHkiOiIxMi00NzAtMSIsInV1X2lkIjoiMTItNDcwLTEiLCJuYW1lIjoiRmlsaXAgVmVsZW3DrW5za8O9IiwiZW1haWwiOiIxMi00NzAtMUB1bmljb3JuLmNvbSIsImxvY2FsZSI6ImVuX3VzIiwibG9hIjowLCJhY3IiOjEsImFtciI6WyJwd2QiLCJ1dS1kbGciXSwiYXV0aF90aW1lIjoxNTAyODgzNzMxLCJjbGllbnRfYXBwX2lkIjoiNThjN2YxM2ExNjVhODgwMDA3NGQ0YTdjIiwiY2xpZW50X2FwcF9jb2RlIjoiVVUuVU5SRUdJU1RFUkVELUFQUCIsImNsaWVudF9hcHBfbmFtZSI6Imh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJhenAiOiIvdXUtdW5yZWdpc3RlcmVkLWFwcC8wIiwiYXVkIjpbImh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJ1dS1vaWRjJTNBdW5yZWdpc3RlcmVkLWNsaWVudCUzQWh0dHBzJTNBJTJGJTJGb2lkYy5wbHVzNHUubmV0JTJGdXUtb2lkY2cwMS1tYWluJTJGMC0wIiwiL3V1LXVucmVnaXN0ZXJlZC1hcHAvMCJdfQ.diHdbuRnlE9UdEQhGCqi7oB8jUq-g7s2vM0400su1qUF9qDVVe_CD6aVRcD3xPR1IWLB5jJNEUM5-A1k6DaoWYoXVR9MD5ju6-2SWxrfhS-mP3x3hP3JOyrFSdK5FJ5e38qZe0LkWk9DJQRbNJDpCjCK1Z1-aadza7QlQv91Icc"
+			},
+			"metaSortKey": -1502807316300,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_cf8cc3c80fb34381abce71f088c41141",
+			"parentId": "fld_fe7805a857cb4316b84c86c76710aa03",
+			"modified": 1502887956378,
+			"created": 1502805370680,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111112/sys/createPermission",
+			"name": "sys/createPermission",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"profileCode\": \"echo\",\n\t\"uuIdentityList\": \"12-470-1\" \n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_11564f7ee5ad49bd8d1c6305e8ae005b"
+				}
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InFfdHBYemF1ckhpNG9MZlNzU09RMUEifQ.eyJqdGkiOiI1OTkyZjRlZmY0ZDRlNzAwMDcwMzBjMzgiLCJpc3MiOiJodHRwczovL29pZGMucGx1czR1Lm5ldC91dS1vaWRjZzAxLW1haW4vMC0wIiwiZXhwIjoxNTAyODEwMzgzLCJpYXQiOjE1MDI4MDMxODMsIm5iZiI6MTUwMjgwMzE4NSwic3ViIjoiNTkyNDBmZGZhMDE2MzcwMDA3MTExN2MyIiwidXVfaWRlbnRpdHkiOiIxMi00NzAtMSIsInV1X2lkIjoiMTItNDcwLTEiLCJuYW1lIjoiRmlsaXAgVmVsZW3DrW5za8O9IiwiZW1haWwiOiIxMi00NzAtMUB1bmljb3JuLmNvbSIsImxvY2FsZSI6ImVuX3VzIiwibG9hIjowLCJhY3IiOjEsImFtciI6WyJwd2QiLCJ1dS1kbGciXSwiYXV0aF90aW1lIjoxNTAyODAzMTgyLCJjbGllbnRfYXBwX2lkIjoiNThjN2YxM2ExNjVhODgwMDA3NGQ0YTdjIiwiY2xpZW50X2FwcF9jb2RlIjoiVVUuVU5SRUdJU1RFUkVELUFQUCIsImNsaWVudF9hcHBfbmFtZSI6Imh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJhenAiOiIvdXUtdW5yZWdpc3RlcmVkLWFwcC8wIiwiYXVkIjpbImh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJ1dS1vaWRjJTNBdW5yZWdpc3RlcmVkLWNsaWVudCUzQWh0dHBzJTNBJTJGJTJGb2lkYy5wbHVzNHUubmV0JTJGdXUtb2lkY2cwMS1tYWluJTJGMC0wIiwiL3V1LXVucmVnaXN0ZXJlZC1hcHAvMCJdfQ.rEkKs1A4ZmY688EV2YiTb4cFGKhQJzKNDKykUGSAVQJXYCbVP62SfbTiCtVZzjM9iMZCfnyipRPycO0DK-zKLgO9_CBx9O4tZJ-et9fKb6PQL5ysUNAoFCQIsm-z9sDVgsrdUEGAiR8eHK4zl_QapyhMW87dByt_uMdzSZu6H20"
+			},
+			"metaSortKey": -1502807316250,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_c115ff610ecb4c36a3bb8cd596006e78",
+			"parentId": "fld_fe7805a857cb4316b84c86c76710aa03",
+			"modified": 1502887939068,
+			"created": 1502808473411,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-00000000000000000000000000000001/sys/initAppWorkspace",
+			"name": "sys/initAppWorkspace",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"awid\": \"11111111111111111111111111111111\",\n\t\"sysOwner\": \"12-470-1\",\n\t\"licenseOwner\" : {\n\t\t\"organization\" : {\n\t\t\t\"name\" : \"Farma Strachovice\",\n\t\t\t\"oId\" : \"154156465465162\",\n\t\t\t\"web\" : \"http://www.strachovice.cz/\"\n\t\t},\n\t\t\"userList\" : [\n\t\t\t{\n\t\t\t\t\"uuIdentity\" : \"1-1\",\n\t\t\t\t\"name\" : \"Vladimír Kovář\"\n\t\t\t}\n\t\t]\n\t}\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_11564f7ee5ad49bd8d1c6305e8ae005b"
+				}
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InFfdHBYemF1ckhpNG9MZlNzU09RMUEifQ.eyJqdGkiOiI1OTk0MmY5M2Y0ZDRlNzAwMDcwMzgwNzMiLCJpc3MiOiJodHRwczovL29pZGMucGx1czR1Lm5ldC91dS1vaWRjZzAxLW1haW4vMC0wIiwiZXhwIjoxNTAyODkwOTMxLCJpYXQiOjE1MDI4ODM3MzEsIm5iZiI6MTUwMjg4MzczMiwic3ViIjoiNTkyNDBmZGZhMDE2MzcwMDA3MTExN2MyIiwidXVfaWRlbnRpdHkiOiIxMi00NzAtMSIsInV1X2lkIjoiMTItNDcwLTEiLCJuYW1lIjoiRmlsaXAgVmVsZW3DrW5za8O9IiwiZW1haWwiOiIxMi00NzAtMUB1bmljb3JuLmNvbSIsImxvY2FsZSI6ImVuX3VzIiwibG9hIjowLCJhY3IiOjEsImFtciI6WyJwd2QiLCJ1dS1kbGciXSwiYXV0aF90aW1lIjoxNTAyODgzNzMxLCJjbGllbnRfYXBwX2lkIjoiNThjN2YxM2ExNjVhODgwMDA3NGQ0YTdjIiwiY2xpZW50X2FwcF9jb2RlIjoiVVUuVU5SRUdJU1RFUkVELUFQUCIsImNsaWVudF9hcHBfbmFtZSI6Imh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJhenAiOiIvdXUtdW5yZWdpc3RlcmVkLWFwcC8wIiwiYXVkIjpbImh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJ1dS1vaWRjJTNBdW5yZWdpc3RlcmVkLWNsaWVudCUzQWh0dHBzJTNBJTJGJTJGb2lkYy5wbHVzNHUubmV0JTJGdXUtb2lkY2cwMS1tYWluJTJGMC0wIiwiL3V1LXVucmVnaXN0ZXJlZC1hcHAvMCJdfQ.diHdbuRnlE9UdEQhGCqi7oB8jUq-g7s2vM0400su1qUF9qDVVe_CD6aVRcD3xPR1IWLB5jJNEUM5-A1k6DaoWYoXVR9MD5ju6-2SWxrfhS-mP3x3hP3JOyrFSdK5FJ5e38qZe0LkWk9DJQRbNJDpCjCK1Z1-aadza7QlQv91Icc"
+			},
+			"metaSortKey": -1502807316337.5,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_0d904683c334471ca4ebd301b272a65e",
+			"parentId": "fld_21f29f6ecea0479dba160ec74ef30bc8",
+			"modified": 1502889166259,
+			"created": 1502889166259,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/uu-binarystore/createBinary",
+			"name": "uu-binarystore/createBinary",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"name": "name",
+						"value": "Chameleon",
+						"id": "pair_7c85cd2602914cf6b1a9373996dc89be"
+					},
+					{
+						"name": "data",
+						"value": "",
+						"id": "pair_50c8da2921e446c7a6a000acd88273ba",
+						"type": "file",
+						"fileName": "C:\\Users\\velef\\Pictures\\226282.jpg"
+					},
+					{
+						"name": "code",
+						"value": "1111111111222222222233333333334444444444555555555566666666667771",
+						"id": "pair_14d3e0f774de481bbb1869c610b0a825"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "multipart/form-data",
+					"id": "pair_e2541cc89fc14f38b3f22959512a19d4"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1502807316050,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_2696baf4b0b54e77abbea8e8bb770e16",
+			"parentId": "fld_21f29f6ecea0479dba160ec74ef30bc8",
+			"modified": 1502955067025,
+			"created": 1502889166264,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/uu-binarystore/getBinary",
+			"name": "uu-binarystore/getBinary",
+			"description": "",
+			"method": "GET",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"code\":\"1111111111222222222233333333334444444444555555555566666666667771\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_e2541cc89fc14f38b3f22959512a19d4"
+				}
+			],
+			"authentication": {
+				"type": "basic",
+				"disabled": false,
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1502807316000,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_d21f79ee8c3e4a96b1abac0f228094e7",
+			"parentId": "fld_21f29f6ecea0479dba160ec74ef30bc8",
+			"modified": 1502961907843,
+			"created": 1502889166273,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/uu-binarystore/getBinaryData",
+			"name": "uu-binarystore/getBinaryData",
+			"description": "",
+			"method": "GET",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"code\":\"1111111111222222222233333333334444444444555555555566666666667771\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_e2541cc89fc14f38b3f22959512a19d4"
+				}
+			],
+			"authentication": {
+				"type": "basic",
+				"disabled": false,
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1501284312620.5,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_5491a145a37f49d696d687e009c48c23",
+			"parentId": "fld_21f29f6ecea0479dba160ec74ef30bc8",
+			"modified": 1502961993168,
+			"created": 1502961916325,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/createImage",
+			"name": "createImage",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"name": "name",
+						"value": "Image1",
+						"id": "pair_7c85cd2602914cf6b1a9373996dc89be"
+					},
+					{
+						"name": "code",
+						"value": "1111111111222222222233333333334444444444555555555566666666667772",
+						"id": "pair_14d3e0f774de481bbb1869c610b0a825"
+					},
+					{
+						"name": "description",
+						"value": "my testing image 1",
+						"id": "pair_090ea5fd72534ca99aaec1d5dd9f65a6"
+					},
+					{
+						"name": "data",
+						"value": "",
+						"id": "pair_50c8da2921e446c7a6a000acd88273ba",
+						"type": "file",
+						"fileName": "C:\\Users\\velef\\Pictures\\1920x1200_clouds-sky-awesome-azure-HD-Wallpaper.jpg"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "multipart/form-data",
+					"id": "pair_e2541cc89fc14f38b3f22959512a19d4"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1501284312570.5,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_c8baac4e7e324106b57717cf84968769",
+			"parentId": "fld_21f29f6ecea0479dba160ec74ef30bc8",
+			"modified": 1502962119047,
+			"created": 1502962104100,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/getImage",
+			"name": "getImage",
+			"description": "",
+			"method": "GET",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"code\":\"1111111111222222222233333333334444444444555555555566666666667772\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_e2541cc89fc14f38b3f22959512a19d4"
+				}
+			],
+			"authentication": {
+				"type": "basic",
+				"disabled": false,
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1501284312520.5,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_1ac5874106ad481e9a160c9dee86b6cb",
+			"parentId": "fld_4a7d1de798bd424cb02593f7754ec1da",
+			"modified": 1502889192689,
+			"created": 1502889192689,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/createAddress",
+			"name": "createAddress",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"Unicorn2\",\n\t\"street\": \"123\",\n\t\"city\": \"Prg\",\n\t\"postalCode\": 13000,\n\t\"country\": \"CZ\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_11564f7ee5ad49bd8d1c6305e8ae005b"
+				}
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InFfdHBYemF1ckhpNG9MZlNzU09RMUEifQ.eyJqdGkiOiI1OTk0MmY5M2Y0ZDRlNzAwMDcwMzgwNzMiLCJpc3MiOiJodHRwczovL29pZGMucGx1czR1Lm5ldC91dS1vaWRjZzAxLW1haW4vMC0wIiwiZXhwIjoxNTAyODkwOTMxLCJpYXQiOjE1MDI4ODM3MzEsIm5iZiI6MTUwMjg4MzczMiwic3ViIjoiNTkyNDBmZGZhMDE2MzcwMDA3MTExN2MyIiwidXVfaWRlbnRpdHkiOiIxMi00NzAtMSIsInV1X2lkIjoiMTItNDcwLTEiLCJuYW1lIjoiRmlsaXAgVmVsZW3DrW5za8O9IiwiZW1haWwiOiIxMi00NzAtMUB1bmljb3JuLmNvbSIsImxvY2FsZSI6ImVuX3VzIiwibG9hIjowLCJhY3IiOjEsImFtciI6WyJwd2QiLCJ1dS1kbGciXSwiYXV0aF90aW1lIjoxNTAyODgzNzMxLCJjbGllbnRfYXBwX2lkIjoiNThjN2YxM2ExNjVhODgwMDA3NGQ0YTdjIiwiY2xpZW50X2FwcF9jb2RlIjoiVVUuVU5SRUdJU1RFUkVELUFQUCIsImNsaWVudF9hcHBfbmFtZSI6Imh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJhenAiOiIvdXUtdW5yZWdpc3RlcmVkLWFwcC8wIiwiYXVkIjpbImh0dHBzOi8vb2lkYy5wbHVzNHUubmV0L3V1LW9pZGNnMDEtbWFpbi8wLTAiLCJ1dS1vaWRjJTNBdW5yZWdpc3RlcmVkLWNsaWVudCUzQWh0dHBzJTNBJTJGJTJGb2lkYy5wbHVzNHUubmV0JTJGdXUtb2lkY2cwMS1tYWluJTJGMC0wIiwiL3V1LXVucmVnaXN0ZXJlZC1hcHAvMCJdfQ.diHdbuRnlE9UdEQhGCqi7oB8jUq-g7s2vM0400su1qUF9qDVVe_CD6aVRcD3xPR1IWLB5jJNEUM5-A1k6DaoWYoXVR9MD5ju6-2SWxrfhS-mP3x3hP3JOyrFSdK5FJ5e38qZe0LkWk9DJQRbNJDpCjCK1Z1-aadza7QlQv91Icc"
+			},
+			"metaSortKey": -1502807316150,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_fa9abee1cf614e03ad8add563d96d69e",
+			"parentId": "fld_4a7d1de798bd424cb02593f7754ec1da",
+			"modified": 1502889192694,
+			"created": 1502889192694,
+			"url": "http://localhost:8080/uu-demoappg01-main/00000000000000000000000000000000-11111111111111111111111111111111/findAddress",
+			"name": "findAddress",
+			"description": "",
+			"method": "GET",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"street\": \"123\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_11564f7ee5ad49bd8d1c6305e8ae005b"
+				}
+			],
+			"authentication": {
+				"type": "basic",
+				"disabled": false,
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1502807316100,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
 			"settingDisableRenderRequestBody": false,
 			"settingEncodeUrl": true,
 			"_type": "request"
