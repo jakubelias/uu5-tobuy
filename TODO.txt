@@ -1,8 +1,13 @@
-1. mapping DTO na Entitu a zpet. Vyuzivam modelMapper (http://modelmapper.org). Zamyslet se, zdali neprovadet convertovani jiz v controlleru - co jsem se docetl jsem mozné obe varianty ale je doporuceno spise v controlleru.
+1. mapping DTO na Entitu a zpet. Vyuzivam modelMapper (http://modelmapper.org). Zamyslet se, zdali neprovadet convertovani jiz v controlleru - co jsem se docetl, jsou mozné obe varianty ale je doporuceno spise v controlleru.
 2. má být projekt serveru závislý na clientu? - Tj, bylo by zajisteno aby se vzdy pri spusteni serveru (lokalne) proved build clientu => Aktualni verze klintu X čas strávení buildem (v Ruby je nutné buildit klienta zvlast, rucne)
 3. vyjímky - měla by být pro každý cmd vlastní vyjimka invalidDtoIn? Tj uu-demoappg01-main/echo/invalidDtoIn, uu-demoappg01-main/createAddress/invalidDtoIn atd?
-4. vyjimky - presunout tridu *RuntimeException do vlastního package? (aktualne v model)
+4. Aktualizace insomnia-workspace pro nové commandy (pripadne pridat i init workspace)
+5. konfigurace maximalni velikosti requestu / souboru v rámci springu.
+    spring.http.multipart.max-file-size=16768KB
+    spring.http.multipart.max-request-size=16768KB
+   File-size je v podstate stejne jako maxSob => jak konfiguraci sjednotit (Ruby? - zeptat se P. Bartoše), konfigurovat již v uuAppServeru?
 
 Hradec:
 - CMD sys/setProfile pravdepodobne nerefreshne cache, takze se projevi az po restartu serveru. (informován Jiří Neuman)
 - chybí podpora development.json, jako je tomu v Ruby (aktualne se tid, awid a uuSubAppSysOwner zapisují v application.properties), zaroven z toho vyplývá jiná struktura parametrů při deployi aplikace
+- v systémových kolekcích (sysAppWorkspace, sysAppWorkspaceConfig, sysProfile) vytvořených při inicializaci uuAppWorkspace chybí indexy - zamyslet se, zdali nejsou potřeba

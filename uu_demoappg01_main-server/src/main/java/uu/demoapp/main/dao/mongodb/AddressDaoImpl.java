@@ -10,6 +10,9 @@ import uu.app.objectstore.mongodb.dao.UuObjectMongoDbDao;
 import uu.demoapp.main.dao.AddressDao;
 import uu.demoapp.main.domain.Address;
 
+/**
+ * UuObjectStore DAO example.
+ */
 @ObjectStoreDao(entity = Address.class, storage = "demoObjectStore")
 public class AddressDaoImpl extends UuObjectMongoDbDao<Address> implements AddressDao {
 

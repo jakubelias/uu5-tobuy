@@ -13,3 +13,17 @@ const createAddressType = shape({
 const findAddressType = shape({
   street: string(150).isRequired()
 });
+
+const createImageType = shape({
+  code: hexa64Code(),
+  name: uu5String(255),
+  description: uu5String(4000),
+  filename: string(255),
+  contentType: string(256),
+  data: binary().isRequired()
+});
+
+const getImageType = shape({
+  code: hexa64Code().isRequired(),
+  contentDisposition: oneOf(["inline", "attachment"])
+});

@@ -11,7 +11,8 @@ import uu.demoapp.main.domain.Address;
 import uu.demoapp.main.dto.AddressDtoOut;
 import uu.demoapp.main.dto.CreateAddressDtoIn;
 import uu.demoapp.main.dto.FindAddressDtoIn;
-import uu.demoapp.main.model.DemoRuntimeException.Error;
+import uu.demoapp.main.exceptions.DemoRuntimeException;
+import uu.demoapp.main.exceptions.DemoRuntimeException.Error;
 
 /**
  * Model containing uuObjectStore usage sample.

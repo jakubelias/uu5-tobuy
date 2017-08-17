@@ -29,13 +29,18 @@
       "sys/listPermissions": ["SysOwner"],
       "sys/deletePermission": ["SysOwner"],
 
-      "uu-binarystore/createBinary" : ["echo"],
-
       "echo" : ["echo","public"],
       "loadDemoContent" : ["echo"],
       "hello" : ["echo"],
+
       "createAddress" : ["echo"],
-      "findAddress" : ["echo"]
+      "findAddress" : ["echo"],
+
+      "uu-binarystore/createBinary" : ["echo"],
+      "uu-binarystore/getBinary" : ["echo"],
+      "uu-binarystore/getBinaryData" : ["echo"],
+      "createImage" : ["echo"],
+      "getImage" : ["echo"]
     }
   }
 }

@@ -8,7 +8,8 @@ import uu.app.validation.Validator;
 import uu.app.validation.utils.ValidationResultUtils;
 import uu.demoapp.main.dto.EchoDtoIn;
 import uu.demoapp.main.dto.EchoDtoOut;
-import uu.demoapp.main.model.DemoRuntimeException.Error;
+import uu.demoapp.main.exceptions.DemoRuntimeException;
+import uu.demoapp.main.exceptions.DemoRuntimeException.Error;
 
 /**
  * Simple Model showing working with DTOs, validations and exceptions.
