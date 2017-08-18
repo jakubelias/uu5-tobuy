@@ -14,7 +14,7 @@ public final class CreateAddressDtoIn {
   private String name;
   private String street;
   private String city;
-  private int postalCode;
+  private Integer postalCode;
   private String country;
 
   public String getName() {
@@ -41,11 +41,11 @@ public final class CreateAddressDtoIn {
     this.city = city;
   }
 
-  public int getPostalCode() {
+  public Integer getPostalCode() {
     return postalCode;
   }
 
-  public void setPostalCode(int postalCode) {
+  public void setPostalCode(Integer postalCode) {
     this.postalCode = postalCode;
   }
 

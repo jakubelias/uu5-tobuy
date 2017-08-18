@@ -15,7 +15,7 @@ public final class AddressDtoOut {
   private String name;
   private String street;
   private String city;
-  private String postalCode;
+  private Integer postalCode;
   private String country;
 
   public String getId() {
@@ -50,11 +50,11 @@ public final class AddressDtoOut {
     this.city = city;
   }
 
-  public String getPostalCode() {
+  public Integer getPostalCode() {
     return postalCode;
   }
 
-  public void setPostalCode(String postalCode) {
+  public void setPostalCode(Integer postalCode) {
     this.postalCode = postalCode;
   }
 
