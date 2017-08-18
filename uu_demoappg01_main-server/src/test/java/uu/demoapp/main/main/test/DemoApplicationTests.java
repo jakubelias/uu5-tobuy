@@ -48,7 +48,7 @@ public class DemoApplicationTests {
   }
 
   @Test
-  public void createBinaryTest() throws Exception {
+  public void echoTest() throws Exception {
     String text = "Testing text.";
 
     MvcResult result = mockMvc.perform(get(CONTEXT_PATH + "/0-0/echo")
