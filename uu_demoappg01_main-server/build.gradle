@@ -90,6 +90,12 @@ dependencies {
 bootRepackage {
   enabled = false
 }
+
+bootRun {
+  systemProperties = [
+    'spring.profiles.default': 'development' // override the default profile when executing from gradle
+  ]
+}
 task uuRun(group: "uu", dependsOn: bootRun)
 
 // testing with embedded MongoDb
