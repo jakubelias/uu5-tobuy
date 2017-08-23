@@ -1,6 +1,14 @@
 {
-  "uuCloudResourcePoolUri": "ues:DEV0116-BT:DEV",
-  "config": {
-    "objectStoreUri": "mongodb://<user>:<password>mongo.plus4u.net:27017/<dbname>"
-  }
+  "uuCloudAppBoxLocationUri" : "ues:UU-BT:PRD.UU-APPG01-SERVER-JAVA/APPBOX",
+  "uuCloudResourcePoolUri" : "ues:DEV0116-BT:DEV",
+  "uuCloudDeploymentConfig" : {
+    "objectStoreUri" : "mongodb://gg8rjsmofhwva476eu85f9kf2gwzmc14__f1vfj9trces4tqwwcccyo6w8hl165h0ep6ozkgr:VS5lO8iCGjebWEW2vH0A7@h-zk893n61.rg-o5ojnm69.mongo-o-s.eu-n-1.cloud.plus4u.net:27017,h-h0dv6qe3.rg-o5ojnm69.mongo-o-s.eu-n-1.cloud.plus4u.net:27017/gg8rjsmofhwva476eu85f9kf2gwzmc14",
+    "uuSubAppSysOwner" : "19-2560-1",
+    "tid" : "84723967990075193",
+    "asid" : "b493d99bc97847b1929abe3b41b73333"
+  },
+  "uuCloudAppBoxUri" : "ues:UU-BT:UU.DEMOAPPG01.MAIN/APPBOX-0.1.0-SNAPSHOT",
+  "uuCloudAppDeploymentUri" : "ues:DEV0116-BT[84723967990075193]:DEV[590ad6f527928911f9d6078d]:UU.DEMOAPPG01.MAIN[598b7fe406dfdf55ae99b2aa]",
+  "uuCloudShareTerritories" : [ "ues:84723967990075193-b493d99bc97847b1929abe3b41b73333:84723967990075193-b493d99bc97847b1929abe3b41b73333", "ues:84723967990075193-920ebf3f9f3f4a5dabcce0d67f899598:84723967990075193-920ebf3f9f3f4a5dabcce0d67f899598" ],
+  "uuCloudUnshareTerritories" : [ "ues:84723967990075193-920ebf3f9f3f4a5dabcce0d67f899598:84723967990075193-920ebf3f9f3f4a5dabcce0d67f899598" ]
 }

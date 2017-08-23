@@ -83,8 +83,6 @@ configurations {
 }
 
 dependencies {
-//  compile project(':uu_demoappg01_main-client')
-
   compile("org.springframework.boot:spring-boot-starter-log4j2")
   compile("uu.appg01.server-server:uu_appg01_server-server:${uuAppg01ServerVersion}")
   compile "net.minidev:json-smart:2.2.1"
@@ -95,12 +93,6 @@ dependencies {
 
 bootRepackage {
   enabled = false
-}
-
-bootRun {
-  systemProperties = [
-    'staticResource.location': 'file:./public/'
-  ]
 }
 task uuRun(group: "uu", dependsOn: bootRun)
 
@@ -145,13 +137,9 @@ war {
   }
 }
 
+// Deployment configuration location. Variable env is automatically resolved by plugin depending on project's property 'env'
 uuDeploySettings {
-  appBoxLocationUri = project.uuCloudAppBoxLocationUri
-  resourcePoolUri = project.uuCloudResourcePoolUri
-  shares = project.uuCloudShares
-  if (project.hasProperty('uuCloudDeployParams') && project.uuCloudDeployParams) {
-    deployConfig = project.uuCloudDeployParams
-  }
+  uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
 }
 
 // mapping and persistence json generation
