@@ -74,10 +74,6 @@ dependencyManagement {
   }
 }
 
-ext {
-  uuAppg01ServerVersion = "1.1.0-SNAPSHOT"
-}
-
 configurations {
   all*.exclude module: 'spring-boot-starter-logging'
 }
