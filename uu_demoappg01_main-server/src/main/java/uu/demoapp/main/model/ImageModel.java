@@ -2,10 +2,7 @@ package uu.demoapp.main.model;
 
 import java.io.IOException;
 import javax.inject.Inject;
-import javax.print.attribute.standard.Destination;
-import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
