@@ -1,5 +1,5 @@
 1. má být projekt serveru závislý na clientu? - Tj, bylo by zajisteno aby se vzdy pri spusteni serveru (lokalne) proved build clientu => Aktualni verze klintu X čas strávení buildem (v Ruby je nutné buildit klienta zvlast, rucne)
-  => aktuálně vyřešeno pomocí env profilu tak, že se client buildi pokazde, pokud se nejedná o dev prostředí (při vývoji si musi programátor v případě potřeby zavolat build ručně)
+  => možné řešení je také pomocí env gradle profilu tak, že se client buildi pokazde, pokud se nejedná o dev prostředí (při vývoji si musi programátor v případě potřeby zavolat build ručně)
 2. vyjímky - měla by být pro každý cmd vlastní vyjimka invalidDtoIn? Tj uu-demoappg01-main/echo/invalidDtoIn, uu-demoappg01-main/createAddress/invalidDtoIn atd?
 3. konfigurace maximalni velikosti requestu / souboru v rámci springu.
     spring.http.multipart.max-file-size=16768KB
