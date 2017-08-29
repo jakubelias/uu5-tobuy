@@ -15,7 +15,8 @@ const DemoSpa = React.createClass({
     UU5.Common.BaseMixin,
     UU5.Common.ElementaryMixin,
     UU5.Common.NestingLevelMixin,
-    UU5.Common.IdentityMixin
+    UU5.Common.IdentityMixin,
+    UU5.Common.CcrWriterMixin
   ],
   //@@viewOff:mixins
 
@@ -26,6 +27,10 @@ const DemoSpa = React.createClass({
     classNames: {
       main: Cfg.CSS + "-demo-spa clear-sans"
     },
+    opt: {
+      nestingLevelWrapper: true,
+      ccrKey: Cfg.CCRKEY_SPA_AUTHENTICATED
+    }
   },
   //@@viewOff:statics
 
@@ -36,10 +41,6 @@ const DemoSpa = React.createClass({
   //@@viewOff:getDefaultProps
 
   //@@viewOn:standardComponentLifeCycle
-  getInitialState() {
-    UU5.Environment.spa = this;
-    return {};
-  },
   //@@viewOff:standardComponentLifeCycle
 
   //@@viewOn:interface
@@ -53,16 +54,16 @@ const DemoSpa = React.createClass({
 
   //@@viewOn:render
   render() {
-    return (
-      this.getNestingLevel()
-        ? (
-        <Plus4U5.App.Frame {...this.getMainPropsToPass()}>
-          {this.isAuthenticated() && <DemoSpaAuthenticated name="authenticated"/>}
-          {this.isNotAuthenticated() && <DemoSpaNotAuthenticated name="notAuthenticated"/>}
-          {this.isPending() && <Plus4U5.Bricks.Loading/>}
-        </Plus4U5.App.Frame>
-      ) : null
-    );
+    let child;
+    if (this.isAuthenticated()) {
+      child = <DemoSpaAuthenticated {...this.getMainPropsToPass()} name="authenticated"/>
+    } else if (this.isNotAuthenticated()) {
+      child = <DemoSpaNotAuthenticated {...this.getMainPropsToPass()} name="notAuthenticated"/>
+    } else {
+      child = <Plus4U5.Bricks.Loading {...this.getMainPropsToPass()}/>
+    }
+
+    return this.getNestingLevel() ? child : null;
   }
   //@@viewOff:render
 });

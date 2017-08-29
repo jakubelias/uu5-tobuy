@@ -30,21 +30,20 @@ function getWebpackConfig(options) {
   var src = path.relative(path.resolve("."), srcAbsPath).replace(/\\/g, "/");
 
   // CONFIG webpack rules
-  var extractCss = (opts.separateCss ? new ExtractTextPlugin(((opts.outputFile || "").replace(/\.js$/, "") || "[name]") + ".css") : null);
+  var cssRule, lessRule;
   var rules = [{
     oneOf: [ // use only first matched
       { test: /\.jsx?$/, use: ["babel-loader"], parser: { import: false, system: false } },
-      (extractCss
-          ? { test: /\.css$/, use: [extractCss.extract(["css-loader"])] }
-          : { test: /\.css$/, use: ["style-loader", "css-loader"] }
-        ),
-        (extractCss
-            ? { test: /\.less$/, use: [extractCss.extract(["css-loader", "less-loader"])] }
-            : { test: /\.less$/, use: ["style-loader", "css-loader", "less-loader"] }
-        ),
+      cssRule = { test: /\.css$/, use: ["style-loader", {loader: "css-loader", options: {minimize: opts.minify} }] },
+      lessRule = { test: /\.less$/, use: ["style-loader", {loader: "css-loader", options: {minimize: opts.minify} }, "less-loader"] },
       { use: [{ loader: "file-loader", options: { name: "[path][name].[ext]" } }] } // if import-ing anything else just copy it
     ]
   }];
+  var extractCss = (opts.separateCss ? new ExtractTextPlugin(((opts.outputFile || "").replace(/\.js$/, "") || "[name]") + ".css") : null);
+  if (extractCss) {
+    cssRule.use = extractCss.extract({ fallback: cssRule.use.shift(), use: cssRule.use });
+    lessRule.use = extractCss.extract({ fallback: lessRule.use.shift(), use: lessRule.use });
+  }
 
   // CONFIG webpack plugins
   var plugins = [
@@ -362,11 +361,12 @@ window.UU5 = { Environment: config };
   function createEntryPointFile(name, opts) {
     fs.mkdirsSync(".tmp/" + name.replace(/^(.*\/).*/, "$1").replace(/^\.\//, ""));
     var noRelativeName = name.replace(/^\.\//, "");
-    var depth = noRelativeName.split(/\//).length;
+    var noRelativeOutputName = (opts.outputFile ? opts.outputFile.replace(/^\.\//, "").replace(/\\/g, "/") : noRelativeName);
+    var depthFromAppAssetsBase = noRelativeOutputName.split(/\//).length;
     var entryFileContents =
   `var mod=require("module");
   var uri = ((mod ? mod.uri : (document.currentScript || Array.prototype.slice.call(document.getElementsByTagName("script"), -1)[0] || {}).src) || "").toString();
-  __webpack_public_path__=uri.split(/\\//).slice(0, -${depth}).join("/") + "/"; // runtime publicPath configuration required for proper linking of styles, background images, ...
+  __webpack_public_path__=uri.split(/\\//).slice(0, -${depthFromAppAssetsBase}).join("/") + "/"; // runtime publicPath configuration required for proper linking of styles, background images, ...
   module.exports = require("__project__/${noRelativeName}");`;
 
     return createTemporaryModuleFile(entryFileContents, noRelativeName);
