@@ -24,7 +24,7 @@ import uu.demoapp.main.dto.ImageDtoOut;
 import uu.demoapp.main.exceptions.DemoRuntimeException;
 
 /**
- * Model containing uuBinaryStore usage sample.
+ * Model containing uuAppBinaryStore usage sample.
  */
 @Component
 public final class ImageModel {
@@ -38,6 +38,13 @@ public final class ImageModel {
   @Inject
   private ModelMapper modelMapper;
 
+  /**
+   * Stores image into uuAppBinaryStore.
+   *
+   * @param awid awid
+   * @param dtoIn DTO in containing image information.
+   * @return DTO out containing data of stored image.
+   */
   public ImageDtoOut createImage(String awid, CreateImageDtoIn dtoIn) {
     ValidationResult validationResult = validator.validate(dtoIn);
     if (!validationResult.isValid()) {
@@ -54,6 +61,13 @@ public final class ImageModel {
     return convertToDto(image);
   }
 
+  /**
+   * Retrieves image data from uuAppBinaryStore.
+   *
+   * @param awid awid
+   * @param dtoIn DTO in containing search attributes.
+   * @return Streamed image data.
+   */
   public DownloadableResourceDtoOut getImageData(String awid, GetImageDtoIn dtoIn) {
     ValidationResult validationResult = validator.validate(dtoIn);
     if (!validationResult.isValid()) {

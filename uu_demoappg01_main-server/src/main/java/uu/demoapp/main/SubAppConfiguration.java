@@ -13,10 +13,7 @@ import uu.app.validation.ValidationTypeDefinitionSource;
  * Spring configuration of the application.
  */
 @Configuration
-@Import({
-    WorkspaceContextConfiguration.class,
-    OidcAuthenticationContextConfiguration.class
-})
+@Import({WorkspaceContextConfiguration.class, OidcAuthenticationContextConfiguration.class})
 public class SubAppConfiguration extends AbstractSubAppConfiguration {
 
   /**

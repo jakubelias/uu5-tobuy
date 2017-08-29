@@ -13,7 +13,7 @@ import uu.demoapp.main.dto.FindAddressDtoIn;
 import uu.demoapp.main.model.AddressModel;
 
 /**
- * Controller contains commands which demonstrate working with uuObjectStore.
+ * Controller contains commands which demonstrate working with uuAppObjectStore.
  */
 @CommandController
 public final class AddressController {

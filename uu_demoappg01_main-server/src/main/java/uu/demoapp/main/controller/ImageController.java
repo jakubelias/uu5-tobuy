@@ -16,7 +16,7 @@ import uu.demoapp.main.dto.ImageDtoOut;
 import uu.demoapp.main.model.ImageModel;
 
 /**
- * Controller contains commands which demonstrate working with uuBinaryStore.
+ * Controller contains commands which demonstrate working with uuAppBinaryStore.
  */
 @CommandController
 public final class ImageController {

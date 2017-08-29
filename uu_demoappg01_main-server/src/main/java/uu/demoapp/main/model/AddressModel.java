@@ -15,7 +15,7 @@ import uu.demoapp.main.exceptions.DemoRuntimeException;
 import uu.demoapp.main.exceptions.DemoRuntimeException.Error;
 
 /**
- * Model containing uuObjectStore usage sample.
+ * Model containing uuAppObjectStore usage sample.
  */
 @Component
 public final class AddressModel {
@@ -30,7 +30,7 @@ public final class AddressModel {
   private ModelMapper modelMapper;
 
   /**
-   * Stores address into ObjectStore.
+   * Stores address into uuAppObjectStore.
    *
    * @param awid awid
    * @param dtoIn DTO in containing address information.
@@ -50,7 +50,7 @@ public final class AddressModel {
   }
 
   /**
-   * Finds address in ObjectStore.
+   * Finds address in uuAppObjectStore.
    *
    * @param awid awid
    * @param dtoIn DTO in containing search attributes.

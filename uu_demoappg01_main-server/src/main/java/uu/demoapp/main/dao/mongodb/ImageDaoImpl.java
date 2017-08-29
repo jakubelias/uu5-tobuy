@@ -8,7 +8,7 @@ import uu.demoapp.main.dao.ImageDao;
 import uu.demoapp.main.domain.Image;
 
 /**
- * UuBinaryStore DAO example.
+ * UuAppBinaryStore DAO example.
  */
 @BinaryStoreDao(entityClass = Image.class, storage = "primaryBinaryStore", maxNoi = 10000, maxSoi = 10000, maxSob = 10000000, concurrency = ConcurrencyStrategy.REVISION)
 public class ImageDaoImpl extends BinaryServerMongoDbDao<Image> implements ImageDao {

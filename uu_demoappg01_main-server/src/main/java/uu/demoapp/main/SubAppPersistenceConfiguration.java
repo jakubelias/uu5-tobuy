@@ -16,9 +16,7 @@ import uu.app.workspace.store.WorkspaceStorageConfiguration;
  * Spring configuration of the application persistence.
  */
 @DataStoreConfiguration
-@Import({
-    BinaryStoreServerContextConfiguration.class
-})
+@Import({BinaryStoreServerContextConfiguration.class})
 public class SubAppPersistenceConfiguration extends AbstractMongoDbContextConfiguration {
 
   @Value("${objectStoreUri}")
