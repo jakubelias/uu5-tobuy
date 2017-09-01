@@ -113,9 +113,9 @@ war {
 }
 
 // Deployment configuration location. Variable env is automatically resolved by plugin depending on project's property 'env', default value is 'dev'.
-//uuDeploySettings {
-//  uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
-//}
+uuDeploySettings {
+  uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
+}
 
 // mapping and persistence json generation
 task generateMappingJson(type: JavaExec) {
