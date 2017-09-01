@@ -1,5 +1,15 @@
 description 'A template project used for implementing uuApp client.'
 
+buildscript {
+  repositories {
+    maven { url gradlePluginsRepository }
+  }
+
+  dependencies {
+    classpath("com.moowork.gradle:gradle-node-plugin:1.1.1")
+  }
+}
+
 apply plugin: "com.moowork.node"
 
 node {

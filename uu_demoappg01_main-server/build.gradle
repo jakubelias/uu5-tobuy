@@ -5,10 +5,6 @@ apply plugin: 'org.springframework.boot'
 apply plugin: "com.sourcemuse.mongo"
 apply plugin: 'war'
 apply plugin: 'maven'
-apply plugin: 'checkstyle'
-apply plugin: "jacoco"
-apply plugin: 'build-dashboard'
-apply plugin: 'project-report'
 apply plugin: 'uu.appg01'
 
 // repositories setup
@@ -96,7 +92,6 @@ bootRun {
     'spring.profiles.default': 'development' // override the default profile when executing from gradle
   ]
 }
-task uuRun(group: "uu", dependsOn: bootRun)
 
 // testing with embedded MongoDb
 mongo {
@@ -109,28 +104,6 @@ test {
   runWithMongoDb = true
 }
 
-// reports setup
-buildDashboard {
-  dependsOn(jacocoTestReport)
-}
-
-checkstyle {
-  configFile = rootProject.file('config/checkstyle.xml')
-  ignoreFailures = true
-}
-
-tasks.withType(Checkstyle) {
-  reports {
-    xml.enabled false
-  }
-}
-
-task uuReport {
-  group 'uu'
-  buildDashboard.mustRunAfter check, jacocoTestReport
-  dependsOn 'test', 'jacocoTestReport', 'check', 'buildDashboard'
-}
-
 // deployment to C3
 war {
   archiveName = project.name + '.war'
@@ -140,9 +113,9 @@ war {
 }
 
 // Deployment configuration location. Variable env is automatically resolved by plugin depending on project's property 'env', default value is 'dev'.
-uuDeploySettings {
-  uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
-}
+//uuDeploySettings {
+//  uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
+//}
 
 // mapping and persistence json generation
 task generateMappingJson(type: JavaExec) {
