@@ -108,6 +108,8 @@ To apply settings:
 
 4. Run server
 
+    Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.core' is applied to project (it adds following Gradle task).
+
     In project root directory run command
     
     > gradle uuRun
@@ -199,12 +201,16 @@ To apply settings:
   The task automatically installs all required npm modules, builds client and server, creates war archive into _project_name-server/build/libs_ folder.
     
 ## 2. Uploading package into Nexus repository
-1. Set Nexus repository url in /build.gradle file. (Parameters uuDevReleaseRepository and uuDevSprintRepository)
-2. In project root directory run command
+1. Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.uurepository' is applied to project.
+2. Set Nexus repository url in /build.gradle file. (Parameters uuDevReleaseRepository and uuDevSprintRepository)
+3. Configure which artifacts should be uploaded. Extension uuPublishArtifacts in _project_name-server/build.gradle file_. Available options are javadoc, sources, tests, testSources and reports.
+4. In project root directory run command
 
-   > gradle uploadArchives    
+   > gradle uuPublish    
     
 # Generating dashboard with reports   
+Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.uuqa' is applied to project.
+
 In project root directory run command
     
    > gradle uuReport
@@ -213,7 +219,8 @@ Reports (test, checkstyle, jococo) are created in _./project_name/build/reports_
 Dashboard with all these reports is in folder _./project_name/build/reports/buildDashboard_.
 
 # uuApp Production deployment to C3    
-Project is using gradle uu deploy plugin, which adds tasks for creating uuAppBox, uploading attachments, deploying to C3, sharing uuApp etc.
+Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.uucloud' is applied to project.
+It adds tasks for creating uuAppBox, uploading attachments, deploying to C3, sharing uuApp etc.
 
 Plugin documentation can be found in file uu_appg01_gradle-plugin_readme.md, located in root of this project.
 
