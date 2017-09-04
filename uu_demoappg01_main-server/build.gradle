@@ -4,7 +4,6 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: "com.sourcemuse.mongo"
 apply plugin: 'war'
-apply plugin: 'maven'
 apply plugin: 'uu.appg01'
 
 // repositories setup
@@ -13,50 +12,6 @@ repositories {
   maven { url uuBetaRepository }
   //TODO Only for development remove during release
   maven { url "http://192.168.4.209:8081/nexus/content/repositories/uaf-dev/" }
-}
-
-// publishing to maven repositories
-task packageJavadoc(type: Jar, dependsOn: 'javadoc') {
-  from javadoc.destinationDir
-  classifier = 'javadoc'
-}
-task packageSources(type: Jar, dependsOn: 'classes') {
-  from sourceSets.main.allSource
-  classifier = 'sources'
-}
-task packageTests(type: Jar, dependsOn: 'testClasses') {
-  from sourceSets.test.output
-  classifier = 'tests'
-}
-task packageTestSources(type: Jar, dependsOn: 'testClasses') {
-  from sourceSets.test.allSource
-  classifier = 'testSources'
-}
-task packageReports(type: Zip, dependsOn: 'uuReport') {
-  classifier = "reports"
-  from new File(buildDir.path, "reports")
-}
-
-artifacts {
-  archives packageJavadoc
-  archives packageSources
-  archives packageTests
-  archives packageTestSources
-  archives packageReports
-}
-
-uploadArchives {
-  repositories.mavenDeployer {
-    repository(url: uuDevReleaseRepository)
-    snapshotRepository(url: uuDevSprintRepository)
-
-    def notPublishList = []
-    archivesToPublish.each { k, v -> if (!v) notPublishList << k }
-    addFilter('filter') { artifact, file ->
-      !(artifact.attributes.classifier in notPublishList)
-    }
-    pom('filter').withXml(dependencyManagement.pomConfigurer)
-  }
 }
 
 // java properties setup
@@ -75,12 +30,12 @@ configurations {
 }
 
 dependencies {
-  compile("org.springframework.boot:spring-boot-starter-log4j2")
-  compile("uu.appg01.server-server:uu_appg01_server-server:${uuAppg01ServerVersion}")
+  compile "org.springframework.boot:spring-boot-starter-log4j2"
+  compile "uu.appg01.server-server:uu_appg01_server-server:${uuAppg01ServerVersion}"
   compile "net.minidev:json-smart:2.2.1"
-  compile group: 'org.modelmapper', name: 'modelmapper', version: '1.1.0'
+  compile "org.modelmapper:modelmapper:1.1.0"
 
-  testCompile("uu.appg01.core-server-java:uu_appg01_core-test_support:${uuAppg01ServerVersion}")
+  testCompile "uu.appg01.core-server-java:uu_appg01_core-test_support:${uuAppg01ServerVersion}"
 }
 
 bootRepackage {
@@ -104,6 +59,22 @@ test {
   runWithMongoDb = true
 }
 
+// artifacts which will be published to Nexus repository
+uuPublishArtifacts {
+  sources = true
+  javadoc = true
+  reports = false
+  tests = false
+  testSources = false
+}
+
+uuPublish {
+  repositories.mavenDeployer {
+    repository(url: uuDevReleaseRepository)
+    snapshotRepository(url: uuDevSprintRepository)
+  }
+}
+
 // deployment to C3
 war {
   archiveName = project.name + '.war'
@@ -112,8 +83,8 @@ war {
   }
 }
 
-// Deployment configuration location. Variable env is automatically resolved by plugin depending on project's property 'env', default value is 'dev'.
 uuDeploySettings {
+  // Deployment configuration location. Variable env is automatically resolved by plugin depending on project's property 'env', default value is 'prod'.
   uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
 }
 
