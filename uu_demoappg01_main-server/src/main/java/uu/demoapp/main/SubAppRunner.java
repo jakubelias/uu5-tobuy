@@ -21,7 +21,7 @@ public class SubAppRunner extends AbstractSubAppRunner {
    */
   public static void main(String[] args) throws Exception {
     // The main method is not expected to be used in production, but only for development -> set the default profile to development
-    System.setProperty(DEFAULT_PROFILES_PROPERTY_NAME, UuProfiles.DEVELOPMENT);
+    setupDevelopmentMode();
     SpringApplication.run(SubAppRunner.class, args);
   }
 

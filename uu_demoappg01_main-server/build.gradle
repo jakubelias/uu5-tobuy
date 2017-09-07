@@ -42,12 +42,6 @@ bootRepackage {
   enabled = false
 }
 
-bootRun {
-  systemProperties = [
-    'spring.profiles.default': 'development' // override the default profile when executing from gradle
-  ]
-}
-
 // testing with embedded MongoDb
 mongo {
   System.setProperty("os.arch", "x86_64")
