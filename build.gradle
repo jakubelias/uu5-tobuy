@@ -10,7 +10,7 @@ defaultTasks 'bootRun'
 buildscript {
   ext {
     springBootVersion = '1.5.6.RELEASE'
-    uuAppg01ServerVersion = "1.1.0-SNAPSHOT"
+    uuAppg01ServerVersion = "1.1.0-rc.3"
     uuProdRepository = 'https://repo.plus4u.net/repository/jars/'
     uuBetaRepository = 'https://repo.plus4u.net/repository/jars-beta/'
     gradlePluginsRepository = 'https://plugins.gradle.org/m2/'
@@ -20,8 +20,6 @@ buildscript {
     maven { url uuProdRepository }
     maven { url uuBetaRepository }
     maven { url gradlePluginsRepository }
-    //TODO Only for development remove during release
-    maven { url "http://192.168.4.209:8081/nexus/content/repositories/uaf-dev/" }
   }
 
   dependencies {
