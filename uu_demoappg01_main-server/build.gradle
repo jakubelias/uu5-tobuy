@@ -35,7 +35,7 @@ dependencies {
   compile "net.minidev:json-smart:2.2.1"
   compile "org.modelmapper:modelmapper:1.1.0"
 
-  testCompile "uu.appg01.core-server-java:uu_appg01_core-test_support:${uuAppg01ServerVersion}"
+  testCompile "uu.appg01:uu_appg01_core-test_support:${uuAppg01ServerVersion}"
 }
 
 bootRepackage {
