@@ -91,7 +91,7 @@ Example of the configuration which contains every supported attribute:
       "uuCloudResourcePoolUri": "ues:DEV0116-BT:DEV",
       "uuCloudDeploymentConfig": {
         "objectStoreUri": "mongodb://<user>:<password>mongo.plus4u.net:27017/<dbname>"
-        "uuSubAppSysOwner": "1-2",
+        "uuSubAppInstanceSysOwner": "1-2",
         "tid": "84723967990075193",
         "asid": "b493d99bc97847b1929abe3b41b73333"
       },

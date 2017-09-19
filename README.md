@@ -93,7 +93,7 @@ To apply settings:
 
 
 2. Configure server
-    - Edit configuration _uu_appg01_main-server/src/main/java/resources/application.properties_ and replace <uuSubAppSysOwner> with your uuIdentity.
+    - Edit configuration _uu_appg01_main-server/src/main/java/resources/application.properties_ and replace <uuSubAppInstanceSysOwner> with your uuIdentity.
     - Change project properties
        - file _./build.gradle_:  group, version, description and other additional properties marked with TODO
        - file _./settings.gradle_: rootProject.name and included sub-projects names.
