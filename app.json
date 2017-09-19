@@ -4,7 +4,7 @@
   "namespace": "UU.DemoApp",
   "version": "0.1.0",
   "description": "Project template for developing UAF application with uu5.",
-  "vendor": "Unicorn a.s.",
-  "license": "UAF",
+  "vendor": "<your company>",
+  "license": "Licence Commercial",
   "template": "uu5-java-1.0.0"
 }

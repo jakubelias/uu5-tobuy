@@ -1,9 +1,10 @@
 var path = require("path");
 var fs = require("fs-extra");
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var WriteFilePlugin = require('write-file-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require("copy-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var WriteFilePlugin = require("write-file-webpack-plugin");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var CircularDependencyPlugin = require("circular-dependency-plugin");
 var webpack = require("webpack");
 
 var pkg = require("../package.json");
@@ -77,7 +78,7 @@ function getWebpackConfig(options) {
             // but we must replace such path to be relative to our href in <base href="...">, i.e. add the subfolder chain within src/,
             // upto the file (src/abc/cde/index.html, using "./index.js" => change into "./abc/cde/index.js")
             return text.replace(/(System(?:JS)?\.import\s*\(\s*['"])([^'"]*)/g, function (m, g1, url) {
-              if (url.charAt(0) === ".") url = ["."].concat(htmlFile.split(/[\\\/]/).slice(0, -1)).join("/") + "/" + url.replace(/^\.\//, "");
+              if (url.charAt(0) === ".") url = ["."].concat(htmlFile.split(/[\\/]/).slice(0, -1)).join("/") + "/" + url.replace(/^\.\//, "");
               return g1 + url;
             });
           }
@@ -109,6 +110,12 @@ function getWebpackConfig(options) {
       })
     ].concat(plugins);
   }
+
+  // add detection of circular dependencies
+  plugins.push(new CircularDependencyPlugin({ failOnError: false }));
+
+  // enable scope hoisting
+  plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
 
   // improve debug messages (module names) when hot module reload is used
   if (!opts.isProductionBuild) plugins.push(new webpack.NamedModulesPlugin());
@@ -158,9 +165,9 @@ function getWebpackConfig(options) {
       </script>`;
         // scripts & links with relative paths must be output using document.write, otherwise the browser (Chrome) will try
         // to load them sooner (before <base> element is written) from wrong paths
-        template = template.replace(/(<script[^>]*\bsrc\s*=\s*['"])([^'"]*)(['"][^>]*>\s*<\/script>)/gi, (m, g1, url, g3) => {
+        template = template.replace(/(<script[^>]*\bsrc\s*=\s*['"])([^'"]*)(['"][^>]*>\s*<\/script>)/gi, (m, g1, url/*, g3*/) => {
           return url.match(/^\/|^[a-zA-Z0-9\\-_]*:/) ? m : `<script>document.write(${JSON.stringify(m).replace(/<\/script>/g, "<\"+\"/script>")});</script>`;
-        }).replace(/(<link[^>]*\bhref=['"])([^'"]*)(['"][^>]*>)/gi, (m, g1, url, g3) => {
+        }).replace(/(<link[^>]*\bhref=['"])([^'"]*)(['"][^>]*>)/gi, (m, g1, url/*, g3*/) => {
           return url.match(/^\/|^[a-zA-Z0-9\\-_]*:/) ? m : `<script>document.write(${JSON.stringify(m)});</script>`;
         });
 
@@ -219,9 +226,9 @@ function getWebpackConfig(options) {
         //   home/{asdf}/{qwer}
         //   home/{asdf}
         var ucList = Object.keys(ucMap).filter(k => ucMap[k].type === "VUC").map(k => {
-          if (k === "defaultVuc") return { key: k, matchFn: url => true, relevancy: 0, value: ucMap[k] };
+          if (k === "defaultVuc") return { key: k, matchFn: (/*url*/) => true, relevancy: 0, value: ucMap[k] };
           var relX = 1;
-          var regexpStr = "^(" + k.replace(/[^\{]+|\{[^}]*\}/g, m => {
+          var regexpStr = "^(" + k.replace(/[^{]+|\{[^}]*\}/g, m => {
             if (m.charAt(0) === "{") relX *= 0.9;
             return m.charAt(0) === "{" ? "[^/]*(/[^/]*)*?" : regexpEscape(m);
           }) + ")$";
@@ -237,33 +244,27 @@ function getWebpackConfig(options) {
           };
         });
         ucList.sort((a, b) => b.relevancy - a.relevancy || b.key.length - a.key.length);
-        var defVuc = ucList.filter(a => a.key === "defaultVuc")[0];
         
         app.use((req, res, next) => {
           if (req.method == "GET" && (!opts.appAssetsRelativeUrlPath || !req.url.startsWith("/" + opts.appAssetsRelativeUrlPath))) {
             // if requesting application/json from a URL which is listed in mappings.json, return 204 No Content
-            var expectsHtml =  (req.accepts(["application/json", "text/html"]) == "text/html"); // there might be multiple acceptable content types
+            var expectsHtml = (req.accepts(["application/json", "text/html"]) == "text/html"); // there might be multiple acceptable content types
             var expectsApplicationJsonOnly = (req.get("Accept") == "application/json");
             var urlPath = req.path.replace(/^\/*/, "");
 
+            // if the file exists, just return it as-is
+            var filePath = path.resolve(outputAbsPath, urlPath);
+            if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) return res.sendFile(urlPath, { root: outputAbsPath});
+
             var targetUc = ucList.filter(uc => uc.matchFn(urlPath))[0];
-            if (expectsApplicationJsonOnly && targetUc) return res.status(200).send("{}");
-            
-            // if requesting text/html from a URL which is listed in mappings.json, return corresponding HTML file (or defaultVuc)
-            var filePath = targetUc ? path.resolve(outputAbsPath, targetUc.value.realization||"") : null;
-            if (!targetUc || (expectsHtml && (targetUc.value.type !== "VUC" || !fs.existsSync(filePath)))) {
-              filePath = null;
-              // allow using "defaultVuc" only when assets are clearly separated to another folder (e.g. to prevent
-              // never-ending loop in case of missing OIDC callback pages - we mustn't return index.html in such case
-              // because it's being loaded in iframe and it would try to perform silent OIDC login again which ends with
-              // calling OIDC callback in an iframe, ...)
-              if (!expectsApplicationJsonOnly && (opts.appAssetsRelativeUrlPath || urlPath.indexOf(".") === -1)) {
-                targetUc = defVuc;
-                filePath = targetUc ? path.resolve(outputAbsPath, targetUc.value.realization||"") : null;
-              }
+            if (targetUc) {
+              if (expectsApplicationJsonOnly) return res.status(200).send("{}");
+              
+              // if requesting text/html from a URL which is listed in mappings.json, return corresponding HTML file (or defaultVuc)
+              filePath = expectsHtml ? path.resolve(outputAbsPath, targetUc.value.realization || "") : null;
+              // console.log(urlPath, filePath, targetUc);
+              if (filePath && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) return res.sendFile(targetUc.value.realization, { root: outputAbsPath});
             }
-            // console.log(urlPath + " => " + (targetUc ? targetUc.key : undefined));
-            if (filePath && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) return res.sendFile(targetUc.value.realization, { root: outputAbsPath});
           }
           next();
         });
@@ -375,7 +376,7 @@ window.UU5 = { Environment: config };
 
 function regexpEscape(aValue) {
   if (!aValue) return "";
-  return aValue.replace(/([\[\]\\+*?{}()^$.|])/g, "\\$1");
+  return aValue.replace(/([[\]\\+*?{}()^$.|])/g, "\\$1");
 }
 
 function getSystemJSLoaderHtmlSnippet(opts) {
@@ -477,7 +478,7 @@ function getPackageJson(moduleName, defaultValue) {
 function replaceModulesInUrls(htmlString, dependencies) {
   return htmlString.replace(/(\b(?:src|href)=['"])([^'"]+)/gi, function (m, g1, g2) {
     if (g2.charAt(0) != "~") return m;
-    return g1 + g2.replace(/^~([^\/]+)\//, (m, module) => {
+    return g1 + g2.replace(/^~([^/]+)\//, (m, module) => {
       var depConf = dependencies[module];
       if (!depConf || !depConf.baseUri) throw new Error(`Module '${module}' is referenced from a HTML file (via ${m}) but module's base URI is not configured in config/config.js.` +
           `Add configuration for the module by either specifying cdnBaseUri (if using CDN) or localBaseUri (if the module should be copied locally to the app public folder), or remove the reference from HTML file.`);

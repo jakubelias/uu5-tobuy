@@ -1,5 +1,9 @@
 import React from "react";
 import * as UU5 from "uu5g04";
+import LeftLink from "./left-link.js";
+import About from "./about.js";
+import DemoHome from "./demo-home.js";
+
 
 import Cfg from "./_config.js";
 import "./demo-left.less";
@@ -10,7 +14,9 @@ export const DemoLeft = React.createClass({
   mixins: [
     UU5.Common.BaseMixin,
     UU5.Common.ElementaryMixin,
-    UU5.Common.NestingLevelMixin
+    UU5.Common.NestingLevelMixin,
+    UU5.Common.CcrReaderMixin
+
   ],
   //@@viewOff:mixins
 
@@ -58,6 +64,20 @@ export const DemoLeft = React.createClass({
   //@@viewOff:overridingMethods
 
   //@@viewOn:componentSpecificHelpers
+  _goToAbout() {
+    this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER) && this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER).setRoute(
+      <About/>,
+      {url: {useCase: "about", parameters: {}}}
+    );
+  },
+
+  _goHome() {
+    this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER) && this.getCcrComponentByKey(UU5.Environment.CCRKEY_ROUTER).setRoute(
+      <DemoHome/>,
+      {url: {useCase: "home", parameters: {}}}
+    );
+  },
+
   //@@viewOff:componentSpecificHelpers
 
   //@@viewOn:render
@@ -72,19 +92,24 @@ export const DemoLeft = React.createClass({
               responsive
               src="assets/logo.png"/>
           </UU5.Bricks.Div>
-          <UU5.Bricks.Div className={this.getClassName("menu")}>
-            <UU5.Bricks.Link className={this.getClassName("menuItem")}>
+
+          <LeftLink>
+            <UU5.Bricks.Link onClick={this._goHome}>
               <UU5.Bricks.Span
                 className="mdi-home"
                 style={{fontSize: "20px", lineHeight: "20px", fontFamily: "Material Design Icons"}}
               />
               <UU5.Bricks.Span style={{paddingLeft: "10px", lineHeight: "20px"}}>
-                {this.getLSIComponent('welcome')}
+                {this.getLSIComponent("welcome")}
               </UU5.Bricks.Span>
             </UU5.Bricks.Link>
-          </UU5.Bricks.Div>
-          <UU5.Bricks.Div className={this.getClassName("aboutAuth")} content={this.getLSIComponent('aboutAuth')}/>
-          <UU5.Bricks.Div className={this.getClassName("aboutApp")} content={this.getLSIComponent('aboutApp')}/>
+          </LeftLink>
+          <LeftLink>
+            <UU5.Bricks.Link
+              content={Cfg.LSILABEL_ABOUT}
+              onClick={this._goToAbout}
+            />
+          </LeftLink>
         </UU5.Bricks.Div>
       ) : null
     );
