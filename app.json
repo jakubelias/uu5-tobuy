@@ -5,6 +5,6 @@
   "version": "0.1.0",
   "description": "Project template for developing UAF application with uu5.",
   "vendor": "<your company>",
-  "license": "Licence Commercial",
+  "license": "License Commercial",
   "template": "uu5-java-1.0.0"
 }
