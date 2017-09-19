@@ -36,6 +36,4 @@ oidc_token.json
 **/*log.*
 **/webapp
 package-lock.json
-**/config/mapping.json
-**/config/persistence.json
 uu_demoappg01_main-client/npm-debug.log

@@ -86,11 +86,11 @@ uuDeploySettings {
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
   classpath = sourceSets.main.runtimeClasspath
-  args = ["-bp", "${uuSubAppPackageName},uu.app.workspace,uu.app.binarystore", "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mapping.json"]
+  args = ["-bp", "${uuSubAppPackageName},uu.app.workspace,uu.app.binarystore", "-vuc", "config/mapping-vuc.json", "-out", "${projectDir}/config/mappings.json"]
 }
 
 task copyMappingJsonToResources(type: Copy) {
-  from "${projectDir}/config/mapping.json"
+  from "${projectDir}/config/mappings.json"
   into "${buildDir}/resources/main/config/"
 }
 
