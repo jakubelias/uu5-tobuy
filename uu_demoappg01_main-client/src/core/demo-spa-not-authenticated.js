@@ -68,7 +68,6 @@ const DemoSpaNotAuthenticated = React.createClass({
           type={2}
           systemLayerContent={[
             this._getLanguageSelector(),
-            <Plus4U5.App.SearchButton disabled/>,
             <Plus4U5.App.Button/>
           ]}
           left={<DemoLeft/>}

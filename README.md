@@ -159,9 +159,9 @@ To apply settings:
         "sysOwner": "<uuIdentity>",
         "licenseOwner" : {
             "organization" : {
-                "name" : "Farma Strachovice",
+                "name" : "Unicorn a.s.",
                 "oId" : "154156465465162",
-                "web" : "http://www.strachovice.cz/"
+                "web" : "http://www.unicorn.com/"
             },
             "userList" : [
                 {

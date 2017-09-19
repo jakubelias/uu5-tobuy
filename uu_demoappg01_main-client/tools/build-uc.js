@@ -4,10 +4,13 @@ var path = require("path");
 var buildHelpers = require("./helpers.js");
 
 var pkg = require("../package.json");
-var uuapp = require('../../app.json');
-for(var uuAppKey in uuapp) pkg[uuAppKey] = uuapp[uuAppKey];
+var uuapp = require("../../app.json");
+for (var uuAppKey in uuapp) pkg[uuAppKey] = uuapp[uuAppKey];
 var json = JSON.stringify(pkg, null, 2);
-fs.writeFileSync('package.json', json);
+fs.writeFileSync("package.json", json);
+// prevent re-compilation loop during first few seconds after "npm start"
+var timeInPast = Date.now() / 1000 - 10;
+fs.utimesSync("package.json", timeInPast, timeInPast);
 
 fs.emptyDirSync(".tmp");
 
@@ -40,7 +43,7 @@ if (Object.keys(config.dependencies).length > 0) {
         // the URL will then be <appAssets>/lib/<depName>-<depVersion>
         var depTargetFldName;
         if (srcLibsMap[depName]) depTargetFldName = srcLibsMap[depName];
-        else depTargetFldName = depName + "-" + buildHelpers.getPackageJson(depName, {version: '0.0.0'}).version;
+        else depTargetFldName = depName + "-" + buildHelpers.getPackageJson(depName, {version: "0.0.0"}).version;
         usedBaseUri = "lib/" + depTargetFldName + "/";
         if (!srcLibsMap[depName]) {
           var targetDir = dest + "/lib/" + depTargetFldName;

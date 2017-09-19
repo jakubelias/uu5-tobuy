@@ -1,11 +1,14 @@
 import React from "react";
 import * as UU5 from "uu5g04";
 import * as Plus4U5 from "plus4u5g01";
+import {Uri} from "uu_appg01_core";
 
 import Cfg from "./_config.js";
 import DemoLeft from "./demo-left.js";
 import DemoBottom from "./demo-bottom.js";
 import WelcomeRow from "../bricks/welcome-row.js";
+import About from "./about.js";
+import DemoHome from "./demo-home.js";
 
 import "./demo-spa-authenticated.less";
 
@@ -15,8 +18,7 @@ const DemoSpaAuthenticated = React.createClass({
   mixins: [
     UU5.Common.BaseMixin,
     UU5.Common.ElementaryMixin,
-    UU5.Common.NestingLevelMixin,
-    UU5.Common.CcrReaderMixin
+    UU5.Common.NestingLevelMixin
   ],
   //@@viewOff:mixins
 
@@ -25,7 +27,9 @@ const DemoSpaAuthenticated = React.createClass({
     tagName: Cfg.APP + ".DemoSpaAuthenticated",
     nestingLevel: "spa",
     classNames: {
-      main: Cfg.CSS + "-demo-spa-authenticated"
+      main: Cfg.CSS + "-demo-spa-authenticated",
+      welcomeRow: Cfg.CSS + "-demo-spa-authenticated-welcome-row",
+      welcome: Cfg.CSS + "-demo-spa-authenticated-welcome"
     }
   },
   //@@viewOff:statics
@@ -54,11 +58,25 @@ const DemoSpaAuthenticated = React.createClass({
       className="plus4u5-app-page-language-selector"
     />;
   },
+
+  _getRoute() {
+    let route = null;
+    let uriBuilder = Uri.UriBuilder.parse(window.location.href);
+    let uc = uriBuilder.useCase;
+
+    if (uc.match(/^\/?about/)) {
+      route = <About/>;
+    } else {
+      route = <DemoHome/>;
+    }
+    return route;
+  },
   //@@viewOff:componentSpecificHelpers
 
   //@@viewOn:render
   render(){
-    let identity = this.getCcrComponentByKey(Cfg.CCRKEY_SPA_AUTHENTICATED).getIdentity();
+    let routerBasePath = location.pathname.replace(/^(.*)\/.*/, "$1");
+
     return (
       //          leftWidth="!xs-320px !sm-256px !md-256px lg-256px"
       this.getNestingLevel()
@@ -70,43 +88,17 @@ const DemoSpaAuthenticated = React.createClass({
           type={2}
           systemLayerContent={[
             this._getLanguageSelector(),
-            <Plus4U5.App.SearchButton disabled/>,
             <Plus4U5.App.Button/>
           ]}
           left={<DemoLeft/>}
         >
-          <UU5.Bricks.Div>
-            <UU5.Bricks.Row className="center" style={{padding: "60px 0px 0px 20px"}}>
-              <UU5.Bricks.Div className="center" style={{maxWidth: "620px", margin: "0 auto"}}>
-                <UU5.Bricks.Column colWidth="xs-12 sm-12 md-3 lg-3">
-                  <Plus4U5.Bricks.UserPhoto/>
-                </UU5.Bricks.Column>
-                <UU5.Bricks.Column colWidth="xs-12 sm-12 md-9 lg-9">
-                  <UU5.Bricks.Header
-                    className="left"
-                    style={{marginTop: "10px", fontSize: "30px"}}
-                    level="2"
-                    content="Vítejte!"
-                  />
-                  <UU5.Bricks.Header
-                    className="left"
-                    style={{marginTop: "10px", paddingBottom: "45px", fontSize: "30px"}}
-                    level="2"
-                    content={identity.name}
-                  />
-                </UU5.Bricks.Column>
-              </UU5.Bricks.Div>
-            </UU5.Bricks.Row>
-            <WelcomeRow textPadding="6px" glyphicon="mdi-human-greeting">
-              {Cfg.LSILABEL_INTRO_AUTH}
-            </WelcomeRow>
-            <WelcomeRow textPadding="10px" glyphicon="mdi-monitor">
-              {Cfg.LSILABEL_CLIENT_AUTH}
-            </WelcomeRow>
-            <WelcomeRow textPadding="10px" glyphicon="mdi-server">
-              {Cfg.LSILABEL_SERVER_AUTH}
-            </WelcomeRow>
-          </UU5.Bricks.Div>
+          <UU5.Common.Router
+            urlBuilder={Plus4U5.Common.Url}
+            route={this._getRoute()}
+            basePath={routerBasePath}
+          />
+
+
         </Plus4U5.App.Page>
       ) : null
     );
