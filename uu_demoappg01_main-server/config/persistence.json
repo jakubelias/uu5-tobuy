@@ -2,18 +2,6 @@
   "maxNoa" : 10,
   "primary" : "primaryObjectStore",
   "uuSubAppDataStore" : {
-    "primaryBinaryStore" : {
-      "realization" : "MongoDB",
-      "type" : "uuAppBinaryStore",
-      "schemaMap" : {
-        "Image" : {
-          "realization" : "uu.demoapp.main.dao.mongodb.ImageDaoImpl",
-          "maxSoi" : "10000",
-          "maxNoi" : "10000",
-          "maxSob" : "10000000"
-        }
-      }
-    },
     "primaryObjectStore" : {
       "realization" : "MongoDB",
       "type" : "uuAppObjectStore",
@@ -23,15 +11,15 @@
           "maxSoi" : "64000",
           "maxNoi" : "1"
         },
-        "sysProfile" : {
-          "realization" : "uu.app.workspace.store.dao.SysProfileDaoImpl",
-          "maxSoi" : "64000",
-          "maxNoi" : "32"
-        },
         "address" : {
           "realization" : "uu.demoapp.main.dao.mongodb.AddressDaoImpl",
           "maxSoi" : "64000",
           "maxNoi" : "100000"
+        },
+        "sysProfile" : {
+          "realization" : "uu.app.workspace.store.dao.SysProfileDaoImpl",
+          "maxSoi" : "64000",
+          "maxNoi" : "32"
         },
         "sysPermission" : {
           "realization" : "uu.app.workspace.store.dao.SysPermissionDaoImpl",
@@ -42,6 +30,18 @@
           "realization" : "uu.app.workspace.store.dao.SysAppWorkspaceConfigDaoImpl",
           "maxSoi" : "64000",
           "maxNoi" : "1"
+        }
+      }
+    },
+    "primaryBinaryStore" : {
+      "realization" : "MongoDB",
+      "type" : "uuAppBinaryStore",
+      "schemaMap" : {
+        "Image" : {
+          "realization" : "uu.demoapp.main.dao.mongodb.ImageDaoImpl",
+          "maxSoi" : "10000",
+          "maxNoi" : "10000",
+          "maxSob" : "10000000"
         }
       }
     }
