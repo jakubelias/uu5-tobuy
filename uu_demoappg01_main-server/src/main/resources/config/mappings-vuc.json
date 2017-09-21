@@ -1,5 +1,5 @@
 {
-  "uu-demoappg01-main": {
+  "{vendor}-{uuApp}-{uuSubApp}": {
     "useCaseMap": {
       "testVUC" : {
         "realization" : "index.html",
