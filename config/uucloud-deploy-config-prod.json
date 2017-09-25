@@ -3,7 +3,7 @@
   "uuCloudResourcePoolUri" : "ues:DEV0116-BT:DEV",
   "uuCloudDeploymentConfig" : {
     "objectStoreUri" : "mongodb://1pilctldxvid3u2gb0kykuxbauw4pkhf__t5we5a4i1mfutxe2hen2pjtoz7li4w99el361rv:waZOTBq2uJQFwUAUaTmg4@h-h0dv6qe3.rg-o5ojnm69.mongo-o-s.eu-n-1.cloud.plus4u.net:27017,h-zk893n61.rg-o5ojnm69.mongo-o-s.eu-n-1.cloud.plus4u.net:27017/1pilctldxvid3u2gb0kykuxbauw4pkhf",
-    "uuSubAppSysOwner" : "19-2560-1",
+    "uuSubAppInstanceSysOwner" : "19-2560-1",
     "tid" : "84723967990075193",
     "asid" : "b493d99bc97847b1929abe3b41b73333"
   },
