@@ -1,7 +1,6 @@
 description 'A template project used for implementing uuApp server.'
 
 apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
 apply plugin: "com.sourcemuse.mongo"
 apply plugin: 'war'
 apply plugin: 'uu.appg01'
@@ -17,13 +16,6 @@ repositories {
 // java properties setup
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-dependencyManagement {
-  imports {
-    mavenBom 'io.spring.platform:platform-bom:Brussels-SR2'
-    mavenBom 'org.apache.logging.log4j:log4j-bom:2.8.2'
-  }
-}
 
 configurations {
   all*.exclude module: 'spring-boot-starter-logging'
