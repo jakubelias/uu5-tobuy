@@ -4,6 +4,7 @@ apply plugin: 'java'
 apply plugin: "com.sourcemuse.mongo"
 apply plugin: 'war'
 apply plugin: 'uu.appg01'
+apply plugin: 'uu.appg01.datastore'
 
 // repositories setup
 repositories {
@@ -74,7 +75,7 @@ uuDeploySettings {
   uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
 }
 
-// mapping and persistence json generation
+// mapping json generation
 task generateMappingJson(type: JavaExec) {
   main = 'uu.app.server.internal.generator.CommandMappingGenerator'
   classpath = sourceSets.main.runtimeClasspath
@@ -86,15 +87,7 @@ task copyMappingJsonToResources(type: Copy) {
   into "${buildDir}/resources/main/config/"
 }
 
-
-task generatePersistenceJson(type: JavaExec) {
-  main = 'uu.app.datastore.schema.PersistenceSchemaRunner'
-  classpath = sourceSets.main.runtimeClasspath
-  args = ["-bp", "${uuSubAppPackageName},uu.app.datastore,uu.app.objectstore,uu.app.binarystore,uu.app.workspace", "-out", "config/persistence.json"]
-}
-
 processResources.doLast {
   tasks.generateMappingJson.execute()
   tasks.copyMappingJsonToResources.execute()
-  tasks.generatePersistenceJson.execute()
 }
