@@ -74,20 +74,3 @@ uuDeploySettings {
   // Deployment configuration location. Variable env is automatically resolved by plugin depending on project's property 'env', default value is 'prod'.
   uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
 }
-
-// mapping json generation
-task generateMappingJson(type: JavaExec) {
-  main = 'uu.app.server.internal.generator.CommandMappingGenerator'
-  classpath = sourceSets.main.runtimeClasspath
-  args = ["-bp", "${uuSubAppPackageName},uu.app.workspace,uu.app.binarystore", "-vuc", "config/mappings-vuc.json", "-out", "${projectDir}/config/mappings.json"]
-}
-
-task copyMappingJsonToResources(type: Copy) {
-  from "${projectDir}/config/mappings.json"
-  into "${buildDir}/resources/main/config/"
-}
-
-processResources.doLast {
-  tasks.generateMappingJson.execute()
-  tasks.copyMappingJsonToResources.execute()
-}

@@ -111,7 +111,7 @@ To apply settings:
 
 4. Run server
 
-    Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.core' is applied to the project (as it adds following Gradle task uuRun - see [uuAppg01 gradle plugin documentation](https://uuos9.plus4u.net/uu-dockitg01-main/78462435-99c939a08e0849c68df5ee339c94054b/book/page?code=uuAppg01GradlePlugin)).
+    Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.appserver' is applied to the project (as it adds following Gradle task uuRun - see [uuAppg01 gradle plugin documentation](https://uuos9.plus4u.net/uu-dockitg01-main/78462435-99c939a08e0849c68df5ee339c94054b/book/page?code=uuAppg01GradlePlugin)).
 
     In project root directory run command
     
