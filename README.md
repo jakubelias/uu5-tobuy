@@ -102,13 +102,16 @@ To apply settings:
       - Default project structure is prepared as multi-project. You can easily add another sub-project, which will inherit all settings from build.gradle file in project root.
       - You can create new sub-project in IntelliJ by right clicking on root project - new - module - Gradle/Java or by copying the template project. After that check file _settings.gradle_ if it includes all required sub-projects.
 
-3. Make you sure that client has been build successfully. There are two ways you can do that:
-    1. Using npm directly - running command "npm run dist" (chapter uuApp Distribution Package Creation) in folder uu_demoappg01_main-client.
-    2. Using gradle task - running command "gradle build" in root folder of the project.
+3. Client build
+
+    Make you sure that the client has been built successfully (there is _project_name-server/public_ folder). There are two ways you can do that:
+
+    1. Using npm directly - running command "npm run dist" in the project_name-client folder.
+    2. Using gradle task - running command "gradle project_name-client:build" in root folder of the project or running command "gradle build" for building both client and server.
 
 4. Run server
 
-    Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.core' is applied to project (it adds following Gradle task).
+    Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.core' is applied to the project (as it adds following Gradle task uuRun - see [uuAppg01 gradle plugin documentation](https://uuos9.plus4u.net/uu-dockitg01-main/78462435-99c939a08e0849c68df5ee339c94054b/book/page?code=uuAppg01GradlePlugin)).
 
     In project root directory run command
     
@@ -116,7 +119,9 @@ To apply settings:
     
     Application starts locally on embedded tomcat on default port 8080 and can be accessed e.g. with browser (http://localhost:8080/uu-demoappg01-main/0-0/home).
     
-    _Note that you should be able to access home page. But error will show after you login and you won't be able to run any command from demo except /echo. It is due uuAppWorkspace isn't initialized yet. Follow next chapter to do so._
+    _Note that server is built automatically while running the uuRun task so you don't have to run the "gradle build" task explicitly. The build task should be run only if you need to build both - client and server._
+    
+    _Note that you should be able to access home page. But error will raise after you run any command from demo except /echo. It is due uuAppWorkspace isn't initialized yet. Follow next chapter to do so._
 
 ## 5. Using predefined gradle tasks  
 1. Compiling project
@@ -222,7 +227,7 @@ Dashboard with all these reports is in folder _./project_name/build/reports/buil
 Make sure Gradle plugin 'uu.appg01' or 'uu.appg01.uucloud' is applied to project.
 It adds tasks for creating uuAppBox, uploading attachments, deploying to C3, sharing uuApp etc.
 
-Plugin documentation can be found in file uu_appg01_gradle-plugin_readme.md, located in root of this project.
+Plugin documentation can be found in dockit [uuAppg01 gradle plugin](https://uuos9.plus4u.net/uu-dockitg01-main/78462435-99c939a08e0849c68df5ee339c94054b/book/page?code=uuAppg01GradlePlugin).
 
 # uuService (only server side) development
 Note: You can delete this part from application README
