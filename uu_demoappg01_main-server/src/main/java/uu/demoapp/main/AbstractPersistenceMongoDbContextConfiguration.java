@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import uu.app.binarystore.BinaryStoreServerContextConfiguration;
 import uu.app.binarystore.dao.annotations.BinaryStore;
 import uu.app.datastore.annotations.DataStoreConfiguration;
-import uu.app.datastore.mongodb.AbstractMongoDbContextConfiguration;
+import uu.app.datastore.mongodb.AbstractPersistenceMongoDbContextConfiguration;
 import uu.app.objectstore.annotations.ObjectStore;
 import uu.app.workspace.store.WorkspaceStorageConfiguration;
 
@@ -17,7 +17,7 @@ import uu.app.workspace.store.WorkspaceStorageConfiguration;
  */
 @DataStoreConfiguration
 @Import({BinaryStoreServerContextConfiguration.class})
-public class SubAppPersistenceConfiguration extends AbstractMongoDbContextConfiguration {
+public class AbstractPersistenceMongoDbContextConfiguration extends AbstractPersistenceMongoDbContextConfiguration {
 
   @Value("${objectStoreUri}")
   private String objectStoreUri;
