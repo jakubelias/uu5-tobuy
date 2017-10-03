@@ -26,7 +26,6 @@ buildscript {
   dependencies {
     classpath("com.sourcemuse.gradle.plugin:gradle-mongo-plugin:1.0.0")
     classpath("uu.appg01:uu_appg01_gradle:${uuAppg01ServerVersion}")
-    classpath("uu.appg01:uu_appg01_datastore-gradle:${uuAppg01ServerVersion}")
   }
 }
 

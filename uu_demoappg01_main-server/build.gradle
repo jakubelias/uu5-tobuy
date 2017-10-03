@@ -4,7 +4,6 @@ apply plugin: 'java'
 apply plugin: "com.sourcemuse.mongo"
 apply plugin: 'war'
 apply plugin: 'uu.appg01'
-apply plugin: 'uu.appg01.datastore'
 
 // repositories setup
 repositories {
