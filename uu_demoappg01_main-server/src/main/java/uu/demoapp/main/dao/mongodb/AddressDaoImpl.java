@@ -13,7 +13,7 @@ import uu.demoapp.main.domain.Address;
 /**
  * UuAppObjectStore DAO example.
  */
-@ObjectStoreDao(entity = Address.class, storage = "demoObjectStore")
+@ObjectStoreDao(entity = Address.class, store = "demoObjectStore")
 public class AddressDaoImpl extends UuObjectMongoDbDao<Address> implements AddressDao {
 
   public static final String ATTRS_STREET = "street";

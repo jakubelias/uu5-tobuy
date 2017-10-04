@@ -17,7 +17,7 @@ import uu.app.workspace.store.WorkspaceStorageConfiguration;
  */
 @DataStoreConfiguration
 @Import({BinaryStoreServerContextConfiguration.class})
-public class AbstractPersistenceMongoDbContextConfiguration extends AbstractPersistenceMongoDbContextConfiguration {
+public class PersistenceMongoDbContextConfiguration extends AbstractPersistenceMongoDbContextConfiguration {
 
   @Value("${objectStoreUri}")
   private String objectStoreUri;
