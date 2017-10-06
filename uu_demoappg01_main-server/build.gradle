@@ -68,8 +68,3 @@ war {
     into('WEB-INF/classes/public')
   }
 }
-
-uuDeploySettings {
-  // Deployment configuration location. Variable env is automatically resolved by plugin depending on project's property 'env', default value is 'prod'.
-  uuCloudDeployConfig = rootProject.file("config/uucloud-deploy-config-${env}.json")
-}
