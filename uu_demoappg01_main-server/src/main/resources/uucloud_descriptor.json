@@ -12,7 +12,7 @@
     "nodeSets" : [ {
       "code" : "UU.DEMOAPPG01.MAIN/CMD-CONTAINER",
       "nodeSize" : "G1_S",
-      "runtimeStack" : "UU.APPG01/UUOS9_JAVA_STACK-V0.1"
+      "runtimeStack" : "UU.APPG01/UUOS9_JAVA_STACK-V1.0"
     } ]
   }
 }
