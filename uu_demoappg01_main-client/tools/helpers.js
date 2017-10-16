@@ -159,7 +159,10 @@ function getWebpackConfig(options) {
         template = template.replace(/(^|\n)(\t+)/g, "$1"); // (pretty-print) remove tabs at the beginning of lines
         template = replaceModulesInUrls(template, externalsConfig);
         var base = `<script>
-        var appBaseUrlPath = (location.pathname.split(/\\//).slice(0,1+${preserveSegmentsMatch[1]}).join("/")+"/").replace(/\\/+/g,"/").replace(/"/g,"");
+        var bplCookie = document.cookie.match(/(^|;\\s*)uu\\.app\\.bpl=([^;]+)/);
+        var bplSegmentCount = (bplCookie ? Number(bplCookie[2]) : null);
+        if (typeof bplSegmentCount !== "number" || isNaN(bplSegmentCount) || bplSegmentCount < 0) bplSegmentCount = ${preserveSegmentsMatch[1]};
+        var appBaseUrlPath = (location.pathname.split(/\\//).slice(0,1+bplSegmentCount).join("/")+"/").replace(/\\/+/g,"/").replace(/"/g,"");
         var appAssetsRelativeUrlPath = ${JSON.stringify(opts.appAssetsRelativeUrlPath||"")};
         document.write('<base href="' + appBaseUrlPath + appAssetsRelativeUrlPath + '" data-uu-app-base="' + appBaseUrlPath + '" data-uu-app-assets-base="' + appAssetsRelativeUrlPath + '">');
       </script>`;

@@ -1,5 +1,9 @@
 import React from "react";
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import * as UU5 from "uu5g04";
+import "uu5g04-bricks";
+
 import LeftLink from "./left-link.js";
 import About from "./about.js";
 import DemoHome from "./demo-home.js";
@@ -8,7 +12,7 @@ import DemoHome from "./demo-home.js";
 import Cfg from "./_config.js";
 import "./demo-left.less";
 
-export const DemoLeft = React.createClass({
+export const DemoLeft = createReactClass({
 
   //@@viewOn:mixins
   mixins: [
@@ -93,7 +97,7 @@ export const DemoLeft = React.createClass({
               src="assets/logo.png"/>
           </UU5.Bricks.Div>
 
-          <LeftLink>
+          {(this.props.home) ?  <LeftLink>
             <UU5.Bricks.Link onClick={this._goHome}>
               <UU5.Bricks.Span
                 className="mdi-home"
@@ -103,7 +107,8 @@ export const DemoLeft = React.createClass({
                 {this.getLSIComponent("welcome")}
               </UU5.Bricks.Span>
             </UU5.Bricks.Link>
-          </LeftLink>
+          </LeftLink> : null}
+
           <LeftLink>
             <UU5.Bricks.Link
               content={Cfg.LSILABEL_ABOUT}

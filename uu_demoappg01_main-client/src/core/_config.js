@@ -1,5 +1,6 @@
 import React from "react";
 import * as UU5 from "uu5g04";
+import "uu5g04-bricks";
 import ns from "ns";
 
 const Cfg = {
@@ -27,28 +28,18 @@ Cfg.aboutCreatorsHeader = {
 Cfg.aboutApp = {
   about: {
     cs: 'Demo aplikace je šablona pro vývoj nových aplikací.',
-    en: ''
+    en: 'Demo application is a template for developing new applications.'
   },
   licence: {
     organisation: {
       cs: {
-        name: 'Plus4U.net',
-        uri: 'https://www.plus4u.net/'
+        name: 'Unicorn a.s.',
+        uri: 'https://www.unicorn.com/'
       },
       en: {
-        name: 'Plus4U.net',
-        uri: 'https://www.plus4u.net/en/'
+        name: 'Unicorn a.s.',
+        uri: 'https://www.unicorn.com/'
       }
-    },
-    authorities: {
-      cs: [{
-        name: 'David Kimr',
-        uri: 'https://www.plus4u.net/'
-      }],
-      en: [{
-        name: 'David Kimr',
-        uri: 'https://www.plus4u.net/en/'
-      }]
     }
   },
   authors: {
@@ -209,6 +200,6 @@ Cfg.LSILABEL_LOGIN =
 ;
 
 
-Cfg.CCRKEY_SPA_AUTHENTICATED = Cfg.APP + '.DemoSpaAuthenticated';
+Cfg.CCRKEY_SPA = Cfg.APP + '.DemoSpaAuthenticated';
 
 export default Cfg;

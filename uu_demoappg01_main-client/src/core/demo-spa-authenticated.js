@@ -1,18 +1,21 @@
 import React from "react";
+import createReactClass from 'create-react-class';
 import * as UU5 from "uu5g04";
-import * as Plus4U5 from "plus4u5g01";
-import {Uri} from "uu_appg01_core";
+import "uu5g04-bricks";
+
+import * as Plus4U5 from "uu_plus4u5g01";
+import "uu_plus4u5g01-app";
 
 import Cfg from "./_config.js";
 import DemoLeft from "./demo-left.js";
 import DemoBottom from "./demo-bottom.js";
-import WelcomeRow from "../bricks/welcome-row.js";
 import About from "./about.js";
 import DemoHome from "./demo-home.js";
+import Calls from "calls";
 
 import "./demo-spa-authenticated.less";
 
-const DemoSpaAuthenticated = React.createClass({
+const DemoSpaAuthenticated = createReactClass({
 
   //@@viewOn:mixins
   mixins: [
@@ -61,8 +64,8 @@ const DemoSpaAuthenticated = React.createClass({
 
   _getRoute() {
     let route = null;
-    let uriBuilder = Uri.UriBuilder.parse(window.location.href);
-    let uc = uriBuilder.useCase;
+    let baseUri = Calls.APP_BASE_URI;
+    let uc = (window.location.href.substr(0, baseUri.length) === baseUri ? window.location.href.substr(baseUri.length) : "");
 
     if (uc.match(/^\/?about/)) {
       route = <About/>;
@@ -75,10 +78,9 @@ const DemoSpaAuthenticated = React.createClass({
 
   //@@viewOn:render
   render(){
-    let routerBasePath = location.pathname.replace(/^(.*)\/.*/, "$1");
+    let routerBasePath = Calls.APP_BASE_URI.replace(/\/+$/, "");
 
     return (
-      //          leftWidth="!xs-320px !sm-256px !md-256px lg-256px"
       this.getNestingLevel()
         ? (
         <Plus4U5.App.Page
@@ -90,7 +92,8 @@ const DemoSpaAuthenticated = React.createClass({
             this._getLanguageSelector(),
             <Plus4U5.App.Button/>
           ]}
-          left={<DemoLeft/>}
+          left={<DemoLeft home/>}
+          leftWidth="!xs-320px !s-320px !m-256px l-256px xl-256px"
         >
           <UU5.Common.Router
             urlBuilder={Plus4U5.Common.Url}

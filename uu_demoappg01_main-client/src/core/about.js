@@ -1,11 +1,14 @@
 import React from "react";
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import * as UU5 from "uu5g04";
-import * as Plus4U5 from "plus4u5g01";
+import "uu5g04-bricks";
+import * as Plus4U5 from "uu_plus4u5g01";
 
 import Cfg from './_config.js';
 import './about.less';
 
-export const About = React.createClass({
+export const About = createReactClass({
 
   //@@viewOn:mixins
   mixins: [
@@ -52,6 +55,8 @@ export const About = React.createClass({
     const licence = Cfg.aboutApp.licence || {};
     const authors = Cfg.aboutApp.authors || {};
     const usedTechnologies = Cfg.aboutApp.usedTechnologies || {};
+    let identity = this.getCcrComponentByKey(Cfg.CCRKEY_SPA).getIdentity();
+
 
     return (
       this.getNestingLevel()
@@ -63,7 +68,10 @@ export const About = React.createClass({
           />
           <Plus4U5.App.Licence
             organisation={this.getLSIItem(licence.organisation)}
-            authorities={this.getLSIItem(licence.authorities)}
+            authorities={[{
+              name: identity ? identity.name : "",
+              uri: 'https://www.unicorn.com/'
+            }]}
           />
           <Plus4U5.App.Authors
             header={this.getLSIItem(Cfg.aboutCreatorsHeader)}

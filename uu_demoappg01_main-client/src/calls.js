@@ -3,10 +3,12 @@
  */
 import {Uri} from "uu_appg01_core"
 import {Client} from "uu_appg01"
-import {Session} from "uu_oidcg01"
 import * as UU5 from "uu5g04"
 
 let Calls = {
+
+  /** URL containing app base, e.g. "https://uuos9.plus4u.net/vnd-app/tid-awid/". */
+  APP_BASE_URI: location.protocol + "//" + location.host + document.querySelector("base").getAttribute("data-uu-app-base"),
 
   call(method, url, dtoIn, headers) {
     Client[method](url, dtoIn.data || null, headers).then(
@@ -35,24 +37,30 @@ let Calls = {
      "subApp": "main"
    }
    */
-  getCommandUri(aUseCase) { // useCase <=> "/getSomething" or "/sys/getSomething"
-    let useCase = (!aUseCase.match(/^\//) ? "/" + aUseCase : aUseCase);
-    let baseUri = location.protocol + "//" + location.host + location.pathname;
-    let uriBuilder = Uri.UriBuilder.parse(baseUri).setUseCase(useCase);
+  getCommandUri(aUseCase) { // useCase <=> e.g. "getSomething" or "sys/getSomething"
+    // add useCase to the application base URI
+    // NOTE Using string concatenation instead of UriBuilder to support also URLs
+    // that don't conform to uuUri specification.
+    let targetUriStr = Calls.APP_BASE_URI + aUseCase.replace(/^\/+/, "");
 
     // override tid / awid if it's present in environment (use also its gateway in such case)
     let env = UU5.Environment;
-    if (env.tid || env.awid) {
-      if (env.gatewayUri) uriBuilder.gateway = env.gatewayUri;
-      if (env.tid) uriBuilder.tid = env.tid;
-      if (env.awid) uriBuilder.awid = env.awid;
+    if (env.tid || env.awid || env.vendor || env.app) {
+      let uriBuilder = Uri.UriBuilder.parse(targetUriStr);
+      if (env.tid || env.awid) {
+        if (env.gatewayUri) uriBuilder.gateway = env.gatewayUri;
+        if (env.tid) uriBuilder.tid = env.tid;
+        if (env.awid) uriBuilder.awid = env.awid;
+      }
+      if (env.vendor || env.app) {
+        if (env.vendor) uriBuilder.vendor = env.vendor;
+        if (env.app) uriBuilder.app = env.app;
+        if (env.subApp) uriBuilder.subApp = env.subApp;
+      }
+      targetUriStr = uriBuilder.toUri().toString();
     }
-    if (env.vendor || env.app) {
-      if (env.vendor) uriBuilder.vendor = env.vendor;
-      if (env.app) uriBuilder.app = env.app;
-      if (env.subApp) uriBuilder.subApp = env.subApp;
-    }
-    return uriBuilder.toUri();
+
+    return targetUriStr;
   }
 
 };
