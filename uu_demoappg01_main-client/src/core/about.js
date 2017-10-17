@@ -1,6 +1,5 @@
 import React from "react";
 import createReactClass from 'create-react-class';
-import PropTypes from 'prop-types';
 import * as UU5 from "uu5g04";
 import "uu5g04-bricks";
 import * as Plus4U5 from "uu_plus4u5g01";

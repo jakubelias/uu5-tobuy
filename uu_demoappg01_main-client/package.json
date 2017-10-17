@@ -24,7 +24,7 @@
     "uu_appg01": "https://cdn.plus4u.net/uu-appg01/3.0.0/uu_appg01.tgz",
     "uu_appg01_core": "https://cdn.plus4u.net/uu-appg01-core/3.0.0/uu_appg01_core.tgz",
     "uu_oidcg01": "https://cdn.plus4u.net/uu-oidcg01/3.0.0/uu_oidcg01.tgz",
-    "uu_plus4u5g01": "https://cdn.plus4u.net/beta/uu-plus4u5g01/1.0.0-beta1.3/uu_plus4u5g01.tgz"
+    "uu_plus4u5g01": "https://cdn.plus4u.net/beta/uu-plus4u5g01/1.0.0/uu_plus4u5g01.tgz"
   },
   "uuBuildSettings": {
     "useCdn": true,

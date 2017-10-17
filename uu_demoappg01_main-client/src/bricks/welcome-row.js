@@ -59,14 +59,14 @@ const DemoRouteDefault = createReactClass({
       <UU5.Bricks.Row {...this.getMainPropsToPass()}>
           <UU5.Bricks.Column
             className={this.getClassName('iconColumn')}
-            colWidth="xs12 s12 m2 x2 xl2"
+            colWidth="xs12 s12 m2 l2 xl2"
           >
             <UU5.Bricks.Span className={this.props.glyphicon} />
           </UU5.Bricks.Column>
           <UU5.Bricks.Column
             style={{paddingTop: this.props.textPadding}}
             className={this.getClassName('text')}
-            colWidth="xs12 s12 m10 x10 xl10"
+            colWidth="xs12 s12 m10 l10 xl10"
           >
             {this.props.children}
           </UU5.Bricks.Column>
