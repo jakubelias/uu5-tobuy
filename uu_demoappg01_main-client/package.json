@@ -24,7 +24,7 @@
     "uu_appg01": "https://cdn.plus4u.net/uu-appg01/3.0.0/uu_appg01.tgz",
     "uu_appg01_core": "https://cdn.plus4u.net/uu-appg01-core/3.0.0/uu_appg01_core.tgz",
     "uu_oidcg01": "https://cdn.plus4u.net/uu-oidcg01/3.0.0/uu_oidcg01.tgz",
-    "uu_plus4u5g01": "https://cdn.plus4u.net/uu-plus4u5g01/1.0.0/uu_plus4u5g01.tgz"
+    "uu_plus4u5g01": "https://cdn.plus4u.net/beta/uu-plus4u5g01/1.0.0/uu_plus4u5g01.tgz"
   },
   "uuBuildSettings": {
     "useCdn": true,
@@ -82,15 +82,15 @@
         "localBaseUri": "node_modules/uu_oidcg01/dist/"
       },
       "uu_plus4u5g01": {
-        "cdnBaseUri": "https://cdn.plus4u.net/uu-plus4u5g01/%version%/",
+        "cdnBaseUri": "https://cdn.plus4u.net/beta/uu-plus4u5g01/%version%/",
         "localBaseUri": "node_modules/uu_plus4u5g01/dist/"
       },
       "uu_plus4u5g01-bricks": {
-        "cdnBaseUri": "https://cdn.plus4u.net/uu-plus4u5g01/1.0.0/",
+        "cdnBaseUri": "https://cdn.plus4u.net/beta/uu-plus4u5g01/1.0.0/",
         "localBaseUri": "node_modules/uu_plus4u5g01/dist/"
       },
       "uu_plus4u5g01-app": {
-        "cdnBaseUri": "https://cdn.plus4u.net/uu-plus4u5g01/1.0.0/",
+        "cdnBaseUri": "https://cdn.plus4u.net/beta/uu-plus4u5g01/1.0.0/",
         "localBaseUri": "node_modules/uu_plus4u5g01/dist/"
       }
     }
