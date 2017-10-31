@@ -9,7 +9,7 @@ defaultTasks 'uuRun'
 
 buildscript {
   ext {
-    uuAppg01ServerVersion = "1.1.3"
+    uuAppg01ServerVersion = "1.1.4-rc.1"
     uuProdRepository = 'https://repo.plus4u.net/repository/jars/'
     uuBetaRepository = 'https://repo.plus4u.net/repository/jars-beta/'
     gradlePluginsRepository = 'https://plugins.gradle.org/m2/'
