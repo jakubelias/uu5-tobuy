@@ -146,5 +146,5 @@
   "description": "Project template for developing UAF application with uu5.",
   "vendor": "<your company>",
   "license": "License Commercial",
-  "template": "uu5-java-1.0.0"
+  "template": "uu5-java-1.1.4"
 }
