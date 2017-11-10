@@ -43,6 +43,7 @@ const ShoppingListTable = createReactClass({
 
     propTypes: {
         items: PropTypes.array,
+        onItemRemove: PropTypes.func,
     },
 
     getDefaultProps() {
@@ -66,7 +67,8 @@ const ShoppingListTable = createReactClass({
 
 
     _deleteItem(id){
-        alert("delete" + id);
+        console.log("delete" + id);
+        this.props.onItemRemove(id);
     },
 
     _getDataForCategories(){

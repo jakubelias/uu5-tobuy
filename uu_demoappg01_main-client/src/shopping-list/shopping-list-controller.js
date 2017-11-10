@@ -77,6 +77,27 @@ const ShoppingList = createReactClass({
 
     },
 
+    _handleRemove(id){
+        console.log("to be removed in controller:", id);
+
+        let newItems = []
+        this.state.items.forEach((item) => {
+
+            if (item.id != id) {
+                newItems.push(item);
+            }else {
+                console.log("removing item:", id)
+            }
+
+        });
+        console.log("new items:", newItems)
+        this.setState({ items: newItems })
+
+
+
+
+    },
+
     //@@viewOff:componentSpecificHelpers
 
     //@@viewOn:render
@@ -84,7 +105,7 @@ const ShoppingList = createReactClass({
         return (
             <UU5.Bricks.Div {...this.getMainPropsToPass()}>
                 <ShoppingListInput onDataAdded={this._handleAdd} />
-                <ShoppingListTable items={this.state.items}/>
+                <ShoppingListTable onItemRemove={this._handleRemove} items={this.state.items}/>
             </UU5.Bricks.Div>
         );
 
