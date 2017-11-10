@@ -61,10 +61,6 @@ const ShoppingListInput = createReactClass({
 
     //@@viewOn:componentSpecificHelpers
     _onDataFilled(opt){
-        alert(opt);
-
-        //console.log("change", opt.value);
-        //opt.component.setValue(opt.value);
         this.props.onDataAdded(opt);
     },
     //@@viewOff:componentSpecificHelpers

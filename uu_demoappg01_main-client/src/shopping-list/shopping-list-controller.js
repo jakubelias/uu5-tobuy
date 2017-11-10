@@ -42,6 +42,7 @@ const ShoppingList = createReactClass({
     getInitialState() {
         return {
             items: [],
+            counter: 0,
         };
     },
 
@@ -66,9 +67,13 @@ const ShoppingList = createReactClass({
     _handleAdd(opt){
         console.log(opt);
         let list = this.state.items.slice()
-        list.push({text:opt, count: 1, category:"default"});
-        console.log(list);
+        list.push({text:opt, count: 1, category:"default", id:this.state.counter});
+        console.log("new list:",list);
+        console.log("going to change state:",list);
         this.setState({ items: list })
+
+       /* let counter = this.state.counter;
+        this.setState({ counter: counter++ })*/
     },
 
     //@@viewOff:componentSpecificHelpers
@@ -78,7 +83,7 @@ const ShoppingList = createReactClass({
         return (
             <UU5.Bricks.Div {...this.getMainPropsToPass()}>
                 <ShoppingListInput onDataAdded={this._handleAdd} />
-                {/*<ShoppingListTable/>*/}
+                <ShoppingListTable items={this.state.items}/>
             </UU5.Bricks.Div>
         );
 

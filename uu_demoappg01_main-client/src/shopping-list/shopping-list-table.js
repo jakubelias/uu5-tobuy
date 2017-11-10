@@ -4,6 +4,7 @@ import * as UU5 from "uu5g04";
 import "uu5g04-bricks";
 import * as Plus4U5 from "uu_plus4u5g01";
 import "uu_plus4u5g01-bricks";
+import PropTypes from "prop-types";
 
 import Cfg from "../core/_config.js";
 
@@ -40,6 +41,14 @@ const ShoppingListTable = createReactClass({
     //@@viewOff:statics
 
     //@@viewOn:propTypes
+
+    propTypes: {
+        items: PropTypes.array,
+    },
+
+    getDefaultProps() {
+        return {items: []}
+    },
     //@@viewOff:propTypes
 
     //@@viewOn:getDefaultProps
@@ -55,22 +64,39 @@ const ShoppingListTable = createReactClass({
     //@@viewOff:overridingMethods
 
     //@@viewOn:componentSpecificHelpers
+    _getDataForCategories(){
+        console.log("rendering table .....");
+        console.log(this.props.items);
+        return this.props.items.map((row) => {
+                return (
+
+                    <UU5.Bricks.Table.Tr key={row.id}>
+                        <UU5.Bricks.Table.Td content={row.text}/>
+                        <UU5.Bricks.Table.Td content={row.count}/>
+                        <UU5.Bricks.Table.Td content={row.category}/>
+                    </UU5.Bricks.Table.Tr>
+                )
+            }
+        )
+    },
     //@@viewOff:componentSpecificHelpers
 
     //@@viewOn:render
     render() {
-        let child;
-
-        return (<div>hello word shopping list table</div>)
-        /* if (this.isAuthenticated()) {
-         child = <DemoSpaAuthenticated {...this.getMainPropsToPass()} name="authenticated"/>
-         } else if (this.isNotAuthenticated()) {
-         child = <DemoSpaNotAuthenticated {...this.getMainPropsToPass()} name="notAuthenticated"/>
-         } else {
-         child = <Plus4U5.Bricks.Loading {...this.getMainPropsToPass()}/>
-         }
-
-         return this.getNestingLevel() ? child : null;*/
+        return (
+        <UU5.Bricks.Table responsive header='Description' footer='Confidential Reports' hover>
+            <UU5.Bricks.Table.THead>
+                <UU5.Bricks.Table.Tr>
+                    <UU5.Bricks.Table.Th content='text'/>
+                    <UU5.Bricks.Table.Th content='count'/>
+                    <UU5.Bricks.Table.Th content="category"/>
+                </UU5.Bricks.Table.Tr>
+            </UU5.Bricks.Table.THead>
+            <UU5.Bricks.Table.TBody>
+                {this._getDataForCategories()}
+            </UU5.Bricks.Table.TBody>
+        </UU5.Bricks.Table>
+        )
     }
     //@@viewOff:render
 });
