@@ -46,6 +46,7 @@ const ShoppingListTable = createReactClass({
         breakCache: PropTypes.any,
         onItemRemove: PropTypes.func,
         onChangeState: PropTypes.func,
+        onChangeText: PropTypes.func,
     },
 
     getDefaultProps() {
@@ -78,13 +79,26 @@ const ShoppingListTable = createReactClass({
         this.props.onChangeState(id);
     },
 
+    _changeText(id, text){
+        console.log("change text" + id, text);
+        this.props.onChangeText(id, text);
+    },
+
     _getDataForCategories(){
         console.log("rendering table .....");
         console.log(this.props.items);
         return this.props.items.map((row) => {
                 return (
                     <UU5.Bricks.Table.Tr key={row.id}>
-                        <UU5.Bricks.Table.Td content={row.text}/>
+                        <UU5.Bricks.Table.Td>
+                            <UU5.Forms.Text
+                                label="Write here"
+                                value={row.text}
+                                onBlur={(opt) => this._changeText(row.id, opt.value)}
+
+                            />
+                        </UU5.Bricks.Table.Td>
+
                         <UU5.Bricks.Table.Td content={row.category}/>
                         <UU5.Bricks.Table.Td>
                             <UU5.Forms.Number  value={row.count}/>

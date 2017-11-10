@@ -123,6 +123,26 @@ const ShoppingList = createReactClass({
         this.setState({ items: newItems, breakCache: new Date()  });
     },
 
+    _handleChangeText(id, text){
+
+        let newItems = []
+        this.state.items.forEach((item) => {
+
+            if (item.id != id) {
+                newItems.push(item);
+            }else {
+                console.log("changing text of item to:", text);
+                item.text=text;
+                newItems.push({... item});
+
+            }
+
+        });
+        console.log("new items:", newItems);
+
+        this.setState({ items: newItems, breakCache: new Date()  });
+    },
+
     //@@viewOff:componentSpecificHelpers
 
     //@@viewOn:render
@@ -133,6 +153,7 @@ const ShoppingList = createReactClass({
                     breakCache={this.state.breakCache}
                     onItemRemove={this._handleRemove}
                     onChangeState={this._handleChangeState}
+                    onChangeText={this._handleChangeText}
                     items={this.state.items}/>
                ]
 
