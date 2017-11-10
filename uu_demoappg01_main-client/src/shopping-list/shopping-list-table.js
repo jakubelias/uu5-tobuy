@@ -8,8 +8,7 @@ import PropTypes from "prop-types";
 
 import Cfg from "../core/_config.js";
 
-import DemoSpaAuthenticated from "../core/demo-spa-authenticated.js";
-import DemoSpaNotAuthenticated from "../core/demo-spa-not-authenticated.js";
+
 
 import "../core/demo-spa.less";
 
@@ -64,16 +63,26 @@ const ShoppingListTable = createReactClass({
     //@@viewOff:overridingMethods
 
     //@@viewOn:componentSpecificHelpers
+
+
+    _deleteItem(id){
+        alert("delete" + id);
+    },
+
     _getDataForCategories(){
         console.log("rendering table .....");
         console.log(this.props.items);
         return this.props.items.map((row) => {
                 return (
-
                     <UU5.Bricks.Table.Tr key={row.id}>
                         <UU5.Bricks.Table.Td content={row.text}/>
-                        <UU5.Bricks.Table.Td content={row.count}/>
                         <UU5.Bricks.Table.Td content={row.category}/>
+                        <UU5.Bricks.Table.Td>
+                            <UU5.Forms.Number  value={row.count} onChange/>
+                        </UU5.Bricks.Table.Td>
+                        <UU5.Bricks.Table.Td>
+                            <UU5.Bricks.Button onClick={()=>{this._deleteItem(row.id);}}>delete</UU5.Bricks.Button>
+                        </UU5.Bricks.Table.Td>
                     </UU5.Bricks.Table.Tr>
                 )
             }
@@ -88,8 +97,9 @@ const ShoppingListTable = createReactClass({
             <UU5.Bricks.Table.THead>
                 <UU5.Bricks.Table.Tr>
                     <UU5.Bricks.Table.Th content='text'/>
-                    <UU5.Bricks.Table.Th content='count'/>
                     <UU5.Bricks.Table.Th content="category"/>
+                    <UU5.Bricks.Table.Th content="count"/>
+
                 </UU5.Bricks.Table.Tr>
             </UU5.Bricks.Table.THead>
             <UU5.Bricks.Table.TBody>

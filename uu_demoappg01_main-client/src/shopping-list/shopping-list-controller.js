@@ -66,14 +66,15 @@ const ShoppingList = createReactClass({
     //@@viewOn:componentSpecificHelpers
     _handleAdd(opt){
         console.log(opt);
+
+        let mycounter = this.state.counter;
+        console.log("counter:", mycounter++);
+        this.setState({ counter: mycounter++ })
+
         let list = this.state.items.slice()
         list.push({text:opt, count: 1, category:"default", id:this.state.counter});
-        console.log("new list:",list);
-        console.log("going to change state:",list);
         this.setState({ items: list })
 
-       /* let counter = this.state.counter;
-        this.setState({ counter: counter++ })*/
     },
 
     //@@viewOff:componentSpecificHelpers
