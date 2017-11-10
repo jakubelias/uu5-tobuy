@@ -72,7 +72,7 @@ const ShoppingListInput = createReactClass({
         return (
 
             <UU5.Forms.TextButton
-                value="change me "
+                value="your shopping item mr. "
                 label="What should i buy?:"
                 buttons={[{
                 glyphicon: 'uu-glyphicon-ok',
