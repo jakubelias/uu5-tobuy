@@ -43,6 +43,7 @@ const ShoppingList = createReactClass({
         return {
             items: [],
             counter: 0,
+            breakCache: new Date()
         };
     },
 
@@ -72,7 +73,7 @@ const ShoppingList = createReactClass({
         this.setState({ counter: mycounter++ })
 
         let list = this.state.items.slice()
-        list.push({text:opt, count: 1, category:"default", id:this.state.counter});
+        list.push({text:opt, count: 1, category:"default", id:this.state.counter, state:"not buyed"});
         this.setState({ items: list })
 
     },
@@ -92,33 +93,50 @@ const ShoppingList = createReactClass({
         });
         console.log("new items:", newItems)
         this.setState({ items: newItems })
+    },
+
+    _handleChangeState(id){
+        console.log("to be changedState:", id);
+
+        let newItems = []
+        this.state.items.forEach((item) => {
+
+            if (item.id != id) {
+                newItems.push(item);
+            }else {
+                console.log("changing state of item");
+
+                if (item.state == "not buyed"){
+                    item.state = "buyed";
+                }else{
+                    item.state = "not buyed";
+                }
+                console.log("state:", item.state);
+                newItems.push({... item});
 
 
+            }
 
+        });
+        console.log("new items:", newItems);
 
+        this.setState({ items: newItems, breakCache: new Date()  });
     },
 
     //@@viewOff:componentSpecificHelpers
 
     //@@viewOn:render
     render() {
-        return (
-            <UU5.Bricks.Div {...this.getMainPropsToPass()}>
-                <ShoppingListInput onDataAdded={this._handleAdd} />
-                <ShoppingListTable onItemRemove={this._handleRemove} items={this.state.items}/>
-            </UU5.Bricks.Div>
-        );
+        return [
+                <ShoppingListInput onDataAdded={this._handleAdd} />,
+                <ShoppingListTable
+                    breakCache={this.state.breakCache}
+                    onItemRemove={this._handleRemove}
+                    onChangeState={this._handleChangeState}
+                    items={this.state.items}/>
+               ]
 
 
-       /* if (this.isAuthenticated()) {
-            child = <DemoSpaAuthenticated {...this.getMainPropsToPass()} name="authenticated"/>
-        } else if (this.isNotAuthenticated()) {
-            child = <DemoSpaNotAuthenticated {...this.getMainPropsToPass()} name="notAuthenticated"/>
-        } else {
-            child = <Plus4U5.Bricks.Loading {...this.getMainPropsToPass()}/>
-        }
-
-        return this.getNestingLevel() ? child : null;*/
     }
     //@@viewOff:render
 });
