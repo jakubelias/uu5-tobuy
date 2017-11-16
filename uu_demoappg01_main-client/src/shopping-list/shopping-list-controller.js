@@ -11,6 +11,8 @@ import DemoSpaAuthenticated from "../core/demo-spa-authenticated.js";
 import DemoSpaNotAuthenticated from "../core/demo-spa-not-authenticated.js";
 import ShoppingListTable from "../shopping-list/shopping-list-table.js";
 import ShoppingListInput from "../shopping-list/shopping-list-input.js";
+import MissingItems from "../shopping-list/shopping-list-missing-items";
+
 
 import "../core/demo-spa.less";
 
@@ -172,7 +174,8 @@ const ShoppingList = createReactClass({
                     onChangeState={this._handleChangeState}
                     onChangeText={this._handleChangeText}
                     onChangeCount={this._handleChangeCount}
-                    items={this.state.items}/>
+                    items={this.state.items}/>,
+                <MissingItems count={this.state.items.length}/>
                ]
 
 
