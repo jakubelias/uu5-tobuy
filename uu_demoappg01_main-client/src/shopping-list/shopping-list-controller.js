@@ -10,6 +10,7 @@ import Cfg from "../core/_config.js";
 import DemoSpaAuthenticated from "../core/demo-spa-authenticated.js";
 import DemoSpaNotAuthenticated from "../core/demo-spa-not-authenticated.js";
 import ShoppingListTable from "../shopping-list/shopping-list-table.js";
+import ShoppingListResponsibleTable from "../shopping-list/shopping-list-responsive-table.js";
 import ShoppingListInput from "../shopping-list/shopping-list-input.js";
 import MissingItems from "../shopping-list/shopping-list-missing-items";
 
@@ -24,7 +25,8 @@ const ShoppingList = createReactClass({
         UU5.Common.ElementaryMixin,
         UU5.Common.NestingLevelMixin,
         UU5.Common.IdentityMixin,
-        UU5.Common.CcrWriterMixin
+        UU5.Common.CcrWriterMixin,
+        UU5.Common.ScreenSizeMixin,
     ],
     //@@viewOff:mixins
 
@@ -166,8 +168,10 @@ const ShoppingList = createReactClass({
 
     //@@viewOn:render
     render() {
-        return [
-                <ShoppingListInput onDataAdded={this._handleAdd} />,
+
+        if (this.isXs()){
+            //no edits on small devices
+            return [
                 <ShoppingListTable
                     breakCache={this.state.breakCache}
                     onItemRemove={this._handleRemove}
@@ -175,8 +179,33 @@ const ShoppingList = createReactClass({
                     onChangeText={this._handleChangeText}
                     onChangeCount={this._handleChangeCount}
                     items={this.state.items}/>,
-                <MissingItems count={this.state.items.length}/>
-               ]
+            ]
+
+        }
+
+        return [
+            <ShoppingListInput onDataAdded={this._handleAdd}/>,
+            <ShoppingListTable
+                breakCache={this.state.breakCache}
+                onItemRemove={this._handleRemove}
+                onChangeState={this._handleChangeState}
+                onChangeText={this._handleChangeText}
+                onChangeCount={this._handleChangeCount}
+                items={this.state.items}/>,
+            <MissingItems count={this.state.items.length}/>,
+
+            <ShoppingListResponsibleTable
+                breakCache={this.state.breakCache}
+                onItemRemove={this._handleRemove}
+                onChangeState={this._handleChangeState}
+                onChangeText={this._handleChangeText}
+                onChangeCount={this._handleChangeCount}
+                items={this.state.items}/>,
+
+            <MissingItems count={this.state.items.length}/>
+
+
+        ]
 
 
     }
