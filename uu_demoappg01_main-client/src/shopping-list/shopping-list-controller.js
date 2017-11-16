@@ -79,7 +79,6 @@ const ShoppingList = createReactClass({
     },
 
     _handleRemove(id){
-        console.log("to be removed in controller:", id);
 
         let newItems = []
         this.state.items.forEach((item) => {
@@ -91,7 +90,6 @@ const ShoppingList = createReactClass({
             }
 
         });
-        console.log("new items:", newItems)
         this.setState({ items: newItems })
     },
 
