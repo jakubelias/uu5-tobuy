@@ -47,6 +47,7 @@ const ShoppingListTable = createReactClass({
         onItemRemove: PropTypes.func,
         onChangeState: PropTypes.func,
         onChangeText: PropTypes.func,
+        onChangeCount: PropTypes.func,
     },
 
     getDefaultProps() {
@@ -84,6 +85,11 @@ const ShoppingListTable = createReactClass({
         this.props.onChangeText(id, text);
     },
 
+    _changeCount(id, count){
+        console.log("change count" + id, count);
+        this.props.onChangeCount(id, count);
+    },
+
     _getDataForCategories(){
         console.log("rendering table .....");
         console.log(this.props.items);
@@ -101,7 +107,7 @@ const ShoppingListTable = createReactClass({
 
                         <UU5.Bricks.Table.Td content={row.category}/>
                         <UU5.Bricks.Table.Td>
-                            <UU5.Forms.Number  value={row.count}/>
+                            <UU5.Forms.Number  value={row.count} onChange={(opt) => this._changeCount(row.id, opt.value)}/>
                         </UU5.Bricks.Table.Td>
                         <UU5.Bricks.Table.Td>
                             <UU5.Bricks.Button onClick={()=>{this._deleteItem(row.id);}}>delete</UU5.Bricks.Button>
@@ -119,14 +125,13 @@ const ShoppingListTable = createReactClass({
     //@@viewOn:render
     render() {
         return (
-        <UU5.Bricks.Table responsive header='Shopping List' footer='UU5 Super App' hover>
+        <UU5.Bricks.Table responsive header='Shopping List' footer='UU5 Super App.' hover>
             <UU5.Bricks.Table.THead>
                 <UU5.Bricks.Table.Tr>
                     <UU5.Bricks.Table.Th content='text'/>
                     <UU5.Bricks.Table.Th content="category"/>
                     <UU5.Bricks.Table.Th content="count"/>
                     <UU5.Bricks.Table.Th content="state"/>
-
                 </UU5.Bricks.Table.Tr>
             </UU5.Bricks.Table.THead>
             <UU5.Bricks.Table.TBody>
