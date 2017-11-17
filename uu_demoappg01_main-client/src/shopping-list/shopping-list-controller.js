@@ -70,15 +70,10 @@ const ShoppingList = createReactClass({
 
     //@@viewOn:componentSpecificHelpers
     _handleAdd(opt){
-
-        let mycounter = this.state.counter;
-
-        this.setState({ counter: mycounter++ })
-
-        let list = this.state.items.slice()
-        list.push({text:opt, count: 1, category:"default", id:this.state.counter, state:"not bought"});
+        this.setState({ counter: ++ this.state.counter });
+        let list = this.state.items.slice();
+        list.push({text:opt, count: 1, category:"default", id: this.state.counter, state:"not bought"});
         this.setState({ items: list })
-
     },
 
     _handleRemove(id){
@@ -113,26 +108,31 @@ const ShoppingList = createReactClass({
     },
 
     _handleChangeText(id, text){
-
-        let newItems = []
-        this.state.items.forEach((item) => {
-
-            if (item.id != id) {
-                newItems.push(item);
-            }else {
-                console.log("changing text of item to:", text);
-                item.text=text;
-                newItems.push({... item});
-
+        let modified = this.state.items.map(element => {
+            console.log(element.id);
+            if (element.id != id) {
+                return element;
+            } else {
+                element.text = text;
+                return element;
             }
-
         });
-        console.log("new items:", newItems);
 
-        this.setState({ items: newItems, breakCache: new Date()  });
+        this.setState({ items: modified });
     },
 
     _handleChangeCount(id, count){
+
+      /*  let modified = this.state.items.map(element => {
+            if (element.id != id) {
+                return element;
+            } else {
+                element.count = count;
+                return element;
+            }
+        });
+
+        this.setState({ items: modified });*/
 
         let newItems = []
         this.state.items.forEach((item) => {
