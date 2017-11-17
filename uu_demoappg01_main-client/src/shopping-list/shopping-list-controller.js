@@ -77,7 +77,7 @@ const ShoppingList = createReactClass({
         this.setState({ counter: mycounter++ })
 
         let list = this.state.items.slice()
-        list.push({text:opt, count: 1, category:"default", id:this.state.counter, state:"not buyed"});
+        list.push({text:opt, count: 1, category:"default", id:this.state.counter, state:"not bought"});
         this.setState({ items: list })
 
     },
@@ -100,17 +100,17 @@ const ShoppingList = createReactClass({
     _handleChangeState(id){
         console.log("to be changedState:", id);
 
-        let newItems = []
+        let newItems = [];
         this.state.items.forEach((item) => {
 
             if (item.id != id) {
                 newItems.push(item);
             }else {
 
-                if (item.state == "not buyed"){
-                    item.state = "buyed";
+                if (item.state == "not bought"){
+                    item.state = "bought";
                 }else{
-                    item.state = "not buyed";
+                    item.state = "not bought";
                 }
                 console.log("state:", item.state);
                 newItems.push({... item});

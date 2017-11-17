@@ -96,25 +96,14 @@ const ShoppingListResponsibleTable = createReactClass({
         console.log(this.props.items);
         return this.props.items.map((row) => {
                 return (
-
-
-                        <UU5.Bricks.Column colWidth="s12 m6 xl3" key={row.id}>
-                            <UU5.Bricks.Blockquote background colorSchema={row.state== "not buyed" ?  "info" :  "success"}>
-
-                            <UU5.Forms.Text
-                                label="Write here"
-                                value={row.text}
-                                onBlur={(opt) => this._changeText(row.id, opt.value)}
-
-                            />
-
-                                <UU5.Forms.Number  value={row.count} onChange={(opt) => this._changeCount(row.id, opt.value)}/>
-                                <UU5.Bricks.Button onClick={()=>{this._deleteItem(row.id);}}>delete</UU5.Bricks.Button>
-                                <UU5.Bricks.Button onClick={()=>{this._changeState(row.id);}}>{row.state}</UU5.Bricks.Button>
-
-                            </UU5.Bricks.Blockquote>
-                        </UU5.Bricks.Column>
-
+                    <UU5.Bricks.Column colWidth="s12 m6 xl3" key={row.id}>
+                        <UU5.Bricks.Blockquote background colorSchema={row.state== "not bought" ?  "info" :  "success"}>
+                        <UU5.Forms.Text label="Edit name:" value={row.text} onBlur={(opt) => this._changeText(row.id, opt.value)}                            />
+                        <UU5.Forms.Number  value={row.count} onChange={(opt) => this._changeCount(row.id, opt.value)}/>
+                        <UU5.Bricks.Button onClick={()=>{this._deleteItem(row.id);}}>delete</UU5.Bricks.Button>
+                        <UU5.Bricks.Button onClick={()=>{this._changeState(row.id);}}>{row.state}</UU5.Bricks.Button>
+                        </UU5.Bricks.Blockquote>
+                    </UU5.Bricks.Column>
                 )
             }
         )
@@ -124,7 +113,7 @@ const ShoppingListResponsibleTable = createReactClass({
     //@@viewOn:render
     render() {
         return (
-            <UU5.Bricks.Row responsive header='Shopping List' footer='UU5 Super App.' hover>
+            <UU5.Bricks.Row responsive header='Shopping List' footer='UU5 Super App.'>
                     {this._getDataForCategories()}
             </UU5.Bricks.Row>
         )
