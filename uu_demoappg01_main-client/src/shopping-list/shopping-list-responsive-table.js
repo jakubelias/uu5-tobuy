@@ -5,6 +5,7 @@ import "uu5g04-bricks";
 import * as Plus4U5 from "uu_plus4u5g01";
 import "uu_plus4u5g01-bricks";
 import PropTypes from "prop-types";
+import AccordeonPanel from "../shopping-list/accordeonPanel";
 
 import Cfg from "../core/_config.js";
 
@@ -43,13 +44,12 @@ const ShoppingListResponsibleTable = createReactClass({
 
     propTypes: {
         items: PropTypes.array,
-        breakCache: PropTypes.any,
+        categories: PropTypes.array,
         onItemRemove: PropTypes.func,
         onChangeState: PropTypes.func,
         onChangeText: PropTypes.func,
         onChangeCount: PropTypes.func,
     },
-
 
     //@@viewOff:propTypes
 
@@ -70,52 +70,26 @@ const ShoppingListResponsibleTable = createReactClass({
 
     //@@viewOn:componentSpecificHelpers
 
-
-    _deleteItem(id){
-        console.log("delete" + id);
-        this.props.onItemRemove(id);
-    },
-
-    _changeState(id){
-        console.log("change state" + id);
-        this.props.onChangeState(id);
-    },
-
-    _changeText(id, text){
-        console.log("change text" + id, text);
-        this.props.onChangeText(id, text);
-    },
-
-    _changeCount(id, count){
-        console.log("change count" + id, count);
-        this.props.onChangeCount(id, count);
-    },
-
-    _getDataForCategories(){
-        console.log("rendering table .....");
-        console.log(this.props.items);
-        return this.props.items.map((row) => {
-                return (
-                    <UU5.Bricks.Column colWidth="s12 m6 xl3" key={row.id}>
-                        <UU5.Bricks.Blockquote background colorSchema={row.state== "not bought" ?  "info" :  "success"}>
-                        <UU5.Forms.Text label="Edit name:" value={row.text} onBlur={(opt) => this._changeText(row.id, opt.value)}                            />
-                        <UU5.Forms.Number  value={row.count} onChange={(opt) => this._changeCount(row.id, opt.value)}/>
-                        <UU5.Bricks.Button onClick={()=>{this._deleteItem(row.id);}}>delete</UU5.Bricks.Button>
-                        <UU5.Bricks.Button onClick={()=>{this._changeState(row.id);}}>{row.state}</UU5.Bricks.Button>
-                        </UU5.Bricks.Blockquote>
-                    </UU5.Bricks.Column>
-                )
-            }
-        )
-    },
     //@@viewOff:componentSpecificHelpers
 
     //@@viewOn:render
     render() {
+        let panels = this.props.categories.map(
+            (category) => <AccordeonPanel
+                key={category}
+                category={category}
+                items={this.props.items.filter(item => item.category == category) }
+                onItemRemove={this.props.onItemRemove}
+                onChangeState={this.props.onChangeState}
+                onChangeText={this.props.onChangeText}
+                onChangeCount={this.props.onChangeCount}
+         />);
+
+
         return (
-            <UU5.Bricks.Row responsive header='Shopping List' footer='UU5 Super App.'>
-                    {this._getDataForCategories()}
-            </UU5.Bricks.Row>
+            <UU5.Bricks.Accordion allowTags={["AccordeonPanel"]}>
+                {panels}
+            </UU5.Bricks.Accordion>
         )
     }
     //@@viewOff:render

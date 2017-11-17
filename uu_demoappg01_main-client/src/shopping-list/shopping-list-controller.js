@@ -72,10 +72,6 @@ const ShoppingList = createReactClass({
 
     //@@viewOn:componentSpecificHelpers
 
-
-
-
-
     _handleAdd(opt){
         this.setState({ counter: ++ this.state.counter });
         let list = this.state.items.slice();
@@ -139,6 +135,7 @@ const ShoppingList = createReactClass({
             //no edits on small devices, just display list and allow to mark items as bought
             return [
                 <ShoppingListResponsibleTable
+                    categories={CATEGORIES}
                     breakCache={this.state.breakCache}
                     onItemRemove={this._handleRemove}
                     onChangeState={this._handleChangeState}
@@ -151,7 +148,6 @@ const ShoppingList = createReactClass({
 
             return [
                 <ShoppingListInput onDataAdded={this._handleAdd} categories={CATEGORIES}/>,
-
                 <ShoppingListTable
                     breakCache={this.state.breakCache}
                     onItemRemove={this._handleRemove}
@@ -161,15 +157,6 @@ const ShoppingList = createReactClass({
                     items={this.state.items}/>,
                 <MissingItems count={this.state.items.length}/>,
 
-                <ShoppingListResponsibleTable
-                    breakCache={this.state.breakCache}
-                    onItemRemove={this._handleRemove}
-                    onChangeState={this._handleChangeState}
-                    onChangeText={this._handleChangeText}
-                    onChangeCount={this._handleChangeCount}
-                    items={this.state.items}/>,
-
-                <MissingItems count={this.state.items.length}/>
             ]
         }
 

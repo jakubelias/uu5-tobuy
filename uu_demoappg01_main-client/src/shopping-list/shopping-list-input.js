@@ -39,13 +39,6 @@ const ShoppingListInput = createReactClass({
         }
     },
 
-
-    getInitialState() {
-        return {
-            category:"drugs"
-        };
-    },
-
     //@@viewOff:statics
 
     propTypes: {
@@ -74,12 +67,6 @@ const ShoppingListInput = createReactClass({
         this.props.onDataAdded(opt);
     },
 
-
-    _onChangeCategory(category){
-        console.log("category:", category);
-        this.setState({ category: category});
-    },
-
     //@@viewOff:componentSpecificHelpers
 
     //@@viewOn:render
@@ -87,7 +74,7 @@ const ShoppingListInput = createReactClass({
         let options = this.props.categories.map((category) => <UU5.Forms.Select.Option value={category}/>);
 
         return [
-            <UU5.Forms.Select label="category" ref_={(input) => this._categoryInput = input}>
+            <UU5.Forms.Select label="category" value="drogs" ref_={(input) => this._categoryInput = input}>
                 {options}
             </UU5.Forms.Select>,
             <UU5.Forms.TextButton
