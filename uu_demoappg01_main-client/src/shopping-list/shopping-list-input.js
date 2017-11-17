@@ -21,7 +21,8 @@ const ShoppingListInput = createReactClass({
         UU5.Common.ElementaryMixin,
         UU5.Common.NestingLevelMixin,
         UU5.Common.IdentityMixin,
-        UU5.Common.CcrWriterMixin
+        UU5.Common.CcrWriterMixin,
+        UU5.Common.InputMixin
     ],
     //@@viewOff:mixins
 
@@ -38,10 +39,18 @@ const ShoppingListInput = createReactClass({
         }
     },
 
+
+    getInitialState() {
+        return {
+            category:"drugs"
+        };
+    },
+
     //@@viewOff:statics
 
     propTypes: {
         onDataAdded: PropTypes.func,
+        categories: PropTypes.array,
     },
 
     //@@viewOn:propTypes
@@ -61,27 +70,36 @@ const ShoppingListInput = createReactClass({
 
     //@@viewOn:componentSpecificHelpers
     _onDataFilled(opt){
+        opt.category = this._categoryInput.getValue();
         this.props.onDataAdded(opt);
     },
+
+
+    _onChangeCategory(category){
+        console.log("category:", category);
+        this.setState({ category: category});
+    },
+
     //@@viewOff:componentSpecificHelpers
 
     //@@viewOn:render
     render() {
-        let child;
+        let options = this.props.categories.map((category) => <UU5.Forms.Select.Option value={category}/>);
 
-        return (
-
+        return [
+            <UU5.Forms.Select label="category" ref_={(input) => this._categoryInput = input}>
+                {options}
+            </UU5.Forms.Select>,
             <UU5.Forms.TextButton
-                value="your shopping item mr: "
+                value="mrkev"
                 label="What should i buy?:"
                 buttons={[{
-                glyphicon: 'uu-glyphicon-ok',
-                onClick: (opt) => this._onDataFilled(opt.value),
-                colorSchema: 'info'
-            }]}
+                    glyphicon: 'uu-glyphicon-ok',
+                    onClick: (opt) => this._onDataFilled(opt),
+                    colorSchema: 'info'
+                        }]}
             />
-
-    )
+              ]
 
     }
     //@@viewOff:render

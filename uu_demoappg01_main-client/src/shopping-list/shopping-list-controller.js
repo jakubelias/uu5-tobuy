@@ -17,6 +17,7 @@ import MissingItems from "../shopping-list/shopping-list-missing-items";
 
 import "../core/demo-spa.less";
 
+const CATEGORIES =  ["food", "drinks", "drogs", "alcohol"];
 const ShoppingList = createReactClass({
 
     //@@viewOn:mixins
@@ -40,7 +41,8 @@ const ShoppingList = createReactClass({
         opt: {
             nestingLevelWrapper: true,
             ccrKey: Cfg.CCRKEY_SPA
-        }
+        },
+
     },
 
     getInitialState() {
@@ -69,10 +71,15 @@ const ShoppingList = createReactClass({
     //@@viewOff:overridingMethods
 
     //@@viewOn:componentSpecificHelpers
+
+
+
+
+
     _handleAdd(opt){
         this.setState({ counter: ++ this.state.counter });
         let list = this.state.items.slice();
-        list.push({text:opt, count: 1, category:"default", id: this.state.counter, state:"not bought"});
+        list.push({text:opt.value, count: 1, category: opt.category, id: this.state.counter, state:"not bought"});
         this.setState({ items: list })
     },
 
@@ -112,19 +119,14 @@ const ShoppingList = createReactClass({
     _handleChangeCount(id, count){
         let newItems = [];
         this.state.items.forEach((item) => {
-
             if (item.id != id) {
                 newItems.push(item);
             }else {
                 console.log("changing count of item to:", count);
                 item.count=count;
                 newItems.push({... item});
-
             }
-
         });
-        console.log("new items:", newItems);
-
         this.setState({ items: newItems, breakCache: new Date()  });
     },
 
@@ -142,13 +144,13 @@ const ShoppingList = createReactClass({
                     onChangeState={this._handleChangeState}
                     onChangeText={this._handleChangeText}
                     onChangeCount={this._handleChangeCount}
-                    items={this.state.items}/>,
+                    items={this.state.items}/>
             ]
 
         }
 
         return [
-            <ShoppingListInput onDataAdded={this._handleAdd}/>,
+            <ShoppingListInput onDataAdded={this._handleAdd} categories={CATEGORIES}/>,
             <ShoppingListTable
                 breakCache={this.state.breakCache}
                 onItemRemove={this._handleRemove}
@@ -167,8 +169,6 @@ const ShoppingList = createReactClass({
                 items={this.state.items}/>,
 
             <MissingItems count={this.state.items.length}/>
-
-
         ]
 
 
