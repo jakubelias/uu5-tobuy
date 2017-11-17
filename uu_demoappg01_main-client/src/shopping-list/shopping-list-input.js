@@ -72,11 +72,10 @@ const ShoppingListInput = createReactClass({
         return (
 
             <UU5.Forms.TextButton
-                value="your shopping item mr. "
+                value="your shopping item mr: "
                 label="What should i buy?:"
                 buttons={[{
                 glyphicon: 'uu-glyphicon-ok',
-                //onClick: (opt) => alert('User ' + opt.value + 'is not in database'),
                 onClick: (opt) => this._onDataFilled(opt.value),
                 colorSchema: 'info'
             }]}

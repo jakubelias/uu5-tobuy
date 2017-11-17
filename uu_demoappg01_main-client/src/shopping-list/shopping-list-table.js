@@ -101,11 +101,13 @@ const ShoppingListTable = createReactClass({
                                 label="Write here"
                                 value={row.text}
                                 onBlur={(opt) => this._changeText(row.id, opt.value)}
-
                             />
+
                         </UU5.Bricks.Table.Td>
 
-                        <UU5.Bricks.Table.Td content={row.category}/>
+                        <UU5.Bricks.Table.Td>
+                                    {row.category}
+                        </UU5.Bricks.Table.Td>
                         <UU5.Bricks.Table.Td>
                             <UU5.Forms.Number  value={row.count} onChange={(opt) => this._changeCount(row.id, opt.value)}/>
                         </UU5.Bricks.Table.Td>
