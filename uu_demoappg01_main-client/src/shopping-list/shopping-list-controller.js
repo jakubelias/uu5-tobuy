@@ -70,10 +70,9 @@ const ShoppingList = createReactClass({
 
     //@@viewOn:componentSpecificHelpers
     _handleAdd(opt){
-        console.log(opt);
 
         let mycounter = this.state.counter;
-        console.log("counter:", mycounter++);
+
         this.setState({ counter: mycounter++ })
 
         let list = this.state.items.slice()
@@ -83,18 +82,7 @@ const ShoppingList = createReactClass({
     },
 
     _handleRemove(id){
-
-        let newItems = []
-        this.state.items.forEach((item) => {
-
-            if (item.id != id) {
-                newItems.push(item);
-            }else {
-                console.log("removing item:", id)
-            }
-
-        });
-        this.setState({ items: newItems })
+        this.setState({ items: this.state.items.filter(item => item.id != id) });
     },
 
     _handleChangeState(id){
