@@ -80,18 +80,6 @@ let AccordeonPanel = createReactClass({
     },
     //@@viewOff:componentSpecificHelpers
 
-   /* _getTouchIcons(jokes) {
-        return jokes.map((joke) => {
-            return <UU5.Bricks.TouchIcon
-                key={joke.id}
-                content={joke.name}
-                onClick={() => this.props.onModalOpen({
-                    header: joke.name,
-                    content: joke.text
-                })}/>
-        });
-    },*/
-
     //@@viewOn:render
     render() {
         console.log("inner:", this.props.category);
