@@ -67,8 +67,9 @@ const MissingItems = createReactClass({
     render() {
 
         return (
-
-            <UU5.Bricks.Text label="total count"> {this.props.count} </UU5.Bricks.Text>
+            <UU5.Bricks.Row>
+                <UU5.Bricks.Text label="total count"> {this.props.count} </UU5.Bricks.Text>
+            </UU5.Bricks.Row>
 
         )
 

@@ -125,7 +125,7 @@ const ShoppingListTable = createReactClass({
     //@@viewOn:render
     render() {
         return (
-        <UU5.Bricks.Table responsive header='Shopping List' footer='UU5 Super App.' hover>
+        <UU5.Bricks.Table responsive header='Shopping List'  hover>
             <UU5.Bricks.Table.THead>
                 <UU5.Bricks.Table.Tr>
                     <UU5.Bricks.Table.Th content='text'/>

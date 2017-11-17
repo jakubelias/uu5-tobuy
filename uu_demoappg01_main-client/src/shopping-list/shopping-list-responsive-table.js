@@ -50,12 +50,13 @@ const ShoppingListResponsibleTable = createReactClass({
         onChangeCount: PropTypes.func,
     },
 
-    getDefaultProps() {
-        return {items: []}
-    },
+
     //@@viewOff:propTypes
 
     //@@viewOn:getDefaultProps
+    getDefaultProps() {
+        return {items: []}
+    },
     //@@viewOff:getDefaultProps
 
     //@@viewOn:standardComponentLifeCycle
@@ -96,27 +97,24 @@ const ShoppingListResponsibleTable = createReactClass({
         return this.props.items.map((row) => {
                 return (
 
-                    <UU5.Bricks.Row key={row.id}>
-                        <UU5.Bricks.Column>
+
+                        <UU5.Bricks.Column colWidth="s12 m6 xl3" key={row.id}>
+                            <UU5.Bricks.Blockquote background colorSchema={row.state== "not buyed" ?  "info" :  "success"}>
+
                             <UU5.Forms.Text
                                 label="Write here"
                                 value={row.text}
                                 onBlur={(opt) => this._changeText(row.id, opt.value)}
 
                             />
+
+                                <UU5.Forms.Number  value={row.count} onChange={(opt) => this._changeCount(row.id, opt.value)}/>
+                                <UU5.Bricks.Button onClick={()=>{this._deleteItem(row.id);}}>delete</UU5.Bricks.Button>
+                                <UU5.Bricks.Button onClick={()=>{this._changeState(row.id);}}>{row.state}</UU5.Bricks.Button>
+
+                            </UU5.Bricks.Blockquote>
                         </UU5.Bricks.Column>
 
-                        <UU5.Bricks.Column content={row.category}/>
-                        <UU5.Bricks.Column>
-                            <UU5.Forms.Number  value={row.count} onChange={(opt) => this._changeCount(row.id, opt.value)}/>
-                        </UU5.Bricks.Column>
-                        <UU5.Bricks.Column>
-                            <UU5.Bricks.Button onClick={()=>{this._deleteItem(row.id);}}>delete</UU5.Bricks.Button>
-                        </UU5.Bricks.Column>
-                        <UU5.Bricks.Column>
-                            <UU5.Bricks.Button onClick={()=>{this._changeState(row.id);}}>{row.state}</UU5.Bricks.Button>
-                        </UU5.Bricks.Column>
-                    </UU5.Bricks.Row>
                 )
             }
         )
