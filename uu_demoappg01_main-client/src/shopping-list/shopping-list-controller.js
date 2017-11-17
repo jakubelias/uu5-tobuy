@@ -81,30 +81,18 @@ const ShoppingList = createReactClass({
     },
 
     _handleChangeState(id){
-        console.log("to be changedState:", id);
 
-        let newItems = [];
-        this.state.items.forEach((item) => {
-
-            if (item.id != id) {
-                newItems.push(item);
-            }else {
-
-                if (item.state == "not bought"){
-                    item.state = "bought";
-                }else{
-                    item.state = "not bought";
-                }
-                console.log("state:", item.state);
-                newItems.push({... item});
-
-
+        let modified = this.state.items.map(element => {
+            console.log(element.id);
+            if (element.id != id) {
+                return element;
+            } else {
+                element.state = element.state=="not bought" ? "bought":"not bought";
+                return element;
             }
-
         });
-        console.log("new items:", newItems);
 
-        this.setState({ items: newItems, breakCache: new Date()  });
+        this.setState({ items: modified });
     },
 
     _handleChangeText(id, text){
@@ -122,19 +110,7 @@ const ShoppingList = createReactClass({
     },
 
     _handleChangeCount(id, count){
-
-      /*  let modified = this.state.items.map(element => {
-            if (element.id != id) {
-                return element;
-            } else {
-                element.count = count;
-                return element;
-            }
-        });
-
-        this.setState({ items: modified });*/
-
-        let newItems = []
+        let newItems = [];
         this.state.items.forEach((item) => {
 
             if (item.id != id) {
