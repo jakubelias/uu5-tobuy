@@ -101,7 +101,7 @@ const ShoppingListResponsibleTable = createReactClass({
                             <UU5.Forms.Text
                                 label="Write here"
                                 value={row.text}
-                                onBlur={(opt) => this._changeText(row.id, <op></op>t.value)}
+                                onBlur={(opt) => this._changeText(row.id, opt.value)}
 
                             />
                         </UU5.Bricks.Column>
